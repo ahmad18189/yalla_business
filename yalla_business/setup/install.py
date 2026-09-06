@@ -20,7 +20,7 @@ def _configure_website_settings():
 	ws.disable_signup = 1
 	ws.home_page = "index"
 	ws.app_name = "Yalla Business"
-	ws.app_logo = "/assets/yalla_business/images/logo-header.webp"
+	ws.app_logo = "/assets/yalla_business/images/logo-mark.png"
 	ws.favicon = "/assets/yalla_business/images/favicon-32.png"
 	ws.flags.ignore_mandatory = True
 	ws.save(ignore_permissions=True)

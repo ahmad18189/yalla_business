@@ -6,16 +6,29 @@
 		standard: { 3: [1050, 350, 0], 6: [1890, 315, 10], 12: [3360, 280, 20] },
 		professional: { 3: [1800, 600, 0], 6: [3240, 540, 10], 12: [5760, 480, 20] },
 	};
+	const REQUIRED = ["full_name", "email", "phone", "service_interest", "privacy"];
+	const FIELD_ERRORS = {
+		full_name: { ar: "فضلاً اكتب اسمك الكامل.", en: "Please enter your full name." },
+		email: { ar: "فضلاً أدخل بريد إلكتروني صحيح.", en: "Please enter a valid email." },
+		phone: { ar: "فضلاً أدخل رقم جوال صحيح.", en: "Please enter a valid phone number." },
+		service_interest: { ar: "فضلاً اختر الخدمة.", en: "Please choose a service." },
+		privacy: { ar: "فضلاً وافق على التواصل بخصوص هذا الطلب.", en: "Please agree to be contacted about this request." },
+		plan_interest: { ar: "فضلاً اختر خطة صحيحة.", en: "Please choose a valid plan." },
+		plan_term: { ar: "فضلاً اختر مدة صحيحة.", en: "Please choose a valid term." },
+	};
 
 	const html = document.documentElement;
 	const form = document.getElementById("ybForm");
 	const live = document.getElementById("ybFormLive");
 	const success = document.getElementById("ybSuccess");
+	const menuBtn = document.getElementById("ybMenu");
+	const nav = document.getElementById("ybNav");
 	let lang = localStorage.getItem(STORAGE_LANG) === "en" ? "en" : "ar";
 	let term = localStorage.getItem(STORAGE_TERM) || "12";
 	if (!["3", "6", "12"].includes(term)) term = "12";
+	let submitting = false;
 
-	document.documentElement.classList.add("js");
+	html.classList.add("js");
 
 	function eastern(num) {
 		return String(num).replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[d]);
@@ -32,7 +45,7 @@
 		html.setAttribute("lang", lang);
 		html.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
 		document.querySelectorAll("[data-ar][data-en]").forEach((el) => {
-			if (el.matches("input, textarea, select")) return;
+			if (el.matches("input, textarea, select, .yb-field-error")) return;
 			const value = el.getAttribute(`data-${lang}`);
 			if (value) el.textContent = value;
 		});
@@ -49,6 +62,8 @@
 		const langBtn = document.getElementById("ybLang");
 		if (langBtn) langBtn.textContent = lang === "ar" ? "EN" : "AR";
 		renderPrices();
+		refreshFieldErrorsLang();
+		closeMenu({ restoreFocus: false });
 		window.dispatchEvent(new CustomEvent("yb:langchange", { detail: { lang } }));
 	}
 
@@ -77,7 +92,9 @@
 			});
 		});
 		document.querySelectorAll(".yb-term").forEach((btn) => {
-			btn.classList.toggle("is-active", btn.getAttribute("data-term") === term);
+			const active = btn.getAttribute("data-term") === term;
+			btn.classList.toggle("is-active", active);
+			btn.setAttribute("aria-pressed", active ? "true" : "false");
 		});
 		const termSelect = document.getElementById("plan_term");
 		if (termSelect) termSelect.value = term;
@@ -97,19 +114,61 @@
 		const planTerm = document.getElementById("plan_term");
 		if (opts.service && service) service.value = opts.service;
 		if (opts.plan && plan) plan.value = opts.plan;
-		if (opts.term && planTerm) planTerm.value = opts.term;
+		if (opts.term && planTerm) {
+			planTerm.value = opts.term;
+			term = opts.term;
+		}
 		togglePlanFields();
+		clearFieldError("service_interest");
+	}
+
+	function isMenuOpen() {
+		return !!(nav && nav.classList.contains("is-open"));
+	}
+
+	function closeMenu(opts) {
+		if (!menuBtn || !nav) return;
+		nav.classList.remove("is-open");
+		menuBtn.setAttribute("aria-expanded", "false");
+		const label = menuBtn.getAttribute(`data-${lang}-aria`) || t("فتح القائمة", "Open menu");
+		menuBtn.setAttribute("aria-label", label);
+		if (opts && opts.restoreFocus) menuBtn.focus();
+	}
+
+	function openMenu() {
+		if (!menuBtn || !nav) return;
+		nav.classList.add("is-open");
+		menuBtn.setAttribute("aria-expanded", "true");
+		menuBtn.setAttribute("aria-label", t("إغلاق القائمة", "Close menu"));
 	}
 
 	function setupNav() {
-		const menu = document.getElementById("ybMenu");
-		const nav = document.getElementById("ybNav");
-		if (menu && nav) {
-			menu.addEventListener("click", () => {
-				const open = nav.classList.toggle("is-open");
-				menu.setAttribute("aria-expanded", open ? "true" : "false");
+		if (menuBtn && nav) {
+			menuBtn.addEventListener("click", () => {
+				if (isMenuOpen()) closeMenu();
+				else openMenu();
+			});
+			nav.querySelectorAll("a").forEach((link) => {
+				link.addEventListener("click", () => closeMenu());
 			});
 		}
+		document.addEventListener("click", (e) => {
+			if (!isMenuOpen()) return;
+			if (e.target.closest("#ybNav, #ybMenu")) return;
+			closeMenu();
+		});
+		document.addEventListener("keydown", (e) => {
+			if (e.key === "Escape" && isMenuOpen()) {
+				closeMenu({ restoreFocus: true });
+			}
+		});
+		const desktopMq = window.matchMedia("(min-width: 768px)");
+		const onDesktop = () => {
+			if (desktopMq.matches) closeMenu();
+		};
+		if (desktopMq.addEventListener) desktopMq.addEventListener("change", onDesktop);
+		else desktopMq.addListener(onDesktop);
+
 		document.getElementById("ybLang")?.addEventListener("click", () => {
 			lang = lang === "ar" ? "en" : "ar";
 			localStorage.setItem(STORAGE_LANG, lang);
@@ -133,33 +192,103 @@
 			if (journey) {
 				e.preventDefault();
 				window.dispatchEvent(new CustomEvent("yb:goto", { detail: { scene: journey } }));
+				return;
+			}
+			const href = link.getAttribute("href");
+			if (href === "#business-journey") {
+				e.preventDefault();
+				window.dispatchEvent(new CustomEvent("yb:goto", { detail: { scene: "hub" } }));
 			}
 		});
 		document.getElementById("service_interest")?.addEventListener("change", togglePlanFields);
 	}
 
-	function firstInvalid(fields) {
-		for (const id of fields) {
-			const el = document.getElementById(id);
-			if (el && !el.checkValidity()) return el;
+	function errorEl(id) {
+		return document.getElementById(`err-${id}`);
+	}
+
+	function setFieldError(id, message) {
+		const field = document.getElementById(id);
+		const err = errorEl(id);
+		if (field) field.setAttribute("aria-invalid", "true");
+		if (err) {
+			err.hidden = false;
+			err.textContent = message;
 		}
-		return null;
+	}
+
+	function clearFieldError(id) {
+		const field = document.getElementById(id);
+		const err = errorEl(id);
+		if (field) field.removeAttribute("aria-invalid");
+		if (err) {
+			err.hidden = true;
+			err.textContent = "";
+		}
+	}
+
+	function fieldMessage(id) {
+		const copy = FIELD_ERRORS[id];
+		return copy ? t(copy.ar, copy.en) : t("فضلاً أكمل هذا الحقل.", "Please complete this field.");
+	}
+
+	function isFieldValid(id) {
+		const el = document.getElementById(id);
+		if (!el) return true;
+		if (id === "privacy") return el.checked;
+		if (id === "service_interest") return ["erp", "sign", "both"].includes(el.value);
+		return el.checkValidity();
+	}
+
+	function validateForm() {
+		const invalid = [];
+		REQUIRED.forEach((id) => {
+			if (isFieldValid(id)) clearFieldError(id);
+			else {
+				setFieldError(id, fieldMessage(id));
+				invalid.push(id);
+			}
+		});
+		return invalid;
+	}
+
+	function refreshFieldErrorsLang() {
+		REQUIRED.forEach((id) => {
+			const field = document.getElementById(id);
+			if (field && field.getAttribute("aria-invalid") === "true") {
+				setFieldError(id, fieldMessage(id));
+			}
+		});
 	}
 
 	function setupForm() {
 		if (!form) return;
+		REQUIRED.forEach((id) => {
+			const el = document.getElementById(id);
+			if (!el) return;
+			const evt = id === "privacy" || id === "service_interest" ? "change" : "input";
+			el.addEventListener(evt, () => {
+				if (isFieldValid(id)) clearFieldError(id);
+			});
+		});
 		form.addEventListener("submit", async (e) => {
 			e.preventDefault();
-			live.textContent = "";
-			if (!form.checkValidity()) {
-				const invalid = firstInvalid(["full_name", "email", "phone", "service_interest", "privacy"]);
-				if (invalid) invalid.focus();
-				live.textContent = t("يرجى إكمال الحقول المطلوبة.", "Please complete the required fields.");
+			if (submitting) return;
+			if (live) live.textContent = "";
+			const invalid = validateForm();
+			if (invalid.length) {
+				document.getElementById(invalid[0])?.focus();
 				return;
 			}
+			const submit = document.getElementById("ybSubmit");
+			const label = submit && submit.querySelector(".yb-btn__label");
+			const spin = submit && submit.querySelector(".yb-btn__spin");
+			const original = label ? label.textContent : "";
+			submitting = true;
 			form.classList.add("is-loading");
-			const submit = form.querySelector("[type=submit]");
 			if (submit) submit.disabled = true;
+			if (label) label.textContent = t("نرسل طلبك...", "Sending...");
+			if (spin) spin.hidden = false;
 			const data = Object.fromEntries(new FormData(form).entries());
 			data.preferred_language = lang;
 			data.source_page = window.location.pathname || "/";
@@ -177,39 +306,98 @@
 				const body = payload.message || payload;
 				if (res.ok && body.ok) {
 					form.hidden = true;
-					success.hidden = false;
-					success.focus?.();
+					if (success) {
+						success.hidden = false;
+						const msg = document.getElementById("ybSuccessMsg");
+						if (msg) {
+							msg.setAttribute("role", "status");
+							msg.setAttribute("aria-live", "polite");
+						}
+						success.focus();
+					}
 				} else if (body.code === "rate_limited") {
-					live.textContent = t("حاول مرة أخرى بعد قليل.", "Please try again shortly.");
+					if (live) live.textContent = t("حاول مرة ثانية بعد قليل.", "Please try again shortly.");
 				} else {
-					live.textContent = t("تعذر إرسال الطلب. تحقق من البيانات وحاول مرة أخرى.", "Could not send the request. Check the details and try again.");
+					(body.fields || []).forEach((id) => setFieldError(id, fieldMessage(id)));
+					const first = (body.fields || []).find((id) => document.getElementById(id));
+					if (first) document.getElementById(first).focus();
+					if (live) {
+						live.textContent = t(
+							"ما قدرنا نرسل الطلب. تأكد من البيانات وحاول مرة ثانية.",
+							"Could not send the request. Check the details and try again."
+						);
+					}
 				}
 			} catch (err) {
-				live.textContent = t("تعذر إرسال الطلب حالياً.", "The request could not be sent right now.");
+				if (live) live.textContent = t("ما قدرنا نرسل الطلب حالياً.", "The request could not be sent right now.");
 			} finally {
 				form.classList.remove("is-loading");
 				if (submit) submit.disabled = false;
+				if (label) label.textContent = original || t("أرسل الطلب", "Send request");
+				if (spin) spin.hidden = true;
+				submitting = false;
 			}
 		});
 	}
 
 	function setupReveal() {
-		if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-			document.querySelectorAll(".yb-reveal").forEach((el) => el.classList.add("is-in"));
+		const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+		const reveals = Array.from(document.querySelectorAll(".yb-reveal"));
+		if (reduced) {
+			reveals.forEach((el) => el.classList.add("is-in"));
+			document.querySelectorAll("main > section").forEach((el) => el.classList.add("is-seen"));
 			return;
 		}
+
+		const groups = new Map();
+		reveals.forEach((el) => {
+			const parent = el.parentElement;
+			if (!parent) return;
+			if (!groups.has(parent)) groups.set(parent, []);
+			groups.get(parent).push(el);
+		});
+		groups.forEach((kids) => {
+			kids.forEach((el, i) => {
+				el.style.setProperty("--yb-reveal-delay", `${i * 90}ms`);
+			});
+		});
+
+		const show = (el) => {
+			if (el.classList.contains("is-in")) return;
+			el.classList.add("is-in");
+		};
+
+		document.querySelectorAll(".yb-hero .yb-reveal").forEach((el) => {
+			requestAnimationFrame(() => show(el));
+		});
+
 		const io = new IntersectionObserver(
 			(entries) => {
 				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-						entry.target.classList.add("is-in");
-						io.unobserve(entry.target);
-					}
+					if (!entry.isIntersecting) return;
+					show(entry.target);
+					io.unobserve(entry.target);
 				});
 			},
-			{ threshold: 0.16 }
+			{ threshold: 0.14, rootMargin: "0px 0px -10% 0px" }
 		);
-		document.querySelectorAll(".yb-reveal").forEach((el) => io.observe(el));
+		reveals.forEach((el) => {
+			if (el.closest(".yb-hero")) return;
+			io.observe(el);
+		});
+
+		const sections = document.querySelectorAll("main > section");
+		if (sections.length) {
+			const secIo = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry) => {
+						entry.target.classList.toggle("is-seen", entry.isIntersecting);
+					});
+				},
+				{ threshold: 0.22 }
+			);
+			sections.forEach((el) => secIo.observe(el));
+		}
 	}
 
 	applyLanguage();
