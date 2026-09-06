@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="yb-ico-riyal" viewBox="0 0 48 48">
+    <rect x="6" y="10" width="36" height="28" rx="6" fill="#4B2C82"/>
+    <path d="M16 18h16M16 24h10M16 30h14" stroke="#FDF8F5" stroke-width="2.2" stroke-linecap="round"/>
+    <circle cx="34" cy="30" r="4" fill="#EDE6F5"/>
+  </symbol>
+  <symbol id="yb-ico-banknote" viewBox="0 0 48 48">
+    <rect x="6" y="14" width="36" height="20" rx="4" fill="#FDF8F5" stroke="#4B2C82" stroke-width="2"/>
+    <circle cx="24" cy="24" r="5" fill="none" stroke="#4B2C82" stroke-width="2"/>
+    <path d="M10 20v8M38 20v8" stroke="#4B2C82" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="yb-ico-coins" viewBox="0 0 48 48">
+    <ellipse cx="20" cy="30" rx="10" ry="6" fill="#EDE6F5" stroke="#4B2C82" stroke-width="1.6"/>
+    <ellipse cx="28" cy="24" rx="10" ry="6" fill="#FDF8F5" stroke="#4B2C82" stroke-width="1.6"/>
+    <ellipse cx="22" cy="18" rx="10" ry="6" fill="#4B2C82"/>
+  </symbol>
+  <symbol id="yb-ico-sales-invoice" viewBox="0 0 48 48">
+    <path d="M14 8h16l8 8v24H14V8z" fill="#FDF8F5" stroke="#4B2C82" stroke-width="2"/>
+    <path d="M30 8v8h8" fill="none" stroke="#4B2C82" stroke-width="2"/>
+    <path d="M18 24h12M18 30h8" stroke="#4B2C82" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="yb-ico-purchase" viewBox="0 0 48 48">
+    <rect x="10" y="10" width="28" height="28" rx="4" fill="#EDE6F5" stroke="#4B2C82" stroke-width="2"/>
+    <path d="M16 22h16M16 28h10" stroke="#4B2C82" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="32" cy="16" r="3" fill="#4B2C82"/>
+  </symbol>
+  <symbol id="yb-ico-receipt" viewBox="0 0 48 48">
+    <path d="M16 8h16v32l-4-3-4 3-4-3-4 3V8z" fill="#FDF8F5" stroke="#4B2C82" stroke-width="2"/>
+    <path d="M20 18h8M20 24h8M20 30h5" stroke="#4B2C82" stroke-width="1.8" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="yb-ico-box" viewBox="0 0 48 48">
+    <path d="M8 16l16-8 16 8v16l-16 8-16-8V16z" fill="#EDE6F5" stroke="#4B2C82" stroke-width="2"/>
+    <path d="M8 16l16 8 16-8M24 24v16" stroke="#4B2C82" stroke-width="2"/>
+  </symbol>
+  <symbol id="yb-ico-warehouse" viewBox="0 0 48 48">
+    <path d="M6 22L24 8l18 14v18H6V22z" fill="#FDF8F5" stroke="#4B2C82" stroke-width="2"/>
+    <rect x="18" y="26" width="12" height="14" fill="#4B2C82"/>
+  </symbol>
+  <symbol id="yb-ico-employee" viewBox="0 0 48 48">
+    <circle cx="24" cy="16" r="7" fill="#EDE6F5" stroke="#4B2C82" stroke-width="2"/>
+    <path d="M10 38c2-8 8-12 14-12s12 4 14 12" fill="#FDF8F5" stroke="#4B2C82" stroke-width="2"/>
+  </symbol>
+  <symbol id="yb-ico-report" viewBox="0 0 48 48">
+    <rect x="10" y="8" width="28" height="32" rx="3" fill="#FDF8F5" stroke="#4B2C82" stroke-width="2"/>
+    <path d="M16 32v-8M22 32v-14M28 32v-6M34 32v-10" stroke="#4B2C82" stroke-width="2.4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="yb-ico-chart" viewBox="0 0 48 48">
+    <rect x="8" y="8" width="32" height="32" rx="6" fill="#4B2C82"/>
+    <path d="M14 30l6-8 6 4 8-12" fill="none" stroke="#FDF8F5" stroke-width="2.2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="yb-ico-einvoice" viewBox="0 0 48 48">
+    <rect x="10" y="8" width="28" height="32" rx="4" fill="#FDF8F5" stroke="#4B2C82" stroke-width="2"/>
+    <circle cx="24" cy="24" r="7" fill="none" stroke="#1F7A4D" stroke-width="2"/>
+    <path d="M20 24l3 3 6-7" fill="none" stroke="#1F7A4D" stroke-width="2.2" stroke-linecap="round"/>
+  </symbol>
+</svg>

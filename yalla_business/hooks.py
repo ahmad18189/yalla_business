@@ -57,7 +57,7 @@ app_license = "mit"
 # ----------
 
 # application home page (will override Website Settings)
-# home_page = "login"
+home_page = "index"
 
 # website user home page (by Role)
 # role_home_page = {
@@ -83,7 +83,8 @@ app_license = "mit"
 # ------------
 
 # before_install = "yalla_business.install.before_install"
-# after_install = "yalla_business.install.after_install"
+after_install = "yalla_business.setup.install.after_install"
+after_migrate = "yalla_business.setup.install.after_migrate"
 
 # Uninstallation
 # ------------
