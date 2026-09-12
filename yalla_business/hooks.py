@@ -56,8 +56,8 @@ app_license = "mit"
 # Home Pages
 # ----------
 
-# application home page (will override Website Settings)
-home_page = "index"
+# Home page is set in Website Settings (home_page = showcase2).
+# Do not set hooks home_page here — it would override Website Settings.
 
 # website user home page (by Role)
 # role_home_page = {

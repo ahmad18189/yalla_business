@@ -70,14 +70,14 @@
   {
    "fieldname": "plan_interest",
    "fieldtype": "Select",
-   "label": "ERP Plan",
-   "options": "\nlite\nstandard\nprofessional"
+   "label": "Plan",
+   "options": "\nlite\nstandard\nprofessional\nsign_01\nsign_02\nsign_03"
   },
   {
    "fieldname": "plan_term",
    "fieldtype": "Select",
    "label": "Plan Term",
-   "options": "\n3\n6\n12"
+   "options": "\n1\n3\n6\n12"
   },
   {
    "fieldname": "preferred_language",
@@ -139,7 +139,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-09-06 14:00:00",
+ "modified": "2026-09-11 17:40:00",
  "modified_by": "Administrator",
  "module": "Yalla Business",
  "name": "Yalla Inquiry",

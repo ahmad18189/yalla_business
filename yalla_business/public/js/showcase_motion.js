@@ -458,8 +458,7 @@
 	function buildMobile(gsap) {
 		root.classList.add("is-compact");
 		root.classList.remove("is-static");
-		caption("erp");
-		root.querySelectorAll(".ybs-caption").forEach((el) => el.classList.add("is-active"));
+		caption("hub");
 		const erp = document.getElementById("ybsMobileErp");
 		const kateb = document.getElementById("ybsMobileKateb");
 		const sign = document.getElementById("ybsMobileSign");

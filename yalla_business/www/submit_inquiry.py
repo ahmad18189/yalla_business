@@ -10,8 +10,8 @@ from frappe.utils import cint, now, strip_html
 no_cache = 1
 
 SERVICE_ALLOWLIST = {"erp", "sign", "both"}
-PLAN_ALLOWLIST = {"", "lite", "standard", "professional"}
-TERM_ALLOWLIST = {"", "3", "6", "12"}
+PLAN_ALLOWLIST = {"", "lite", "standard", "professional", "sign_01", "sign_02", "sign_03"}
+TERM_ALLOWLIST = {"", "1", "3", "6", "12"}
 LANG_ALLOWLIST = {"", "ar", "en"}
 
 MAX_NAME = 120
