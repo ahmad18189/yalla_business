@@ -175,8 +175,10 @@ SIGN_PLAN_SEED = (
 
 
 def brand_mark_html(lang: str) -> str:
+	# Accent the second word only. Splitting "Yalla" as Ya<span>lla…</span>
+	# leaves a gap (kerning does not cross the tag) so English reads "Ya lla".
 	if lang == "en":
-		return "Ya<span>lla Business</span>"
+		return "Yalla <span>Business</span>"
 	return escape_html("يلا") + " <span>" + escape_html("بزنس") + "</span>"
 
 
@@ -203,7 +205,7 @@ def get_context(context):
 	context.sm_lang = lang
 	context.sm_dir = "rtl" if lang == "ar" else "ltr"
 	context.year = now_datetime().year
-	context.canonical = "https://showcase2.yallaerpplus.com/"
+	context.canonical = "https://yallabusiness.ai/"
 	context.yep_catalog = [dict(p) for p in PLAN_SEED]
 	context.yep_catalog_json = frappe.as_json(context.yep_catalog)
 	context.yep_sign_catalog = [dict(p) for p in SIGN_PLAN_SEED]
@@ -217,10 +219,16 @@ def get_context(context):
 		"nav_why": "لماذا يلا بزنس" if lang == "ar" else "Why us",
 		"nav_contact": "تواصل معنا" if lang == "ar" else "Contact",
 		"nav_login": "دخول الموظفين" if lang == "ar" else "Staff login",
+		"nav_explore": "استكشف" if lang == "ar" else "Explore",
 		"cta_quote": "اطلب عرض سعر" if lang == "ar" else "Request a Quote",
 		"footer_copy": "يلا بزنس" if lang == "ar" else "Yalla Business AI",
 		"footer_contact": "تواصل معنا" if lang == "ar" else "Contact",
+		"svc_yep": "يلا ERP بلس" if lang == "ar" else "Yalla ERP Plus",
+		"svc_sign": "يلا ساين" if lang == "ar" else "YallaSign",
 		"contact_email": "info@yallabusiness.ai",
 		"home_href": "/",
+		"yalla_erpplus_url": "https://yallaerpplus.com/",
+		"yalla_erpplus_demo_url": "https://yallaerpplus.com/demo",
+		"yalla_sign_url": "https://yallasign.ai",
 	}
 	return context

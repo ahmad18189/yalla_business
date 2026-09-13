@@ -10,7 +10,7 @@
 	<meta name="robots" content="noindex, follow" />
 	<link rel="icon" href="/assets/yalla_business/images/favicon.ico?v=20260911b" sizes="any" />
 	<link rel="icon" type="image/png" href="/assets/yalla_business/images/favicon-32.png?v=20260911b" />
-	<link rel="stylesheet" href="/assets/yalla_business/css/showcase2.css?v=20260912m" />
+	<link rel="stylesheet" href="/assets/yalla_business/css/showcase2.css?v=20260913e" />
 </head>
 <body class="sm-page{% if sm_lang == 'ar' %} sm-rtl{% endif %}" data-sm-theme="teal" data-sm-mode="light">
 {% macro txt(ar, en) %}{{ ar if sm_lang == "ar" else en }}{% endmacro %}
@@ -54,6 +54,7 @@
 		</a>
 		<nav class="sm-nav" id="sm-site-nav">
 			<a href="#ybs-services">{{ sm.nav_services }}</a>
+			<a href="#yep-ops">{{ txt("التشغيل", "Operations") }}</a>
 			<a href="#ybs-erp-plans">{{ sm.nav_plans }}</a>
 			<a href="#ybs-why">{{ sm.nav_why }}</a>
 			<a href="#ybs-inquiry">{{ sm.nav_contact }}</a>
@@ -114,7 +115,7 @@
 					<div class="sm-hero-msg" data-hero-index="3" hidden>
 						<p class="sm-hero-kicker">{{ txt("منظومة يلا بزنس", "The Yalla Business ecosystem") }}</p>
 						<h1>{{ txt("المحاسبة والعقود في منصة واحدة.", "Accounting and contracts in one place.") }}<br>{{ txt("وتشغيل أسرع لمنشأتك.", "Your operations, faster.") }}</h1>
-						<p>{{ txt("يلا ERP ويلا ساين خدمتان مستقلتان ضمن يلا بزنس، تجمعان تشغيل المنشأة في منظومة أوضح.", "Yalla ERP and YallaSign are independent services within Yalla Business, bringing company operations into one clearer ecosystem.") }}</p>
+						<p>{{ txt("يلا ERP بلس ويلا ساين خدمتان مستقلتان ضمن يلا بزنس، تجمعان تشغيل المنشأة في منظومة أوضح.", "Yalla ERP Plus and YallaSign are independent services within Yalla Business, bringing company operations into one clearer ecosystem.") }}</p>
 					</div>
 				</div>
 				<div class="sm-hero-actions">
@@ -142,9 +143,9 @@
 
 	<section class="sm-proof">
 		<div class="sm-wrap sm-proof-row">
-			<span class="sm-proof-line">{{ txt("يلا ERP ويلا ساين خدمتان مستقلتان ضمن يلا بزنس.", "Yalla ERP and YallaSign are independent services within the Yalla Business ecosystem.") }}</span>
+			<span class="sm-proof-line">{{ txt("يلا ERP بلس ويلا ساين خدمتان مستقلتان ضمن يلا بزنس.", "Yalla ERP Plus and YallaSign are independent services within the Yalla Business ecosystem.") }}</span>
 			<ul class="sm-proof-stats">
-				<li>Yalla ERP</li>
+				<li>Yalla ERP Plus</li>
 				<li>YallaSign</li>
 				<li>{{ txt("كاتب", "Kateb") }}</li>
 			</ul>
@@ -220,7 +221,7 @@
 				</div>
 				<div class="ybs-stage">
 					<div class="ybs-stage__panel" id="ybsPanel">
-						<span class="ybs-erp__label">Yalla ERP</span>
+						<span class="ybs-erp__label">Yalla ERP Plus</span>
 						<div class="ybs-erp" id="ybsErpScene">
 							<div class="ybs-mod ybs-mod--wide" id="ybs-erp-accounting">
 								<small>{{ txt("المحاسبة", "Accounting") }}</small>
@@ -316,7 +317,7 @@
 						<p class="ybs-caption__title">{{ txt("خدماتك في منظومة واحدة، وتشغيلك أوضح.", "One ecosystem for more connected business.") }}</p>
 					</div>
 				</div>
-				<p class="ybs-note">{{ txt("يلا ERP ويلا ساين خدمتان مستقلتان ضمن يلا بزنس.", "Yalla ERP and YallaSign are independent services within the Yalla Business ecosystem.") }}</p>
+				<p class="ybs-note">{{ txt("يلا ERP بلس ويلا ساين خدمتان مستقلتان ضمن يلا بزنس.", "Yalla ERP Plus and YallaSign are independent services within the Yalla Business ecosystem.") }}</p>
 				<div class="ybs-story__actions">
 					<a class="sm-btn" href="#ybs-inquiry" data-service="both">{{ sm.cta_quote }}</a>
 					<a class="sm-btn sm-btn-outline" href="https://yallasign.ai" rel="noopener noreferrer">{{ txt("زيارة يلا ساين", "Visit YallaSign") }}</a>
@@ -326,7 +327,7 @@
 		</div>
 		<div class="ybs-mobile">
 			<article class="ybs-m-card" id="ybsMobileErp">
-				<h3>Yalla ERP</h3>
+				<h3>Yalla ERP Plus</h3>
 				<p>{{ txt("تصبح الأرقام والمستندات أوضح لاتخاذ القرار. المحاسبة والمخزون والموارد البشرية والمبيعات في نظام واحد مترابط.", "Numbers and documents become decisions. Accounting, inventory, HR and sales in one connected system.") }}</p>
 				<div class="ybs-m-mods" aria-hidden="true">
 					<div class="ybs-m-mod" id="ybs-m-accounting"><small>{{ txt("محاسبة", "Accounting") }}</small></div>
@@ -369,20 +370,172 @@
 		</div>
 	</section>
 
+	<section id="yep-ops" class="ybs-story ybs-story--plus" aria-labelledby="yep-ops-heading">
+		<div class="ybs-story__pin">
+			<div class="ybs-story__canvas" aria-hidden="true">
+				<div class="ybs-story__mark">
+					<img class="ybs-story__orb" src="/assets/yalla_business/images/logo-mark.png" width="480" height="480" alt="" />
+					<div class="ybs-shards">
+						<span class="ybs-shard"><img src="/assets/yalla_business/images/logo-mark.png" width="480" height="480" alt="" /></span>
+						<span class="ybs-shard"><img src="/assets/yalla_business/images/logo-mark.png" width="480" height="480" alt="" /></span>
+						<span class="ybs-shard"><img src="/assets/yalla_business/images/logo-mark.png" width="480" height="480" alt="" /></span>
+						<span class="ybs-shard"><img src="/assets/yalla_business/images/logo-mark.png" width="480" height="480" alt="" /></span>
+						<span class="ybs-shard"><img src="/assets/yalla_business/images/logo-mark.png" width="480" height="480" alt="" /></span>
+						<span class="ybs-shard"><img src="/assets/yalla_business/images/logo-mark.png" width="480" height="480" alt="" /></span>
+					</div>
+				</div>
+				<div class="ybs-objects">
+					<span class="ybs-obj" data-target="yep-erp-sales"><svg viewBox="0 0 48 48" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 8h16l8 8v24H14V8z" fill="#FDF8F5" stroke="#4B2C82" stroke-width="2"/><path d="M30 8v8h8" stroke="#4B2C82" stroke-width="2"/><path d="M18 24h12M18 30h8" stroke="#4B2C82" stroke-width="2" stroke-linecap="round"/></svg></span>
+					<span class="ybs-obj" data-target="yep-erp-stock"><svg viewBox="0 0 48 48" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 16l16-8 16 8v16l-16 8-16-8V16z" fill="#EDE6F5" stroke="#4B2C82" stroke-width="2"/><path d="M8 16l16 8 16-8M24 24v16" stroke="#4B2C82" stroke-width="2"/></svg></span>
+					<span class="ybs-obj" data-target="yep-erp-cash"><svg viewBox="0 0 48 48" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="14" width="32" height="22" rx="4" fill="#4B2C82"/><circle cx="24" cy="25" r="6" fill="#FDF8F5"/><path d="M24 22v6M21.5 25h5" stroke="#4B2C82" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+					<span class="ybs-obj" data-target="yep-erp-people"><svg viewBox="0 0 48 48" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="16" r="7" fill="#EDE6F5" stroke="#4B2C82" stroke-width="2"/><path d="M10 38c2-8 8-12 14-12s12 4 14 12" fill="#FDF8F5" stroke="#4B2C82" stroke-width="2"/></svg></span>
+					<span class="ybs-obj" data-target="yep-erp-insight"><svg viewBox="0 0 48 48" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="32" height="32" rx="6" fill="#4B2C82"/><path d="M14 30l6-8 6 4 8-12" fill="none" stroke="#FDF8F5" stroke-width="2.2" stroke-linecap="round"/></svg></span>
+					<span class="ybs-obj" data-target="yep-erp-zatca"><svg viewBox="0 0 48 48" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="24" r="14" fill="#EDE6F5" stroke="#4B2C82" stroke-width="2"/><path d="M16 24l5 5 11-12" stroke="#1f7a4d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+				</div>
+				<div class="ybs-stage">
+					<div class="ybs-stage__panel" id="yepPanel">
+						<span class="ybs-erp__label">Yalla ERP Plus</span>
+						<div class="ybs-erp" id="yepErpScene">
+							<div class="ybs-mod ybs-mod--wide" id="yep-erp-sales">
+								<small>{{ txt("المبيعات", "Sales") }}</small>
+								<strong>{{ txt("فاتورة ضريبية", "VAT invoice") }}</strong>
+								<svg class="ybs-chart" viewBox="0 0 160 48" aria-hidden="true"><path class="yep-erp-line" d="M4 36 L28 28 L52 32 L76 18 L100 22 L124 10 L156 14"/></svg>
+								<div class="ybs-bars"><i></i><i></i><i></i><i></i></div>
+							</div>
+							<div class="ybs-mod" id="yep-erp-stock">
+								<small>{{ txt("المخزون", "Inventory") }}</small>
+								<strong>{{ txt("ينقص فوراً", "Drops now") }}</strong>
+							</div>
+							<div class="ybs-mod" id="yep-erp-cash">
+								<small>{{ txt("الصندوق", "Cash") }}</small>
+								<strong>{{ txt("يتحدّث مع البيع", "Moves with the sale") }}</strong>
+							</div>
+							<div class="ybs-mod" id="yep-erp-people">
+								<small>{{ txt("الموارد البشرية", "People") }}</small>
+								<strong>{{ txt("رواتب وحضور", "Payroll & attendance") }}</strong>
+							</div>
+							<div class="ybs-mod" id="yep-erp-insight">
+								<small>{{ txt("التقارير", "Reports") }}</small>
+								<strong>{{ txt("قرار أوضح", "Clearer decisions") }}</strong>
+							</div>
+							<div class="ybs-mod ybs-mod--ok" id="yep-erp-zatca">
+								<small>{{ txt("الفوترة الإلكترونية", "E-invoicing") }}</small>
+								<strong>{{ txt("مواءمة زاتكا", "ZATCA-ready") }}</strong>
+							</div>
+						</div>
+						<div class="yep-day" id="yepDayScene">
+							<p class="yep-day__kicker">{{ txt("حركة يوم تشغيلي", "A working day in motion") }}</p>
+							<div class="yep-ticket">
+								<div class="yep-ticket__row">
+									<span>{{ txt("صنف", "Item") }}</span>
+									<strong>{{ txt("عطر عود · 75 مل", "Oud perfume · 75 ml") }}</strong>
+								</div>
+								<div class="yep-ticket__row">
+									<span>{{ txt("الكمية", "Qty") }}</span>
+									<strong>2 × 250</strong>
+								</div>
+								<div class="yep-ticket__row">
+									<span>{{ txt("الضريبة 15٪", "VAT 15%") }}</span>
+									<strong>75.00</strong>
+								</div>
+								<div class="yep-ticket__row yep-ticket__row--total">
+									<span>{{ txt("الإجمالي", "Total") }}</span>
+									<strong>575.00 {{ txt("ر.س", "SAR") }}</strong>
+								</div>
+							</div>
+							<ol class="yep-steps">
+								<li>{{ txt("فاتورة", "Invoice") }}</li>
+								<li>{{ txt("مخزون", "Stock") }}</li>
+								<li>{{ txt("صندوق", "Cash") }}</li>
+								<li>{{ txt("دفاتر", "Books") }}</li>
+								<li>{{ txt("تقرير", "Report") }}</li>
+							</ol>
+							<p class="yep-day__ok"><span class="ybs-ok__mark" aria-hidden="true"></span><span>{{ txt("العملية اكتملت — الأرقام محدّثة", "Process complete — the numbers are current") }}</span></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="ybs-story__copy">
+				<p class="ybs-kicker">{{ txt("يلا ERP بلس", "Yalla ERP Plus") }}</p>
+				<h2 id="yep-ops-heading">{{ txt("يوم شغل كامل. في مسار واحد.", "A full working day. One path.") }}</h2>
+				<div class="ybs-chapters" role="group" aria-label="{{ txt('فصول التشغيل', 'Operations chapters') }}">
+					<button type="button" data-chapter="sell" aria-pressed="false">{{ txt("البيع", "Sale") }}</button>
+					<button type="button" data-chapter="stock" aria-pressed="false">{{ txt("المخزون", "Stock") }}</button>
+					<button type="button" data-chapter="books" aria-pressed="false">{{ txt("الدفاتر", "Books") }}</button>
+				</div>
+				<div class="ybs-captions">
+					<div class="ybs-caption is-active" data-scene="hub">
+						<p class="ybs-caption__title">{{ txt("منشأتك لا تحتاج خمسة أنظمة. تحتاج حركة واحدة.", "Your company does not need five systems. It needs one movement.") }}</p>
+					</div>
+					<div class="ybs-caption" data-scene="sell">
+						<p class="ybs-caption__title">{{ txt("الفاتورة تعرف السعر والضريبة والعميل.", "The invoice already knows price, VAT, and the customer.") }}</p>
+						<p>{{ txt("البيع لا يبقى في الكاشير حتى نهاية اليوم. يخرج كمستند محاسبي من اللحظة الأولى.", "The sale does not wait at the till until closing. It becomes an accounting document at once.") }}</p>
+					</div>
+					<div class="ybs-caption" data-scene="stock">
+						<p class="ybs-caption__title">{{ txt("القطعة تخرج، والرصيد ينقص فوراً.", "The item leaves. The balance drops at once.") }}</p>
+						<p>{{ txt("الجرد لم يعد مهمة مسائية. المخزون يتبع الفاتورة، والمستودع يرى ما تراه المبيعات.", "Stock count is no longer an evening job. Inventory follows the invoice, and the warehouse sees what sales sees.") }}</p>
+					</div>
+					<div class="ybs-caption" data-scene="books">
+						<p class="ybs-caption__title">{{ txt("الصندوق والمستحقات والتقارير تتحدث لغة واحدة.", "Cash, receivables, and reports speak one language.") }}</p>
+						<p>{{ txt("هذا هو التحول الرقمي: التشغيل اليومي يتحول إلى أرقام واضحة للقرار — مع مواءمة الفوترة الإلكترونية.", "That is digital transformation: daily work becomes numbers you can decide on — with electronic invoicing alignment.") }}</p>
+					</div>
+					<div class="ybs-caption" data-scene="done">
+						<p class="ybs-caption__title">{{ txt("إدارة أوضح، لأن كل خطوة تغذّي اللي بعدها.", "Clearer management, because each step feeds the next.") }}</p>
+					</div>
+				</div>
+				<p class="ybs-note">{{ txt("يلا ERP بلس يربط المبيعات والمخزون والمحاسبة والموارد البشرية في تشغيل واحد لمنشأتك.", "Yalla ERP Plus connects sales, inventory, accounting, and HR into one operating rhythm for your company.") }}</p>
+				<div class="ybs-story__actions">
+					<a class="sm-btn" href="#ybs-inquiry" data-service="erp">{{ sm.cta_quote }}</a>
+					<a class="sm-btn sm-btn-outline" href="{{ sm.yalla_erpplus_demo_url }}" target="_blank" rel="noopener noreferrer">{{ txt("جرب النظام", "Try the system") }}</a>
+					<a class="sm-btn sm-btn-outline" href="{{ sm.yalla_erpplus_url }}" target="_blank" rel="noopener noreferrer">{{ txt("زيارة يلا ERP بلس", "Visit Yalla ERP Plus") }}</a>
+				</div>
+			</div>
+			<p class="ybs-sr">{{ txt("رسوم توضيحية، ليست أرقاماً حقيقية.", "Illustrative visualization, not real figures.") }}</p>
+		</div>
+		<div class="ybs-mobile">
+			<article class="ybs-m-card" id="yepMobileSell">
+				<h3>{{ txt("البيع يصدر المستند", "The sale issues the document") }}</h3>
+				<p>{{ txt("فاتورة ضريبية من نفس النظام: السعر، والعميل، والضريبة — بدون إعادة إدخال في المحاسبة.", "A VAT invoice from the same system: price, customer, and tax — without re-entering it in the books.") }}</p>
+				<div class="ybs-m-mods" aria-hidden="true">
+					<div class="ybs-m-mod" id="yep-m-invoice"><small>{{ txt("فاتورة", "Invoice") }}</small></div>
+					<div class="ybs-m-mod" id="yep-m-vat"><small>{{ txt("ضريبة 15٪", "VAT 15%") }}</small></div>
+				</div>
+			</article>
+			<article class="ybs-m-card" id="yepMobileStock">
+				<h3>{{ txt("المخزون يتبع الفاتورة", "Stock follows the invoice") }}</h3>
+				<p>{{ txt("كل خروج من المستودع مربوط بالبيع. الرصيد ينقص لحظة خروج القطعة، لا في جرد نهاية اليوم.", "Every warehouse exit is tied to the sale. The balance drops when the item leaves, not in the evening count.") }}</p>
+				<div class="ybs-m-mods" aria-hidden="true">
+					<div class="ybs-m-mod" id="yep-m-box"><small>{{ txt("صنف", "Item") }}</small></div>
+					<div class="ybs-m-mod" id="yep-m-qty"><small>{{ txt("رصيد", "Balance") }}</small></div>
+				</div>
+			</article>
+			<article class="ybs-m-card" id="yepMobileBooks">
+				<h3>{{ txt("الدفاتر تعكس الواقع", "The books reflect reality") }}</h3>
+				<p>{{ txt("الصندوق أو المستحق يظهر مع العملية، والتقارير تعرض القرار لا الملفات المتفرقة — مع مسار فوترة إلكترونية.", "Cash or receivables appear with the transaction, and reports show the decision — not scattered files — with an electronic invoicing path.") }}</p>
+				<div class="yep-steps yep-steps--mobile" aria-hidden="true">
+					<span>{{ txt("فاتورة", "Invoice") }}</span>
+					<span>{{ txt("مخزون", "Stock") }}</span>
+					<span>{{ txt("صندوق", "Cash") }}</span>
+					<span>{{ txt("تقرير", "Report") }}</span>
+				</div>
+			</article>
+		</div>
+	</section>
+
 	<section class="sm-section" id="ybs-services">
 		<div class="sm-wrap">
 			<div class="sm-section-head">
 				<h2>{{ txt("خدمات يلا بزنس", "Yalla Business services") }}</h2>
-				<p>{{ txt("تشغيل يومي عبر يلا ERP، وتوقيع واعتماد عبر يلا ساين ومساعد كاتب — خدمتان واضحتان لمنشأتك.", "Daily operations with Yalla ERP, and signing plus Kateb inside YallaSign — two clear services for your company.") }}</p>
+				<p>{{ txt("تشغيل يومي عبر يلا ERP بلس، وتوقيع واعتماد عبر يلا ساين ومساعد كاتب — خدمتان واضحتان لمنشأتك.", "Daily operations with Yalla ERP Plus, and signing plus Kateb inside YallaSign — two clear services for your company.") }}</p>
 			</div>
 			<div class="sm-pillars ybs2-two">
 				<article class="sm-pillar" id="ybs-yalla-erp">
 					<div class="sm-pillar-media">
 						<img class="sm-pillar-img" src="/assets/yalla_business/images/illustrations/card-erp.webp" alt="" width="900" height="560" loading="lazy">
-						<span class="sm-badge sm-badge-ok">Yalla ERP</span>
+						<span class="sm-badge sm-badge-ok">Yalla ERP Plus</span>
 					</div>
 					<div class="sm-pillar-body">
-						<h3>{{ txt("يلا ERP", "Yalla ERP") }}</h3>
+						<h3>{{ txt("يلا ERP بلس", "Yalla ERP Plus") }}</h3>
 						<p>{{ txt("نظام سحابي مهيأ لشركات المملكة: محاسبة، مخزون، موارد بشرية، مبيعات، وفوترة إلكترونية.", "An ERPNext cloud prepared for Saudi companies to manage accounting, inventory, HR, sales and e-invoicing.") }}</p>
 						<ul class="ybs2-list">
 							<li>{{ txt("المحاسبة والتقارير المالية", "Accounting and financial reports") }}</li>
@@ -390,9 +543,11 @@
 							<li>{{ txt("الموارد البشرية", "Human resources") }}</li>
 							<li>{{ txt("دعم الفوترة الإلكترونية", "Electronic invoicing support") }}</li>
 						</ul>
+						<p class="sm-muted">{{ txt("يمكنكم زيارة الخدمة على", "Visit the service at") }} <a class="sm-link" href="{{ sm.yalla_erpplus_url }}" target="_blank" rel="noopener noreferrer">yallaerpplus.com</a></p>
 						<div class="sm-hero-actions">
 							<a class="sm-btn" href="#ybs-inquiry" data-service="erp">{{ sm.cta_quote }}</a>
-							<a class="sm-btn sm-btn-outline" href="#ybs-erp-plans">{{ txt("عرض الخطط", "View plans") }}</a>
+							<a class="sm-btn sm-btn-outline" href="{{ sm.yalla_erpplus_demo_url }}" target="_blank" rel="noopener noreferrer">{{ txt("جرب النظام", "Try the system") }}</a>
+							<a class="sm-btn sm-btn-outline" href="{{ sm.yalla_erpplus_url }}" target="_blank" rel="noopener noreferrer">{{ txt("زيارة يلا ERP بلس", "Visit Yalla ERP Plus") }}</a>
 						</div>
 					</div>
 				</article>
@@ -411,7 +566,7 @@
 							<li>{{ txt("متابعة المهام والتنبيهات المرتبطة بالعقود", "Follow tasks and alerts tied to contracts") }}</li>
 							<li>{{ txt("توقيع واعتماد وفق الأنظمة السعودية", "Sign and approve in line with Saudi regulations") }}</li>
 						</ul>
-						<p class="sm-muted">{{ txt("يمكنكم زيارة الخدمة على", "Visit the service at") }} <a class="sm-link" href="https://yallasign.ai" rel="noopener noreferrer">yallasign.ai</a></p>
+						<p class="sm-muted">{{ txt("يمكنكم زيارة الخدمة على", "Visit the service at") }} <a class="sm-link" href="{{ sm.yalla_sign_url }}" target="_blank" rel="noopener noreferrer">yallasign.ai</a></p>
 						<div class="sm-hero-actions">
 							<a class="sm-btn" href="#ybs-inquiry" data-service="sign">{{ sm.cta_quote }}</a>
 							<a class="sm-btn sm-btn-outline" href="#ybs-sign-plans">{{ txt("عرض الخطط", "View plans") }}</a>
@@ -422,64 +577,67 @@
 		</div>
 	</section>
 
-	<section class="sm-section sm-section-alt" id="ybs-erp-plans" data-catalog="{{ yep_catalog_json | e }}" data-lang="{{ sm_lang }}">
+	<section class="sm-section sm-section-alt ybs-plans" id="ybs-erp-plans" data-lang="{{ sm_lang }}">
 		<div class="sm-wrap">
 			<div class="sm-section-head">
-				<h2>{{ txt("خطط يلا ERP", "Yalla ERP plans") }}</h2>
-				<p>{{ txt("خطط بالريال السعودي، من الفوترة والمحاسبة الزكوية إلى النظام الكامل — بما يناسب شركات المملكة.", "Plans for Saudi businesses, from invoicing and zakat accounting to a full system. Prices are in Saudi riyal.") }}</p>
+				<h2>{{ txt("الخطط", "Plans") }}</h2>
+				<p>{{ txt("خطط بالريال السعودي ليلا ERP بلس ويلا ساين. اختر الخدمة، ثم المدة المناسبة لمنشأتك.", "Plans in Saudi riyal for Yalla ERP Plus and YallaSign. Choose the service, then the term that fits your company.") }}</p>
 			</div>
-			<div class="yep-term-toggle sm-hero-actions" role="group" aria-label="{{ txt('مدة الاشتراك', 'Subscription term') }}"></div>
-			<div class="yep-plan-grid sm-price-grid"></div>
-			<aside class="ybs2-fineprint">
-				<p>{{ txt("نؤكد التفاصيل التجارية في عرض السعر", "Commercial details confirmed in the quotation") }}</p>
-				<dl class="ybs2-facts">
-					<div><dt>{{ txt("ضريبة القيمة المضافة", "VAT") }}</dt><dd>{{ txt("تُحدَّد في العرض", "Confirmed in quotation") }}</dd></div>
-					<div><dt>{{ txt("الاستضافة", "Hosting") }}</dt><dd>{{ txt("تُحدَّد في العرض", "Confirmed in quotation") }}</dd></div>
-					<div><dt>{{ txt("عدد المستخدمين", "Users") }}</dt><dd>{{ txt("يُحدَّد في العرض", "Confirmed in quotation") }}</dd></div>
-					<div><dt>{{ txt("الإعداد", "Setup") }}</dt><dd>{{ txt("يُحدَّد في العرض", "Confirmed in quotation") }}</dd></div>
-					<div><dt>{{ txt("التدريب", "Training") }}</dt><dd>{{ txt("يُحدَّد في العرض", "Confirmed in quotation") }}</dd></div>
-					<div><dt>{{ txt("الدعم", "Support") }}</dt><dd>{{ txt("يُحدَّد في العرض", "Confirmed in quotation") }}</dd></div>
-					<div><dt>{{ txt("التخصيص", "Customization") }}</dt><dd>{{ txt("يُحدَّد في العرض", "Confirmed in quotation") }}</dd></div>
-					<div><dt>{{ txt("التجديد", "Renewal") }}</dt><dd>{{ txt("يُحدَّد في العرض", "Confirmed in quotation") }}</dd></div>
-				</dl>
-				<p class="sm-muted">{{ txt("نوضح عدد المستخدمين والإعداد والدعم في عرض السعر المقدَّم لمنشأتك.", "User limits, setup and support details will be confirmed in your company’s quotation.") }}</p>
-				<p class="sm-muted">{{ txt("يمكن مناقشة الإعداد والتنفيذ بعد استلام طلبك. ولا يوجد دفع من هذه الصفحة.", "Setup and implementation can be discussed after we receive your request. There is no checkout on this page.") }}</p>
-			</aside>
-		</div>
-	</section>
+			<div class="ybs-plan-tabs" role="tablist" aria-label="{{ txt('اختر الخدمة', 'Choose a service') }}">
+				<button type="button" class="ybs-plan-tab is-active" role="tab" id="ybs-tab-erp" data-plan-tab="erp" aria-selected="true" aria-controls="ybs-erp-panel" tabindex="0">{{ txt("يلا ERP بلس", "Yalla ERP Plus") }}</button>
+				<button type="button" class="ybs-plan-tab" role="tab" id="ybs-tab-sign" data-plan-tab="sign" aria-selected="false" aria-controls="ybs-sign-plans" tabindex="-1">{{ txt("يلا ساين", "YallaSign") }}</button>
+			</div>
 
-	<section class="sm-section" id="ybs-sign-plans" data-catalog="{{ yep_sign_catalog_json | e }}" data-lang="{{ sm_lang }}">
-		<div class="sm-wrap">
-			<div class="sm-section-head">
-				<h2>{{ txt("خطط يلا ساين", "YallaSign plans") }}</h2>
-				<p>{{ txt("أسعار بالريال السعودي، مع حد واضح لعدد العقود بحسب الخطة.", "Prices in Saudi riyal, with a clear contract limit on each plan.") }}</p>
+			<div class="ybs-plan-panel" id="ybs-erp-panel" role="tabpanel" aria-labelledby="ybs-tab-erp" data-catalog="{{ yep_catalog_json | e }}" data-lang="{{ sm_lang }}">
+				<p class="ybs-plan-lead">{{ txt("من الفوترة والمحاسبة الزكوية إلى النظام الكامل — بما يناسب شركات المملكة.", "From invoicing and zakat accounting to a full system — sized for Saudi companies.") }}</p>
+				<div class="yep-term-toggle sm-hero-actions" role="group" aria-label="{{ txt('مدة الاشتراك', 'Subscription term') }}"></div>
+				<div class="yep-plan-grid sm-price-grid"></div>
+				<aside class="ybs2-fineprint">
+					<p>{{ txt("نؤكد التفاصيل التجارية في عرض السعر", "Commercial details confirmed in the quotation") }}</p>
+					<dl class="ybs2-facts">
+						<div><dt>{{ txt("ضريبة القيمة المضافة", "VAT") }}</dt><dd>{{ txt("تُحدَّد في العرض", "Confirmed in quotation") }}</dd></div>
+						<div><dt>{{ txt("الاستضافة", "Hosting") }}</dt><dd>{{ txt("تُحدَّد في العرض", "Confirmed in quotation") }}</dd></div>
+						<div><dt>{{ txt("عدد المستخدمين", "Users") }}</dt><dd>{{ txt("يُحدَّد في العرض", "Confirmed in quotation") }}</dd></div>
+						<div><dt>{{ txt("الإعداد", "Setup") }}</dt><dd>{{ txt("يُحدَّد في العرض", "Confirmed in quotation") }}</dd></div>
+						<div><dt>{{ txt("التدريب", "Training") }}</dt><dd>{{ txt("يُحدَّد في العرض", "Confirmed in quotation") }}</dd></div>
+						<div><dt>{{ txt("الدعم", "Support") }}</dt><dd>{{ txt("يُحدَّد في العرض", "Confirmed in quotation") }}</dd></div>
+						<div><dt>{{ txt("التخصيص", "Customization") }}</dt><dd>{{ txt("يُحدَّد في العرض", "Confirmed in quotation") }}</dd></div>
+						<div><dt>{{ txt("التجديد", "Renewal") }}</dt><dd>{{ txt("يُحدَّد في العرض", "Confirmed in quotation") }}</dd></div>
+					</dl>
+					<p class="sm-muted">{{ txt("نوضح عدد المستخدمين والإعداد والدعم في عرض السعر المقدَّم لمنشأتك.", "User limits, setup and support details will be confirmed in your company’s quotation.") }}</p>
+					<p class="sm-muted">{{ txt("يمكن مناقشة الإعداد والتنفيذ بعد استلام طلبك. ولا يوجد دفع من هذه الصفحة.", "Setup and implementation can be discussed after we receive your request. There is no checkout on this page.") }}</p>
+				</aside>
 			</div>
-			<div class="ybs2-sign-limits" aria-label="{{ txt('حدود العقود', 'Contract limits') }}">
-				<div>
-					<strong>01</strong>
-					<p>{{ txt("50 عقد شهرياً", "50 contracts per month") }}</p>
+
+			<div class="ybs-plan-panel" id="ybs-sign-plans" role="tabpanel" aria-labelledby="ybs-tab-sign" hidden data-catalog="{{ yep_sign_catalog_json | e }}" data-lang="{{ sm_lang }}">
+				<p class="ybs-plan-lead">{{ txt("أسعار بالريال السعودي، مع حد واضح لعدد العقود بحسب الخطة.", "Prices in Saudi riyal, with a clear contract limit on each plan.") }}</p>
+				<div class="ybs2-sign-limits" aria-label="{{ txt('حدود العقود', 'Contract limits') }}">
+					<div>
+						<strong>01</strong>
+						<p>{{ txt("50 عقد شهرياً", "50 contracts per month") }}</p>
+					</div>
+					<div>
+						<strong>02</strong>
+						<p>{{ txt("200 عقد شهرياً", "200 contracts per month") }}</p>
+					</div>
+					<div>
+						<strong>03</strong>
+						<p>{{ txt("غير محدود — حد يومي 10,000 عقد", "Unlimited — 10,000 contracts daily cap") }}</p>
+					</div>
 				</div>
-				<div>
-					<strong>02</strong>
-					<p>{{ txt("200 عقد شهرياً", "200 contracts per month") }}</p>
-				</div>
-				<div>
-					<strong>03</strong>
-					<p>{{ txt("غير محدود — حد يومي 10,000 عقد", "Unlimited — 10,000 contracts daily cap") }}</p>
-				</div>
+				<div class="yep-term-toggle sm-hero-actions" role="group" aria-label="{{ txt('مدة الاشتراك', 'Subscription term') }}"></div>
+				<div class="yep-plan-grid sm-price-grid"></div>
+				<aside class="ybs2-fineprint">
+					<p>{{ txt("مستخدم إضافي بحسب احتياجك، بسعر يتراوح بين 30 و 50 ر.س شهرياً لكل مستخدم.", "Add extra users as needed, at 30 to 50 SAR per user per month.") }}</p>
+					<dl class="ybs2-facts">
+						<div><dt>{{ txt("الخطة 01", "Plan 01") }}</dt><dd>{{ txt("50 عقد / شهر", "50 contracts / month") }}</dd></div>
+						<div><dt>{{ txt("الخطة 02", "Plan 02") }}</dt><dd>{{ txt("200 عقد / شهر", "200 contracts / month") }}</dd></div>
+						<div><dt>{{ txt("الخطة 03", "Plan 03") }}</dt><dd>{{ txt("غير محدود، بحد 10,000 عقد يومياً", "Unlimited, 10,000 contracts daily") }}</dd></div>
+						<div><dt>{{ txt("مستخدم إضافي", "Extra user") }}</dt><dd>{{ txt("30–50 ر.س / شهر", "30–50 SAR / month") }}</dd></div>
+					</dl>
+					<p class="sm-muted">{{ txt("نوضح التفاصيل التجارية وضريبة القيمة المضافة في عرض السعر. ولا يوجد دفع من هذه الصفحة.", "Commercial details and VAT are confirmed in the quotation. There is no checkout on this page.") }}</p>
+				</aside>
 			</div>
-			<div class="yep-term-toggle sm-hero-actions" role="group" aria-label="{{ txt('مدة الاشتراك', 'Subscription term') }}"></div>
-			<div class="yep-plan-grid sm-price-grid"></div>
-			<aside class="ybs2-fineprint">
-				<p>{{ txt("مستخدم إضافي بحسب احتياجك، بسعر يتراوح بين 30 و 50 ر.س شهرياً لكل مستخدم.", "Add extra users as needed, at 30 to 50 SAR per user per month.") }}</p>
-				<dl class="ybs2-facts">
-					<div><dt>{{ txt("الخطة 01", "Plan 01") }}</dt><dd>{{ txt("50 عقد / شهر", "50 contracts / month") }}</dd></div>
-					<div><dt>{{ txt("الخطة 02", "Plan 02") }}</dt><dd>{{ txt("200 عقد / شهر", "200 contracts / month") }}</dd></div>
-					<div><dt>{{ txt("الخطة 03", "Plan 03") }}</dt><dd>{{ txt("غير محدود، بحد 10,000 عقد يومياً", "Unlimited, 10,000 contracts daily") }}</dd></div>
-					<div><dt>{{ txt("مستخدم إضافي", "Extra user") }}</dt><dd>{{ txt("30–50 ر.س / شهر", "30–50 SAR / month") }}</dd></div>
-				</dl>
-				<p class="sm-muted">{{ txt("نوضح التفاصيل التجارية وضريبة القيمة المضافة في عرض السعر. ولا يوجد دفع من هذه الصفحة.", "Commercial details and VAT are confirmed in the quotation. There is no checkout on this page.") }}</p>
-			</aside>
 		</div>
 	</section>
 
@@ -582,7 +740,7 @@
 						<label for="ybs_service_interest">{{ txt("الخدمة", "Service") }}</label>
 						<select id="ybs_service_interest" name="service_interest" required aria-describedby="ybs_err_service_interest">
 							<option value="" disabled selected>{{ txt("اختر الخدمة", "Choose a service") }}</option>
-							<option value="erp">{{ txt("يلا ERP", "Yalla ERP") }}</option>
+							<option value="erp">{{ txt("يلا ERP بلس", "Yalla ERP Plus") }}</option>
 							<option value="sign">{{ txt("يلا ساين", "YallaSign") }}</option>
 							<option value="both">{{ txt("الخدمتان معاً", "Both services") }}</option>
 						</select>
@@ -592,9 +750,9 @@
 						<label for="ybs_plan_interest">{{ txt("الخطة", "Plan") }}</label>
 						<select id="ybs_plan_interest" name="plan_interest">
 							<option value="">{{ txt("لم تُحدَّد بعد", "Not specified") }}</option>
-							<option value="lite" data-plan-group="erp">{{ txt("يلا ERP — الأساسية", "Yalla ERP — Lite") }}</option>
-							<option value="standard" data-plan-group="erp">{{ txt("يلا ERP — الأعمال", "Yalla ERP — Standard") }}</option>
-							<option value="professional" data-plan-group="erp">{{ txt("يلا ERP — الشاملة", "Yalla ERP — Professional") }}</option>
+							<option value="lite" data-plan-group="erp">{{ txt("يلا ERP بلس — الأساسية", "Yalla ERP Plus — Lite") }}</option>
+							<option value="standard" data-plan-group="erp">{{ txt("يلا ERP بلس — الأعمال", "Yalla ERP Plus — Standard") }}</option>
+							<option value="professional" data-plan-group="erp">{{ txt("يلا ERP بلس — الشاملة", "Yalla ERP Plus — Professional") }}</option>
 							<option value="sign_01" data-plan-group="sign">{{ txt("يلا ساين — 01", "YallaSign — 01") }}</option>
 							<option value="sign_02" data-plan-group="sign">{{ txt("يلا ساين — 02", "YallaSign — 02") }}</option>
 							<option value="sign_03" data-plan-group="sign">{{ txt("يلا ساين — 03", "YallaSign — 03") }}</option>
@@ -641,10 +799,7 @@
 		<div class="sm-wrap">
 			<div class="sm-banner">
 				<div class="sm-banner-mosaic" aria-hidden="true">
-					<img class="sm-banner-tile" src="/assets/yalla_business/images/illustrations/final-cta.webp" alt="" width="400" height="260" loading="lazy">
-					<img class="sm-banner-tile" src="/assets/yalla_business/images/illustrations/card-erp.webp" alt="" width="400" height="260" loading="lazy">
-					<img class="sm-banner-tile" src="/assets/yalla_business/images/illustrations/card-sign.webp" alt="" width="400" height="260" loading="lazy">
-					<img class="sm-banner-tile" src="/assets/yalla_business/images/illustrations/hero-connect.png" alt="" width="400" height="260" loading="lazy">
+					<img class="sm-banner-tile sm-banner-tile-single" src="/assets/yalla_business/images/illustrations/final-cta.webp" alt="" width="800" height="520" loading="lazy">
 				</div>
 				<div class="sm-banner-copy">
 					<h2>{{ txt("هل أنتم جاهزون لجمع أعمال منشأتكم في مكان واحد؟", "Ready to bring your business into one place?") }}</h2>
@@ -667,7 +822,11 @@
 		<div class="sm-footer-cols">
 			<div>
 				<strong>{{ sm.nav_services }}</strong>
-				<a href="#ybs-services">{{ sm.nav_services }}</a>
+				<a href="{{ sm.yalla_erpplus_url }}" target="_blank" rel="noopener noreferrer">{{ sm.svc_yep }}</a>
+				<a href="{{ sm.yalla_sign_url }}" target="_blank" rel="noopener noreferrer">{{ sm.svc_sign }}</a>
+			</div>
+			<div>
+				<strong>{{ sm.nav_explore }}</strong>
 				<a href="#ybs-erp-plans">{{ sm.nav_plans }}</a>
 				<a href="#ybs-why">{{ sm.nav_why }}</a>
 				<a href="/login">{{ sm.nav_login }}</a>
@@ -686,7 +845,7 @@
 	<script>window.YB_CSRF = "{{ csrf_token }}";</script>
 	<script src="/assets/yalla_business/vendor/gsap/gsap.min.js"></script>
 	<script src="/assets/yalla_business/vendor/gsap/ScrollTrigger.min.js"></script>
-	<script src="/assets/yalla_business/js/showcase2.js?v=20260912a"></script>
-	<script src="/assets/yalla_business/js/showcase_motion.js?v=20260912f"></script>
+	<script src="/assets/yalla_business/js/showcase2.js?v=20260913c"></script>
+	<script src="/assets/yalla_business/js/showcase_motion.js?v=20260913a"></script>
 </body>
 </html>

@@ -228,7 +228,7 @@
     var i = 0;
     var timer = null;
     var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var INTERVAL = 6500;
+    var INTERVAL = 3800;
 
     function restartProgress() {
       if (!progress) return;
@@ -244,7 +244,7 @@
         slides[prev].classList.add("is-leave");
         window.setTimeout(function () {
           slides[prev].classList.remove("is-leave");
-        }, 950);
+        }, 500);
       }
       hero.setAttribute("data-slide", String(i));
       slides.forEach(function (el, idx) {
@@ -430,7 +430,7 @@
     render();
   }
 
-  mountPlans(document.getElementById("ybs-erp-plans"), {
+  mountPlans(document.getElementById("ybs-erp-panel"), {
     terms: [3, 6, 12],
     defaultTerm: 12,
     service: "erp",
@@ -452,6 +452,76 @@
       return "6 أشهر";
     },
   });
+
+  (function initPlanTabs() {
+    const root = document.getElementById("ybs-erp-plans");
+    if (!root) return;
+    const tabs = Array.from(root.querySelectorAll(".ybs-plan-tab[data-plan-tab]"));
+    const panels = {
+      erp: document.getElementById("ybs-erp-panel"),
+      sign: document.getElementById("ybs-sign-plans"),
+    };
+    function keyFromHash(hash) {
+      const id = String(hash || "").replace(/^#/, "");
+      if (id === "ybs-sign-plans") return "sign";
+      if (id === "ybs-erp-plans" || id === "ybs-erp-panel" || id === "ybs-plans") return "erp";
+      return "";
+    }
+    function show(name, opts) {
+      const key = name === "sign" ? "sign" : "erp";
+      const hash = key === "sign" ? "#ybs-sign-plans" : "#ybs-erp-plans";
+      tabs.forEach((btn) => {
+        const on = btn.getAttribute("data-plan-tab") === key;
+        btn.classList.toggle("is-active", on);
+        btn.setAttribute("aria-selected", on ? "true" : "false");
+        btn.tabIndex = on ? 0 : -1;
+      });
+      Object.keys(panels).forEach((k) => {
+        const el = panels[k];
+        if (!el) return;
+        const on = k === key;
+        el.hidden = !on;
+        el.setAttribute("aria-hidden", on ? "false" : "true");
+      });
+      root.dataset.planTab = key;
+      if (opts && opts.hash) {
+        if (location.hash !== hash) history.replaceState(null, "", hash);
+      }
+    }
+    tabs.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        show(btn.getAttribute("data-plan-tab"), { hash: true });
+      });
+    });
+    root.querySelector(".ybs-plan-tabs")?.addEventListener("keydown", (e) => {
+      const i = tabs.indexOf(document.activeElement);
+      if (i < 0) return;
+      const rtl = document.documentElement.dir === "rtl";
+      let next = i;
+      if (e.key === "ArrowRight") next = rtl ? i - 1 : i + 1;
+      else if (e.key === "ArrowLeft") next = rtl ? i + 1 : i - 1;
+      else if (e.key === "Home") next = 0;
+      else if (e.key === "End") next = tabs.length - 1;
+      else return;
+      e.preventDefault();
+      const btn = tabs[(next + tabs.length) % tabs.length];
+      btn.focus();
+      show(btn.getAttribute("data-plan-tab"), { hash: true });
+    });
+    document.addEventListener("click", (e) => {
+      const a = e.target.closest('a[href="#ybs-sign-plans"], a[href="#ybs-erp-plans"]');
+      if (!a) return;
+      e.preventDefault();
+      const key = keyFromHash(a.getAttribute("href")) || "erp";
+      show(key, { hash: true });
+      root.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    window.addEventListener("hashchange", () => {
+      const key = keyFromHash(location.hash);
+      if (key) show(key);
+    });
+    show(keyFromHash(location.hash) || "erp");
+  })();
 })();
 
 (function () {
