@@ -306,6 +306,9 @@
 			data.preferred_language = lang;
 			data.source_page = "/showcase";
 			data.privacy = form.privacy.checked ? "1" : "";
+			if (typeof window.ybInquiryTracking === "function") {
+				Object.assign(data, window.ybInquiryTracking());
+			}
 			try {
 				const res = await fetch("/api/method/yalla_business.www.submit_inquiry.submit_inquiry", {
 					method: "POST",

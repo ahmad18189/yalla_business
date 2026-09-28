@@ -9,7 +9,7 @@ from frappe.utils import cint, now, strip_html
 
 no_cache = 1
 
-SERVICE_ALLOWLIST = {"erp", "sign", "both"}
+SERVICE_ALLOWLIST = {"erp", "sign", "both", "ai", "marketing", "consulting"}
 PLAN_ALLOWLIST = {"", "lite", "standard", "professional", "sign_01", "sign_02", "sign_03"}
 TERM_ALLOWLIST = {"", "1", "3", "6", "12"}
 LANG_ALLOWLIST = {"", "ar", "en"}
@@ -20,8 +20,23 @@ MAX_EMAIL = 140
 MAX_PHONE = 40
 MAX_MESSAGE = 2000
 MAX_SOURCE = 200
+MAX_UTM = 120
+MAX_CLICK = 200
+MAX_REFERRER = 400
+MAX_LANDING = 300
+MAX_COUNTRY = 80
+MAX_TZ = 80
+MAX_EXTRA = 4000
 RATE_LIMIT = 5
 RATE_WINDOW = 3600
+
+COUNTRY_HEADERS = (
+	"CF-IPCountry",
+	"CloudFront-Viewer-Country",
+	"X-AppEngine-Country",
+	"X-Country-Code",
+	"X-Geo-Country",
+)
 
 
 def get_context(context):
@@ -41,6 +56,16 @@ def submit_inquiry(
 	message=None,
 	preferred_language=None,
 	source_page=None,
+	landing_page=None,
+	referrer=None,
+	utm_source=None,
+	utm_medium=None,
+	utm_campaign=None,
+	utm_term=None,
+	utm_content=None,
+	click_id=None,
+	client_timezone=None,
+	extra_data=None,
 	privacy=None,
 	honeypot=None,
 ):
@@ -60,6 +85,16 @@ def submit_inquiry(
 	preferred_language = (preferred_language or "").strip().lower()
 	message = _clean_text(message, MAX_MESSAGE)
 	source_page = _clean_text(source_page, MAX_SOURCE)
+	landing_page = _clean_text(landing_page, MAX_LANDING)
+	referrer = _clean_text(referrer, MAX_REFERRER)
+	utm_source = _clean_slug(utm_source, MAX_UTM)
+	utm_medium = _clean_slug(utm_medium, MAX_UTM)
+	utm_campaign = _clean_slug(utm_campaign, MAX_UTM)
+	utm_term = _clean_text(utm_term, MAX_UTM)
+	utm_content = _clean_text(utm_content, MAX_UTM)
+	click_id = _clean_text(click_id, MAX_CLICK)
+	client_timezone = _clean_text(client_timezone, MAX_TZ)
+	extra_data = _clean_extra(extra_data)
 	privacy_ok = str(privacy or "").strip().lower() in {"1", "true", "on", "yes"}
 
 	errors = []
@@ -90,6 +125,7 @@ def submit_inquiry(
 		return {"ok": 0, "code": "rate_limited"}
 
 	user_agent = (frappe.request.headers.get("User-Agent") or "")[:400]
+	country = _request_country()
 
 	try:
 		doc = frappe.new_doc("Yalla Inquiry")
@@ -103,6 +139,17 @@ def submit_inquiry(
 		doc.message = message
 		doc.preferred_language = preferred_language or None
 		doc.source_page = source_page or "/"
+		doc.landing_page = landing_page or None
+		doc.referrer = referrer or None
+		doc.utm_source = utm_source or None
+		doc.utm_medium = utm_medium or None
+		doc.utm_campaign = utm_campaign or None
+		doc.utm_term = utm_term or None
+		doc.utm_content = utm_content or None
+		doc.click_id = click_id or None
+		doc.country = country or None
+		doc.client_timezone = client_timezone or None
+		doc.extra_data = extra_data or None
 		doc.status = "New"
 		doc.submitted_at = now()
 		doc.ip_hash = ip_hash
@@ -110,6 +157,9 @@ def submit_inquiry(
 		doc.flags.ignore_permissions = True
 		doc.insert(ignore_permissions=True)
 		frappe.db.commit()
+		from yalla_business.setup.email import notify_new_inquiry
+
+		notify_new_inquiry(doc)
 	except Exception:
 		frappe.log_error(title="Yalla Inquiry submit failed")
 		frappe.local.response["http_status_code"] = 500
@@ -159,6 +209,41 @@ def _clean_phone(value):
 	if len(digits) < 8 or len(digits) > 15:
 		return ""
 	return raw[:MAX_PHONE]
+
+
+def _clean_slug(value, limit):
+	text = _clean_text(value, limit)
+	return text[:limit]
+
+
+def _clean_extra(value):
+	if value is None or value == "":
+		return None
+	if isinstance(value, (dict, list)):
+		raw = frappe.as_json(value)
+	else:
+		raw = str(value)
+	raw = raw.replace("\x00", "").strip()
+	if len(raw) > MAX_EXTRA:
+		raw = raw[:MAX_EXTRA]
+	try:
+		parsed = frappe.parse_json(raw)
+	except Exception:
+		return None
+	if not isinstance(parsed, (dict, list)):
+		return None
+	return parsed
+
+
+def _request_country():
+	headers = getattr(frappe.request, "headers", None)
+	if not headers:
+		return ""
+	for name in COUNTRY_HEADERS:
+		value = (headers.get(name) or "").strip().upper()
+		if value and value not in {"XX", "ZZ", "T1"}:
+			return value[:MAX_COUNTRY]
+	return ""
 
 
 def _ip_hash():

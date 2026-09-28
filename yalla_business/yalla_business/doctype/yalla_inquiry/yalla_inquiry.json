@@ -16,10 +16,23 @@
   "plan_term",
   "preferred_language",
   "status",
+  "crm_lead",
   "section_message",
   "message",
   "section_tracking",
   "source_page",
+  "landing_page",
+  "referrer",
+  "column_break_utm",
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "utm_term",
+  "utm_content",
+  "click_id",
+  "country",
+  "client_timezone",
+  "extra_data",
   "submitted_at",
   "ip_hash",
   "user_agent"
@@ -64,7 +77,7 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Service Interest",
-   "options": "\nerp\nsign\nboth",
+   "options": "\nmarketing\nerp\nsign\nboth\nai\nconsulting",
    "reqd": 1
   },
   {
@@ -95,6 +108,13 @@
    "options": "New\nContacted\nQualified\nClosed"
   },
   {
+   "fieldname": "crm_lead",
+   "fieldtype": "Link",
+   "label": "CRM Lead",
+   "options": "CRM Lead",
+   "read_only": 1
+  },
+  {
    "fieldname": "section_message",
    "fieldtype": "Section Break",
    "label": "Message"
@@ -114,6 +134,70 @@
    "fieldname": "source_page",
    "fieldtype": "Data",
    "label": "Source Page"
+  },
+  {
+   "fieldname": "landing_page",
+   "fieldtype": "Small Text",
+   "label": "Landing Page"
+  },
+  {
+   "fieldname": "referrer",
+   "fieldtype": "Small Text",
+   "label": "Referrer"
+  },
+  {
+   "fieldname": "column_break_utm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "utm_source",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "UTM Source"
+  },
+  {
+   "fieldname": "utm_medium",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "UTM Medium"
+  },
+  {
+   "fieldname": "utm_campaign",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "UTM Campaign"
+  },
+  {
+   "fieldname": "utm_term",
+   "fieldtype": "Data",
+   "label": "UTM Term"
+  },
+  {
+   "fieldname": "utm_content",
+   "fieldtype": "Data",
+   "label": "UTM Content"
+  },
+  {
+   "fieldname": "click_id",
+   "fieldtype": "Data",
+   "label": "Click ID"
+  },
+  {
+   "fieldname": "country",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "Country"
+  },
+  {
+   "fieldname": "client_timezone",
+   "fieldtype": "Data",
+   "label": "Timezone"
+  },
+  {
+   "fieldname": "extra_data",
+   "fieldtype": "JSON",
+   "label": "Extra Data"
   },
   {
    "fieldname": "submitted_at",
@@ -139,7 +223,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-09-11 17:40:00",
+ "modified": "2026-09-20 15:05:00",
  "modified_by": "Administrator",
  "module": "Yalla Business",
  "name": "Yalla Inquiry",

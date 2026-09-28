@@ -64,6 +64,12 @@ app_license = "mit"
 # 	"Role": "home_page"
 # }
 
+# Guests keep Website Settings (showcase2). CRM users log in to /crm; others to /desk.
+get_website_user_home_page = "yalla_business.auth.get_website_user_home_page"
+on_login = ["yalla_business.auth.on_login"]
+login_redirect = ["yalla_business.auth.login_redirect"]
+extend_bootinfo = "yalla_business.desk.extend_bootinfo"
+
 # Generators
 # ----------
 
@@ -242,6 +248,12 @@ after_migrate = "yalla_business.setup.install.after_migrate"
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
+
+doc_events = {
+	"Email Account": {
+		"before_validate": "yalla_business.setup.email.force_workspace_relay",
+	}
+}
 
 # Translation
 # ------------

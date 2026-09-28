@@ -72,6 +72,21 @@ PLAN_SEED = (
 	},
 )
 
+PARTNERS = (
+	{"file": "worldcup.png", "ar": "هيركلب", "en": "World Cup"},
+	{"file": "hani-vet.png", "ar": "عيادات هاني التخصصية البيطرية", "en": "Arabian Specialized Veterinary Clinic"},
+	{"file": "white-house.png", "ar": "مؤسسة البيت الأبيض", "en": "White House Est."},
+	{"file": "tolitelah.png", "ar": "طليطلة الأندلس", "en": "Tolitelah"},
+	{"file": "milagros-treat.png", "ar": "ميلاجروز تريت", "en": "Milagro's Treat"},
+	{"file": "nestu.png", "ar": "نيستو", "en": "Nestu"},
+	{"file": "vetovia.png", "ar": "فيتوفيا", "en": "Vetovia"},
+	{"file": "saudi-business-center.png", "ar": "المركز السعودي للأعمال", "en": "Saudi Business Center"},
+	{"file": "sdaia.png", "ar": "الهيئة السعودية للبيانات والذكاء الاصطناعي", "en": "SDAIA"},
+	{"file": "nafath.png", "ar": "نفاذ", "en": "Nafath"},
+	{"file": "dropbox.png", "ar": "دروبوكس", "en": "Dropbox"},
+	{"file": "adobe.png", "ar": "أدوبي", "en": "Adobe"},
+)
+
 SIGN_PLAN_SEED = (
 	{
 		"plan_key": "sign_01",
@@ -211,14 +226,22 @@ def get_context(context):
 	context.yep_sign_catalog = [dict(p) for p in SIGN_PLAN_SEED]
 	context.yep_sign_catalog_json = frappe.as_json(context.yep_sign_catalog)
 	context.sm_brand_html = brand_mark_html(lang)
+	context.partners = [dict(p) for p in PARTNERS]
 	context.sm = {
 		"lang": lang,
 		"announcement": "كل أعمالكم في مكان واحد." if lang == "ar" else "All Business. One Place.",
 		"nav_services": "الخدمات" if lang == "ar" else "Services",
+		"nav_ai": "كاتب" if lang == "ar" else "Kateb",
+		"nav_marketing": "التسويق" if lang == "ar" else "Marketing",
 		"nav_plans": "الخطط" if lang == "ar" else "Plans",
 		"nav_why": "لماذا يلا بزنس" if lang == "ar" else "Why us",
 		"nav_contact": "تواصل معنا" if lang == "ar" else "Contact",
+		"svc_ai": "يلا AI / كاتب" if lang == "ar" else "Yalla AI / Kateb",
+		"svc_marketing": "يلا ماركتنج" if lang == "ar" else "Yalla Marketing",
+		"svc_consulting": "الاستشارات" if lang == "ar" else "Consulting",
 		"nav_login": "دخول الموظفين" if lang == "ar" else "Staff login",
+		"nav_login_short": "دخول" if lang == "ar" else "Login",
+		"login_href": "/login",
 		"nav_explore": "استكشف" if lang == "ar" else "Explore",
 		"cta_quote": "اطلب عرض سعر" if lang == "ar" else "Request a Quote",
 		"footer_copy": "يلا بزنس" if lang == "ar" else "Yalla Business AI",
@@ -228,7 +251,6 @@ def get_context(context):
 		"contact_email": "info@yallabusiness.ai",
 		"home_href": "/",
 		"yalla_erpplus_url": "https://yallaerpplus.com/",
-		"yalla_erpplus_demo_url": "https://yallaerpplus.com/demo",
 		"yalla_sign_url": "https://yallasign.ai",
 	}
 	return context

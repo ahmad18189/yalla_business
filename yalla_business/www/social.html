@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html class="js" lang="{{ sm_lang }}" dir="{{ sm_dir }}" data-sm-lang="{{ sm_lang }}" data-sm-theme="teal" data-sm-mode="light">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>{% if sm_lang == "ar" %}يلا بزنس | اطلب عرض سعر{% else %}Yalla Business | Request a Quote{% endif %}</title>
+	<meta name="description" content="{% if sm_lang == 'ar' %}اختر الخدمة وأرسل طلبك. تسويق، تشغيل، توقيع إلكتروني، كاتب، واستشارات — نعود إليكم لمناقشة احتياج المنشأة.{% else %}Choose a service and send your request. Marketing, operations, e-sign, Kateb, and consulting — we will follow up on what your company needs.{% endif %}" />
+	<link rel="canonical" href="{{ canonical }}" />
+	<meta name="theme-color" content="#0b1c24" />
+	<meta name="robots" content="index, follow" />
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="Yalla Business" />
+	<meta property="og:url" content="{{ canonical }}" />
+	<meta property="og:locale" content="{{ og_locale }}" />
+	<meta property="og:locale:alternate" content="{% if sm_lang == 'ar' %}en_US{% else %}ar_SA{% endif %}" />
+	<meta property="og:title" content="{% if sm_lang == 'ar' %}يلا بزنس | اطلب عرض سعر{% else %}Yalla Business | Request a Quote{% endif %}" />
+	<meta property="og:description" content="{% if sm_lang == 'ar' %}من المنشور إلى الخطوة التالية. اختر الخدمة وأرسل طلبك.{% else %}From the post to the next step. Choose a service and send your request.{% endif %}" />
+	<meta property="og:image" content="{{ og_image }}" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="{% if sm_lang == 'ar' %}يلا بزنس | اطلب عرض سعر{% else %}Yalla Business | Request a Quote{% endif %}" />
+	<meta name="twitter:description" content="{% if sm_lang == 'ar' %}اختر الخدمة وأرسل طلبك — نعود إليكم لمناقشة احتياج المنشأة.{% else %}Choose a service and send your request — we will follow up.{% endif %}" />
+	<meta name="twitter:image" content="{{ og_image }}" />
+	<link rel="icon" href="/assets/yalla_business/images/favicon-32.png?v=20260920m" type="image/png" sizes="32x32" />
+	<link rel="icon" href="/assets/yalla_business/images/showcase2-favicon.svg?v=20260920m" type="image/svg+xml" />
+	<link rel="icon" href="/assets/yalla_business/images/favicon.ico?v=20260920m" sizes="any" />
+	<link rel="apple-touch-icon" href="/assets/yalla_business/images/apple-touch-icon.png?v=20260920m" />
+	<link rel="stylesheet" href="/assets/yalla_business/css/showcase2.css?v=20260920m" />
+	<link rel="stylesheet" href="/assets/yalla_business/css/social.css?v=20260920m" />
+</head>
+<body class="sm-page sm-social{% if sm_lang == 'ar' %} sm-rtl{% endif %}" data-sm-theme="teal" data-sm-mode="light">
+{% macro txt(ar, en) %}{{ ar if sm_lang == "ar" else en }}{% endmacro %}
+
+<div class="sm-topbar">
+	<div class="sm-wrap sm-topbar-inner">
+		<span class="sm-topbar-msg">{{ txt("من المنشور إلى الخطوة التالية.", "From the post to the next step.") }}</span>
+		<div class="sm-topbar-tools">
+			<button type="button" class="sm-mode-toggle" data-sm-mode-toggle title="Dark / light" aria-label="Toggle dark mode">
+				<svg class="sm-mode-icon sm-mode-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+					<path d="M21 14.3A8.5 8.5 0 1 1 9.7 3 7 7 0 0 0 21 14.3z"></path>
+				</svg>
+				<svg class="sm-mode-icon sm-mode-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+					<circle cx="12" cy="12" r="4"></circle>
+					<path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+				</svg>
+			</button>
+			<div class="sm-lang" role="group" aria-label="Language">
+				<button type="button" class="sm-lang-btn{% if sm_lang == 'ar' %} active{% endif %}" data-sm-lang="ar">AR</button>
+				<button type="button" class="sm-lang-btn{% if sm_lang == 'en' %} active{% endif %}" data-sm-lang="en">EN</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<header class="sm-header">
+	<div class="sm-wrap sm-header-inner">
+		<a class="sm-logo ybs2-logo" href="{{ sm.home_href }}" id="ybs-top">
+			<img src="/assets/yalla_business/images/logo-mark.png" width="36" height="36" alt="">
+			{{ sm_brand_html|safe }}
+		</a>
+		<nav class="sm-nav" id="sm-site-nav">
+			<a href="#ybs-actions">{{ sm.nav_services }}</a>
+			<a href="#ybs-inquiry">{{ sm.nav_contact }}</a>
+			<a class="sm-nav-login" href="{{ sm.login_href }}">{{ sm.nav_login }}</a>
+			<a class="sm-nav-cta" href="#ybs-inquiry">{{ sm.cta_quote }}</a>
+		</nav>
+		<div class="sm-header-end">
+			<a class="sm-header-login" href="{{ sm.login_href }}">{{ sm.nav_login_short }}</a>
+			<a class="sm-btn sm-btn-sm sm-header-cta" href="#ybs-inquiry">{{ sm.cta_quote }}</a>
+			<button type="button" class="sm-menu-toggle" data-sm-menu-toggle aria-expanded="false" aria-controls="sm-site-nav">
+				<span class="sm-menu-bars" aria-hidden="true"></span>
+				<span class="sm-visually-hidden">{{ txt("القائمة", "Menu") }}</span>
+			</button>
+		</div>
+	</div>
+</header>
+
+<main>
+	<section class="yb-social-hero" aria-labelledby="yb-social-heading">
+		<div class="yb-social-hero-bg" aria-hidden="true">
+			<img src="/assets/yalla_business/images/illustrations/hero-ecosystem.webp?v=20260920a" alt="" width="1920" height="1080" decoding="async" fetchpriority="high">
+		</div>
+		<div class="sm-wrap yb-social-split">
+			<div class="yb-social-copy">
+				<p class="sm-hero-kicker">{{ txt("يلا بزنس", "Yalla Business") }}</p>
+				<h1 id="yb-social-heading">{{ txt("جاهزون نبدأ؟", "Ready to begin?") }}<br>{{ txt("اختر الخدمة، وأرسل طلبك.", "Choose a service and send your request.") }}</h1>
+				<p>{{ txt("صفحة واحدة للإجراء — بدون تصفح الموقع بالكامل. أرسلوا نبذة موجزة، وسنعود إليكم لمناقشة احتياج المنشأة.", "One page to take action — without browsing the full site. Send a short brief and we will follow up on what your company needs.") }}</p>
+				<div class="sm-hero-actions">
+					<a class="sm-btn" href="#ybs-inquiry">{{ sm.cta_quote }}</a>
+					<a class="sm-btn sm-btn-ghost" href="#ybs-actions">{{ txt("اختر الخدمة", "Choose a service") }}</a>
+				</div>
+				<div class="yb-social-actions-inline" id="ybs-actions">
+					<p class="yb-action-lead">{{ txt("اضغط الخدمة — تُختار في النموذج.", "Tap a service — it is selected in the form.") }}</p>
+					<div class="yb-action-grid">
+						<a class="yb-action-card" href="#ybs-inquiry" data-service="marketing">
+							<span class="yb-action-kicker">{{ txt("التسويق", "Marketing") }}</span>
+							<strong>{{ txt("يلا ماركتنج", "Yalla Marketing") }}</strong>
+							<p>{{ txt("حملات أوضح، وفرص تدخل CRM.", "Clearer campaigns, opportunities that enter CRM.") }}</p>
+						</a>
+						<a class="yb-action-card" href="#ybs-inquiry" data-service="erp">
+							<span class="yb-action-kicker">{{ txt("التشغيل", "Operations") }}</span>
+							<strong>{{ txt("يلا ERP بلس", "Yalla ERP Plus") }}</strong>
+							<p>{{ txt("محاسبة، مخزون، موارد بشرية، ومبيعات.", "Accounting, stock, HR, and sales.") }}</p>
+						</a>
+						<a class="yb-action-card" href="#ybs-inquiry" data-service="sign">
+							<span class="yb-action-kicker">{{ txt("التوقيع", "Signing") }}</span>
+							<strong>{{ txt("يلا ساين", "YallaSign") }}</strong>
+							<p>{{ txt("وقّع العقود إلكترونياً بسرعة وأمان.", "Sign contracts electronically, fast and secure.") }}</p>
+						</a>
+						<a class="yb-action-card" href="#ybs-inquiry" data-service="ai">
+							<span class="yb-action-kicker">{{ txt("كاتب", "Kateb") }}</span>
+							<strong>{{ txt("يلا AI / كاتب", "Yalla AI / Kateb") }}</strong>
+							<p>{{ txt("اسأل عن العقود والفواتير والعملاء.", "Ask about contracts, invoices, and customers.") }}</p>
+						</a>
+						<a class="yb-action-card" href="#ybs-inquiry" data-service="consulting">
+							<span class="yb-action-kicker">{{ txt("الاستشارات", "Consulting") }}</span>
+							<strong>{{ txt("إعداد وتحول رقمي", "Setup and transformation") }}</strong>
+							<p>{{ txt("نرافقك في التجهيز ونقل البيانات.", "We stay with you through setup and data.") }}</p>
+						</a>
+						<a class="yb-action-card" href="#ybs-inquiry" data-service="both">
+							<span class="yb-action-kicker">{{ txt("المنظومة", "Ecosystem") }}</span>
+							<strong>{{ txt("ERP بلس وساين معاً", "ERP Plus and YallaSign") }}</strong>
+							<p>{{ txt("تشغيل المنشأة وتوقيع العقود في مسار واحد.", "Operations and signing in one path.") }}</p>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<section class="sm-section yb-social-form-panel" id="ybs-inquiry">
+				<div class="sm-section-head">
+					<h2>{{ txt("لنتفق على الخطوة التالية", "Let’s arrange the next step") }}</h2>
+					<p>{{ txt("أرسلوا نبذة موجزة، وسنعود إليكم لمناقشة احتياج المنشأة والخطة المناسبة.", "Send a short brief and we will get back to you to discuss the right plan.") }}</p>
+				</div>
+				<form class="sm-card ybs2-form" id="ybsForm" novalidate>
+					<div class="sm-field-grid">
+						<div class="sm-field">
+							<label for="ybs_full_name">{{ txt("الاسم الكامل", "Full name") }}</label>
+							<input id="ybs_full_name" name="full_name" type="text" autocomplete="name" required maxlength="120" placeholder="{{ txt('اسمك الكامل', 'Your name') }}" aria-describedby="ybs_err_full_name">
+							<span class="sm-error" id="ybs_err_full_name" hidden></span>
+						</div>
+						<div class="sm-field">
+							<label for="ybs_company">{{ txt("الشركة", "Company") }}</label>
+							<input id="ybs_company" name="company" type="text" autocomplete="organization" maxlength="160" placeholder="{{ txt('اسم الشركة', 'Company name') }}">
+						</div>
+						<div class="sm-field">
+							<label for="ybs_email">{{ txt("البريد الإلكتروني", "Email") }}</label>
+							<input id="ybs_email" name="email" type="email" autocomplete="email" required maxlength="140" placeholder="name@company.com" dir="ltr" aria-describedby="ybs_err_email">
+							<span class="sm-error" id="ybs_err_email" hidden></span>
+						</div>
+						<div class="sm-field">
+							<label for="ybs_phone">{{ txt("الجوال", "Phone") }}</label>
+							<input id="ybs_phone" name="phone" type="tel" autocomplete="tel" required maxlength="40" inputmode="tel" dir="ltr" placeholder="+9665xxxxxxxx" aria-describedby="ybs_err_phone">
+							<span class="sm-error" id="ybs_err_phone" hidden></span>
+						</div>
+						<div class="sm-field">
+							<label for="ybs_service_interest">{{ txt("الخدمة", "Service") }}</label>
+							<select id="ybs_service_interest" name="service_interest" required aria-describedby="ybs_err_service_interest">
+								<option value="" disabled selected>{{ txt("اختر الخدمة", "Choose a service") }}</option>
+								<option value="marketing">{{ txt("يلا ماركتنج", "Yalla Marketing") }}</option>
+								<option value="erp">{{ txt("يلا ERP بلس", "Yalla ERP Plus") }}</option>
+								<option value="sign">{{ txt("يلا ساين", "YallaSign") }}</option>
+								<option value="both">{{ txt("ERP بلس وساين معاً", "ERP Plus and YallaSign") }}</option>
+								<option value="ai">{{ txt("يلا AI / كاتب", "Yalla AI / Kateb") }}</option>
+								<option value="consulting">{{ txt("الاستشارات", "Consulting") }}</option>
+							</select>
+							<span class="sm-error" id="ybs_err_service_interest" hidden></span>
+						</div>
+						<div class="sm-field ybs-plan-fields">
+							<label for="ybs_plan_interest">{{ txt("الخطة", "Plan") }}</label>
+							<select id="ybs_plan_interest" name="plan_interest">
+								<option value="">{{ txt("لم تُحدَّد بعد", "Not specified") }}</option>
+								<option value="lite" data-plan-group="erp">{{ txt("يلا ERP بلس — الأساسية", "Yalla ERP Plus — Lite") }}</option>
+								<option value="standard" data-plan-group="erp">{{ txt("يلا ERP بلس — الأعمال", "Yalla ERP Plus — Standard") }}</option>
+								<option value="professional" data-plan-group="erp">{{ txt("يلا ERP بلس — الشاملة", "Yalla ERP Plus — Professional") }}</option>
+								<option value="sign_01" data-plan-group="sign">{{ txt("يلا ساين — 01", "YallaSign — 01") }}</option>
+								<option value="sign_02" data-plan-group="sign">{{ txt("يلا ساين — 02", "YallaSign — 02") }}</option>
+								<option value="sign_03" data-plan-group="sign">{{ txt("يلا ساين — 03", "YallaSign — 03") }}</option>
+							</select>
+						</div>
+						<div class="sm-field ybs-plan-fields">
+							<label for="ybs_plan_term">{{ txt("المدة", "Term") }}</label>
+							<select id="ybs_plan_term" name="plan_term">
+								<option value="1" data-term-for="sign">{{ txt("شهرياً", "Monthly") }}</option>
+								<option value="3" data-term-for="erp">{{ txt("3 أشهر", "3 months") }}</option>
+								<option value="6">{{ txt("6 أشهر", "6 months") }}</option>
+								<option value="12" selected>{{ txt("12 شهر", "12 months") }}</option>
+							</select>
+						</div>
+						<div class="sm-field sm-field-span2">
+							<label for="ybs_message">{{ txt("الرسالة", "Message") }}</label>
+							<textarea id="ybs_message" name="message" rows="3" maxlength="2000" placeholder="{{ txt('مثال: نحتاج محاسبة ومخزون لفريق من 10 أشخاص', 'Example: we need accounting and inventory for a team of 10') }}"></textarea>
+						</div>
+					</div>
+					<label class="ybs2-check" for="ybs_privacy">
+						<input id="ybs_privacy" type="checkbox" name="privacy" value="1" required aria-describedby="ybs_err_privacy">
+						<span>{{ txt("أوافق على التواصل معي بشأن هذا الطلب.", "I agree to be contacted about this request.") }}</span>
+					</label>
+					<span class="sm-error" id="ybs_err_privacy" hidden></span>
+					<div class="ybs2-hp" aria-hidden="true">
+						<label>Website<input type="text" name="honeypot" tabindex="-1" autocomplete="off"></label>
+					</div>
+					<p class="sm-muted" id="ybsFormLive" role="status" aria-live="polite"></p>
+					<button class="sm-btn" type="submit" id="ybsSubmit">
+						<span class="ybs-btn__label">{{ txt("أرسل الطلب", "Send request") }}</span>
+					</button>
+				</form>
+				<noscript>
+					<p class="sm-muted">{{ txt("النموذج يحتاج جافاسكربت. راسلنا على", "This form needs JavaScript. Email us at") }} <a href="mailto:info@yallabusiness.ai">info@yallabusiness.ai</a></p>
+				</noscript>
+				<div class="sm-card ybs2-success" id="ybsSuccess" hidden tabindex="-1">
+					<p id="ybsSuccessMsg">{{ txt("استلمنا طلبكم، وسنتواصل معكم قريباً.", "We received your request and will contact you soon.") }}</p>
+					<a class="sm-btn sm-btn-outline" href="#ybs-actions">{{ txt("العودة إلى الخدمات", "Back to services") }}</a>
+				</div>
+			</section>
+		</div>
+	</section>
+
+	<section class="sm-section sm-section-alt yep-process" id="ybs-process">
+		<div class="sm-wrap">
+			<div class="sm-section-head">
+				<h2>{{ txt("ثلاث خطوات للانطلاق", "Three steps to begin") }}</h2>
+			</div>
+			<ol class="yep-process-track">
+				<li class="yep-process-step">
+					<span class="yep-process-num">1</span>
+					<p>{{ txt("أخبرونا باحتياج منشأتك", "Tell us what your company needs") }}</p>
+				</li>
+				<li class="yep-process-step">
+					<span class="yep-process-num">2</span>
+					<p>{{ txt("نقترح الحل الأنسب", "Receive a suitable recommendation") }}</p>
+				</li>
+				<li class="yep-process-step">
+					<span class="yep-process-num">3</span>
+					<p>{{ txt("نبدأ التجهيز معكم", "Begin setup and implementation") }}</p>
+				</li>
+			</ol>
+		</div>
+	</section>
+</main>
+
+<a class="yb-social-sticky sm-btn" href="#ybs-inquiry">{{ sm.cta_quote }}</a>
+
+<footer class="sm-footer">
+	<div class="sm-wrap sm-footer-inner">
+		<div class="sm-footer-brand">
+			<a class="sm-logo ybs2-logo" href="{{ sm.home_href }}">
+				<img src="/assets/yalla_business/images/logo-mark.png" width="36" height="36" alt="">
+				{{ sm_brand_html|safe }}
+			</a>
+			<p>{{ sm.footer_copy }}</p>
+		</div>
+		<div class="sm-footer-cols">
+			<div>
+				<strong>{{ sm.nav_services }}</strong>
+				<a href="/">{{ txt("الموقع الكامل", "Full website") }}</a>
+				<a href="{{ sm.yalla_erpplus_url }}" target="_blank" rel="noopener noreferrer">{{ sm.svc_yep }}</a>
+				<a href="{{ sm.yalla_sign_url }}" target="_blank" rel="noopener noreferrer">{{ sm.svc_sign }}</a>
+			</div>
+			<div>
+				<strong>{{ sm.footer_contact }}</strong>
+				<a href="mailto:{{ sm.contact_email }}">{{ sm.contact_email }}</a>
+				<a class="sm-btn sm-btn-sm sm-footer-linkedin" href="https://www.linkedin.com/company/yalla-business-ai" target="_blank" rel="noopener noreferrer" aria-label="{{ txt('لينكدإن يلا بزنس', 'Yalla Business on LinkedIn') }}">
+					<svg viewBox="0 0 24 24" aria-hidden="true" width="16" height="16"><path fill="currentColor" d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43A2.06 2.06 0 1 1 5.34 3.3a2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+					LinkedIn
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="sm-wrap sm-footer-copy">
+		© {{ year }} Yalla Business AI
+	</div>
+</footer>
+
+	<script>window.YB_CSRF = "{{ csrf_token }}";</script>
+	<script src="/assets/yalla_business/js/inquiry-track.js?v=20260920c"></script>
+	<script src="/assets/yalla_business/js/showcase2.js?v=20260920c"></script>
+</body>
+</html>

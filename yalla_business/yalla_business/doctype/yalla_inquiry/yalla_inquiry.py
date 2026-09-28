@@ -11,3 +11,11 @@ class YallaInquiry(Document):
 			self.status = "New"
 		if not self.submitted_at:
 			self.submitted_at = frappe.utils.now()
+
+	def after_insert(self):
+		try:
+			from yalla_business.setup.crm_lead import create_lead_from_inquiry
+
+			create_lead_from_inquiry(self)
+		except Exception:
+			frappe.log_error(title="Yalla Inquiry CRM Lead failed")

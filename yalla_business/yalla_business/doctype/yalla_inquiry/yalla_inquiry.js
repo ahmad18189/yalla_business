@@ -3,7 +3,20 @@
 
 frappe.ui.form.on("Yalla Inquiry", {
 	refresh(frm) {
-		frm.set_df_property("ip_hash", "read_only", 1);
-		frm.set_df_property("user_agent", "read_only", 1);
+		[
+			"ip_hash",
+			"user_agent",
+			"landing_page",
+			"referrer",
+			"utm_source",
+			"utm_medium",
+			"utm_campaign",
+			"utm_term",
+			"utm_content",
+			"click_id",
+			"country",
+			"client_timezone",
+			"extra_data",
+		].forEach((field) => frm.set_df_property(field, "read_only", 1));
 	},
 });

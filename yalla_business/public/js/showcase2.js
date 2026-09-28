@@ -195,7 +195,7 @@
       return;
     }
     var nodes = document.querySelectorAll(
-      ".sm-section-head, .sm-pillar, .sm-audience-card, .sm-audience > div, .sm-demo-card, .sm-proof, .sm-banner, .sm-price-card, .sm-diff"
+      ".sm-section-head, .sm-pillar, .sm-audience-card, .sm-audience > div, .sm-demo-card, .sm-banner, .sm-price-card, .sm-diff"
     );
     if (!nodes.length || !("IntersectionObserver" in window)) return;
     nodes.forEach(function (el) {
@@ -228,7 +228,9 @@
     var i = 0;
     var timer = null;
     var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var INTERVAL = 3800;
+    var INTERVAL = 4200;
+    var quoteBtn = hero.querySelector(".sm-hero-copy .sm-hero-actions .sm-btn:not(.sm-btn-ghost)");
+    var exploreBtn = hero.querySelector(".sm-hero-copy .sm-hero-actions .sm-btn-ghost");
 
     function restartProgress() {
       if (!progress) return;
@@ -262,6 +264,15 @@
         if (on) el.setAttribute("aria-current", "true");
         else el.removeAttribute("aria-current");
       });
+      var msg = msgs[i];
+      if (msg && quoteBtn) {
+        var service = msg.getAttribute("data-service");
+        if (service) quoteBtn.setAttribute("data-service", service);
+      }
+      if (msg && exploreBtn) {
+        var exploreHref = msg.getAttribute("data-explore");
+        if (exploreHref) exploreBtn.setAttribute("href", exploreHref);
+      }
       restartProgress();
       if (user) restart();
     }
@@ -328,18 +339,66 @@
     start();
   }
 
+  function initProofMarquee() {
+    var root = document.querySelector("[data-sm-proof-marquee]");
+    if (!root) return;
+    var viewport = root.querySelector(".sm-proof-viewport");
+    var track = root.querySelector(".sm-proof-track");
+    var half = root.querySelector(".sm-proof-half");
+    if (!viewport || !track || !half) return;
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    var original = half.innerHTML;
+
+    function measure() {
+      half.innerHTML = original;
+      var guard = 0;
+      while (half.scrollWidth < Math.max(viewport.clientWidth, 360) && guard++ < 12) {
+        half.insertAdjacentHTML("beforeend", original);
+      }
+      var clone = track.querySelector(".sm-proof-half[data-clone]");
+      if (clone) clone.remove();
+      clone = half.cloneNode(true);
+      clone.setAttribute("aria-hidden", "true");
+      clone.setAttribute("data-clone", "1");
+      track.appendChild(clone);
+      track.style.setProperty("--sm-proof-shift", "-" + half.scrollWidth + "px");
+    }
+
+    function start() {
+      measure();
+      track.style.animation = "none";
+      void track.offsetWidth;
+      track.style.animation = "";
+    }
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(start).catch(start);
+    } else {
+      start();
+    }
+    window.addEventListener("resize", function () {
+      window.clearTimeout(root._proofResize);
+      root._proofResize = window.setTimeout(start, 150);
+    });
+  }
+
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function () {
       initTheme();
       initMode();
       initReveal();
       initHeroSlider();
+      initProofMarquee();
     });
   } else {
     initTheme();
     initMode();
     initReveal();
     initHeroSlider();
+    initProofMarquee();
   }
 })();
 
@@ -583,7 +642,7 @@
     const el = fieldEl(key);
     if (!el) return true;
     if (key === "privacy") return el.checked;
-    if (key === "service_interest") return ["erp", "sign", "both"].includes(el.value);
+    if (key === "service_interest") return ["marketing", "erp", "sign", "both", "ai", "consulting"].includes(el.value);
     return el.checkValidity();
   }
   function syncPlanOptions(service) {
@@ -641,6 +700,28 @@
     if (opts.term && planTerm) planTerm.value = String(opts.term);
     togglePlanFields();
     clearFieldError("service_interest");
+    markActiveAction(opts.service);
+  }
+
+  function markActiveAction(service) {
+    document.querySelectorAll(".yb-action-card").forEach((card) => {
+      card.classList.toggle("is-active", !!service && card.getAttribute("data-service") === service);
+    });
+  }
+
+  function sourcePage() {
+    const path = window.location.pathname || "/";
+    const query = window.location.search || "";
+    return (path + query).slice(0, 200) || "/";
+  }
+
+  function preselectFromQuery() {
+    const params = new URLSearchParams(window.location.search);
+    const service = (params.get("service") || "").toLowerCase();
+    const plan = (params.get("plan") || "").toLowerCase();
+    const term = params.get("term") || "";
+    if (!service && !plan && !term) return;
+    preselect({ service, plan, term });
   }
 
   document.addEventListener("click", (e) => {
@@ -654,8 +735,12 @@
   });
 
   if (!form) return;
-  fieldEl("service_interest")?.addEventListener("change", togglePlanFields);
+  fieldEl("service_interest")?.addEventListener("change", () => {
+    togglePlanFields();
+    markActiveAction(fieldEl("service_interest")?.value || "");
+  });
   togglePlanFields();
+  preselectFromQuery();
   REQUIRED.forEach((key) => {
     const el = fieldEl(key);
     if (!el) return;
@@ -683,8 +768,11 @@
     if (label) label.textContent = t("نرسل طلبك...", "Sending...");
     const data = Object.fromEntries(new FormData(form).entries());
     data.preferred_language = lang;
-    data.source_page = "/showcase2";
+    data.source_page = sourcePage();
     data.privacy = form.privacy.checked ? "1" : "";
+    if (typeof window.ybInquiryTracking === "function") {
+      Object.assign(data, window.ybInquiryTracking());
+    }
     try {
       const res = await fetch("/api/method/yalla_business.www.submit_inquiry.submit_inquiry", {
         method: "POST",
