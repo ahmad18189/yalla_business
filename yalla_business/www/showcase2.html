@@ -8,11 +8,26 @@
 	<link rel="canonical" href="{{ canonical }}" />
 	<meta name="theme-color" content="#00a9a5" />
 	<meta name="robots" content="noindex, follow" />
+	{#- Share preview (WhatsApp / LinkedIn / X / Facebook). JPEG on purpose: several scrapers ignore WebP. -#}
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="Yalla Business" />
+	<meta property="og:url" content="{{ canonical }}" />
+	<meta property="og:locale" content="{% if sm_lang == 'ar' %}ar_SA{% else %}en_US{% endif %}" />
+	<meta property="og:locale:alternate" content="{% if sm_lang == 'ar' %}en_US{% else %}ar_SA{% endif %}" />
+	<meta property="og:title" content="{% if sm_lang == 'ar' %}يلا بزنس | كل أعمالكم في مكان واحد{% else %}Yalla Business AI | All Business. One Place.{% endif %}" />
+	<meta property="og:description" content="{% if sm_lang == 'ar' %}تسويق وفعاليات، تشغيل، توقيع إلكتروني، واستشارات — مع كاتب، مهيأة لشركات المملكة العربية السعودية.{% else %}Marketing and events, operations, e-signing, and consulting — with Kateb, built for Saudi companies.{% endif %}" />
+	<meta property="og:image" content="https://yallabusiness.ai/assets/yalla_business/images/og-share.jpg" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="{% if sm_lang == 'ar' %}يلا بزنس | كل أعمالكم في مكان واحد{% else %}Yalla Business AI | All Business. One Place.{% endif %}" />
+	<meta name="twitter:description" content="{% if sm_lang == 'ar' %}تسويق وفعاليات، تشغيل، توقيع إلكتروني، واستشارات — مع كاتب.{% else %}Marketing and events, operations, e-signing, and consulting — with Kateb.{% endif %}" />
+	<meta name="twitter:image" content="https://yallabusiness.ai/assets/yalla_business/images/og-share.jpg" />
 	<link rel="icon" href="/assets/yalla_business/images/favicon-32.png?v=20260920m" type="image/png" sizes="32x32" />
 	<link rel="icon" href="/assets/yalla_business/images/showcase2-favicon.svg?v=20260920m" type="image/svg+xml" />
 	<link rel="icon" href="/assets/yalla_business/images/favicon.ico?v=20260920m" sizes="any" />
 	<link rel="apple-touch-icon" href="/assets/yalla_business/images/apple-touch-icon.png?v=20260920m" />
-	<link rel="stylesheet" href="/assets/yalla_business/css/showcase2.css?v=20261005f" />
+	<link rel="stylesheet" href="/assets/yalla_business/css/showcase2.css?v=20261005g" />
 </head>
 <body class="sm-page{% if sm_lang == 'ar' %} sm-rtl{% endif %}" data-sm-theme="teal" data-sm-mode="light">
 {% macro txt(ar, en) %}{{ ar if sm_lang == "ar" else en }}{% endmacro %}
@@ -30,16 +45,7 @@
 					<path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
 				</svg>
 			</button>
-			<div class="sm-theme-picker" data-sm-theme-picker>
-				<button type="button" class="sm-theme-trigger" aria-haspopup="listbox" aria-expanded="false" title="{{ txt('لون التمييز', 'Accent color') }}" aria-label="{{ txt('لون التمييز', 'Accent color') }}">
-					<span class="sm-theme-swatch" aria-hidden="true"></span>
-					<span class="sm-theme-caret" aria-hidden="true">▾</span>
-				</button>
-				<div class="sm-theme-menu" hidden role="listbox" aria-label="{{ txt('ألوان التمييز', 'Accent colors') }}">
-					<div class="sm-theme-menu-label">{{ txt("اللون", "Accent") }}</div>
-					<div class="sm-theme-grid"></div>
-				</div>
-			</div>
+			{#- The 13-colour accent picker is intentionally not rendered on the public site: visitors should not be able to restyle the brand. showcase2.js handles its absence. -#}
 			<div class="sm-lang" role="group" aria-label="{{ txt('اللغة', 'Language') }}">
 				<button type="button" class="sm-lang-btn{% if sm_lang == 'ar' %} active{% endif %}" data-sm-lang="ar">AR</button>
 				<button type="button" class="sm-lang-btn{% if sm_lang == 'en' %} active{% endif %}" data-sm-lang="en">EN</button>
@@ -1129,7 +1135,8 @@
 				<img src="/assets/yalla_business/images/logo-mark.png" width="36" height="36" alt="">
 				{{ sm_brand_html|safe }}
 			</a>
-			<p>{{ sm.footer_copy }}</p>
+			<p class="sm-footer-tag">{{ txt("كل أعمالكم في مكان واحد — تسويق وفعاليات، تشغيل، توقيع، واستشارات، مع كاتب.", "All your work in one place — marketing and events, operations, signing, and consulting, with Kateb.") }}</p>
+			<a class="sm-btn sm-btn-sm sm-footer-cta" href="#ybs-inquiry" data-service="marketing">{{ sm.cta_quote }}</a>
 		</div>
 		<div class="sm-footer-cols">
 			<div>
@@ -1159,7 +1166,8 @@
 		</div>
 	</div>
 	<div class="sm-wrap sm-footer-copy">
-		© {{ year }} Yalla Business AI
+		<span>© {{ year }} Yalla Business AI</span>
+		<span class="sm-footer-motto">{{ sm.announcement }}</span>
 	</div>
 </footer>
 
@@ -1167,7 +1175,7 @@
 	<script src="/assets/yalla_business/js/inquiry-track.js?v=20260920c"></script>
 	<script src="/assets/yalla_business/vendor/gsap/gsap.min.js"></script>
 	<script src="/assets/yalla_business/vendor/gsap/ScrollTrigger.min.js"></script>
-	<script src="/assets/yalla_business/js/showcase2.js?v=20261005a"></script>
+	<script src="/assets/yalla_business/js/showcase2.js?v=20261005b"></script>
 	<script src="/assets/yalla_business/js/showcase_motion.js?v=20260913a"></script>
 </body>
 </html>

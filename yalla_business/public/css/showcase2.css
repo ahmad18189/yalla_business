@@ -5479,6 +5479,59 @@ html[dir="rtl"] .sm-hero-scrim {
   }
 }
 
+/* 2b. "Why Yalla Business" — same 3 + 1 orphan as above; phones keep their
+       compact numbered list (defined in the mobile block earlier). */
+@media (min-width: 901px) {
+  #ybs-why .sm-pillars {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* 2c. Closing banner — continue the purple artwork instead of cutting to a dark
+       green panel. The panel starts at the artwork's own edge colour (#432b78),
+       so there is no visible seam, then deepens toward the text side. */
+.sm-banner {
+  background: linear-gradient(120deg, #432b78, #1d1040);
+}
+.sm-banner-mosaic {
+  background: #432b78;
+}
+.sm-banner-copy {
+  background:
+    radial-gradient(520px 300px at 100% 0%, rgba(167, 139, 250, 0.26), transparent 62%),
+    linear-gradient(145deg, #432b78 0%, #1d1040 115%);
+}
+
+/* 2d. Footer — fills the left side (tagline + call to action), gives the link
+       columns room to breathe, and puts the copyright and motto on one row. */
+.sm-footer-inner {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+  gap: 2rem 3.5rem;
+}
+@media (max-width: 700px) {
+  .sm-footer-inner { grid-template-columns: 1fr; }
+}
+.sm-footer-brand .sm-footer-tag {
+  max-width: 32ch;
+  margin: 0.9rem 0 1.1rem;
+  line-height: 1.65;
+  color: var(--sm-muted);
+}
+.sm-footer-cta {
+  width: max-content;
+  max-width: 100%;
+  text-decoration: none;
+}
+.sm-footer-copy {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.35rem 1.5rem;
+}
+.sm-footer-motto {
+  color: var(--sm-muted);
+}
+
 /* 3. Ecosystem cards — a little more of the artwork is visible on desktop. */
 @media (min-width: 1101px) {
   .ybs-eco-media { height: 128px; }

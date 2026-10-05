@@ -115,6 +115,12 @@
     var fromUrl = new URL(window.location.href).searchParams.get("theme");
     var fromCookie = readCookie("sm_theme");
     var fromDom = document.documentElement.getAttribute("data-sm-theme");
+    // Pages that do not render the accent picker (the public site) always use the
+    // brand default, so a colour saved earlier cannot get "stuck" with no way to undo it.
+    if (!document.querySelector("[data-sm-theme-picker]")) {
+      applyTheme(fromDom || "teal", false);
+      return;
+    }
     applyTheme(fromUrl || fromCookie || fromDom || "teal", false);
   }
 
