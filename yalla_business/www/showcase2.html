@@ -12,7 +12,7 @@
 	<link rel="icon" href="/assets/yalla_business/images/showcase2-favicon.svg?v=20260920m" type="image/svg+xml" />
 	<link rel="icon" href="/assets/yalla_business/images/favicon.ico?v=20260920m" sizes="any" />
 	<link rel="apple-touch-icon" href="/assets/yalla_business/images/apple-touch-icon.png?v=20260920m" />
-	<link rel="stylesheet" href="/assets/yalla_business/css/showcase2.css?v=20260920m" />
+	<link rel="stylesheet" href="/assets/yalla_business/css/showcase2.css?v=20261005f" />
 </head>
 <body class="sm-page{% if sm_lang == 'ar' %} sm-rtl{% endif %}" data-sm-theme="teal" data-sm-mode="light">
 {% macro txt(ar, en) %}{{ ar if sm_lang == "ar" else en }}{% endmacro %}
@@ -21,7 +21,7 @@
 	<div class="sm-wrap sm-topbar-inner">
 		<span class="sm-topbar-msg">{{ sm.announcement }}</span>
 		<div class="sm-topbar-tools">
-			<button type="button" class="sm-mode-toggle" data-sm-mode-toggle title="Dark / light" aria-label="Toggle dark mode">
+			<button type="button" class="sm-mode-toggle" data-sm-mode-toggle title="{{ txt('فاتح / داكن', 'Dark / light') }}" aria-label="{{ txt('تبديل الوضع الداكن', 'Toggle dark mode') }}">
 				<svg class="sm-mode-icon sm-mode-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 					<path d="M21 14.3A8.5 8.5 0 1 1 9.7 3 7 7 0 0 0 21 14.3z"></path>
 				</svg>
@@ -31,16 +31,16 @@
 				</svg>
 			</button>
 			<div class="sm-theme-picker" data-sm-theme-picker>
-				<button type="button" class="sm-theme-trigger" aria-haspopup="listbox" aria-expanded="false" title="Accent color">
+				<button type="button" class="sm-theme-trigger" aria-haspopup="listbox" aria-expanded="false" title="{{ txt('لون التمييز', 'Accent color') }}" aria-label="{{ txt('لون التمييز', 'Accent color') }}">
 					<span class="sm-theme-swatch" aria-hidden="true"></span>
 					<span class="sm-theme-caret" aria-hidden="true">▾</span>
 				</button>
-				<div class="sm-theme-menu" hidden role="listbox" aria-label="Accent colors">
-					<div class="sm-theme-menu-label">Accent</div>
+				<div class="sm-theme-menu" hidden role="listbox" aria-label="{{ txt('ألوان التمييز', 'Accent colors') }}">
+					<div class="sm-theme-menu-label">{{ txt("اللون", "Accent") }}</div>
 					<div class="sm-theme-grid"></div>
 				</div>
 			</div>
-			<div class="sm-lang" role="group" aria-label="Language">
+			<div class="sm-lang" role="group" aria-label="{{ txt('اللغة', 'Language') }}">
 				<button type="button" class="sm-lang-btn{% if sm_lang == 'ar' %} active{% endif %}" data-sm-lang="ar">AR</button>
 				<button type="button" class="sm-lang-btn{% if sm_lang == 'en' %} active{% endif %}" data-sm-lang="en">EN</button>
 			</div>
@@ -190,7 +190,7 @@
 			<div class="sm-pillars">
 				<article class="sm-pillar">
 					<div class="sm-pillar-media">
-						<img class="sm-pillar-img" src="/assets/yalla_business/images/illustrations/value-localize.svg" alt="" width="900" height="560" loading="lazy">
+						<img class="sm-pillar-img" src="/assets/yalla_business/images/illustrations/why-saudi.webp" alt="" width="900" height="560" loading="lazy">
 					</div>
 					<div class="sm-pillar-body">
 						<h3>{{ txt("مهيأ للسوق السعودي", "Localized for Saudi Arabia") }}</h3>
@@ -771,7 +771,7 @@
 						<img src="/assets/yalla_business/images/illustrations/hero-marketing.webp" alt="" width="900" height="560" loading="lazy">
 					</div>
 					<div class="ybs-svc-body">
-						<p class="ybs-svc-kicker">Yalla Marketing</p>
+						<p class="ybs-svc-kicker">{{ txt("يلا ماركتنج", "Yalla Marketing") }}</p>
 						<h3 id="ybs-marketing-heading">{{ txt("من الحملة والفعالية إلى الفرصة", "From campaign and event to opportunity") }}</h3>
 						<p>{{ txt("حملات أوضح، وإدارة الفعاليات وتخطيطها، وفرص تدخل CRM، وقياس للأداء — حتى لا يبقى التسويق منفصلاً عن البيع.", "Clearer campaigns, event management and planning, opportunities that enter CRM, and performance you can measure.") }}</p>
 						<ul class="ybs-svc-chips">
@@ -793,7 +793,7 @@
 						<img src="/assets/yalla_business/images/illustrations/card-erp.webp" alt="" width="900" height="560" loading="lazy">
 					</div>
 					<div class="ybs-svc-body">
-						<p class="ybs-svc-kicker">Yalla ERP Plus</p>
+						<p class="ybs-svc-kicker">{{ txt("يلا ERP بلس", "Yalla ERP Plus") }}</p>
 						<h3>{{ txt("تشغيل المنشأة", "Run the company") }}</h3>
 						<p>{{ txt("محاسبة، مخزون، موارد بشرية، مبيعات، وإدارة العملاء — مهيأ للزكاة والفوترة الإلكترونية.", "Accounting, inventory, HR, sales, and CRM — aligned with zakat and e-invoicing.") }}</p>
 						<ul class="ybs-svc-chips">
@@ -814,7 +814,7 @@
 						<img src="/assets/yalla_business/images/illustrations/card-sign.webp" alt="" width="900" height="560" loading="lazy">
 					</div>
 					<div class="ybs-svc-body">
-						<p class="ybs-svc-kicker">YallaSign</p>
+						<p class="ybs-svc-kicker">{{ txt("يلا ساين", "YallaSign") }}</p>
 						<h3>{{ txt("توقيع إلكتروني", "Electronic signing") }}</h3>
 						<p>{{ txt("وقّع العقود واعتمدها وفق الأنظمة في السعودية، بدل الانتظار على الورق.", "Sign and approve contracts under Saudi rules, instead of waiting on paper.") }}</p>
 						<ul class="ybs-svc-chips">
@@ -835,7 +835,7 @@
 						<img src="/assets/yalla_business/images/illustrations/hero-kateb.webp" alt="" width="900" height="560" loading="lazy">
 					</div>
 					<div class="ybs-svc-body">
-						<p class="ybs-svc-kicker">Yalla AI</p>
+						<p class="ybs-svc-kicker">{{ txt("يلا AI", "Yalla AI") }}</p>
 						<h3 id="ybs-ai-heading">{{ txt("كاتب — مساعد المنظومة", "Kateb — the ecosystem assistant") }}</h3>
 						<p>{{ txt("اسأل عن العقود والفواتير والعملاء. كاتب مساعد للمنظومة كلها، لا إضافة داخل التوقيع فقط.", "Ask about contracts, invoices, and customers. Kateb assists the whole ecosystem, not only signing.") }}</p>
 						<ul class="ybs-svc-chips">
@@ -1112,7 +1112,7 @@
 				<ul class="ybs-partners-row">
 					{% for p in partners %}
 					<li>
-						<img src="/assets/yalla_business/images/partners/{{ p.file }}?v=20260913v" alt="{{ p.ar if sm_lang == 'ar' else p.en }}" width="220" height="88">
+						<img src="/assets/yalla_business/images/partners/{{ p.file }}?v=20261005a" alt="{{ p.ar if sm_lang == 'ar' else p.en }}" width="220" height="88">
 					</li>
 					{% endfor %}
 				</ul>
@@ -1167,7 +1167,7 @@
 	<script src="/assets/yalla_business/js/inquiry-track.js?v=20260920c"></script>
 	<script src="/assets/yalla_business/vendor/gsap/gsap.min.js"></script>
 	<script src="/assets/yalla_business/vendor/gsap/ScrollTrigger.min.js"></script>
-	<script src="/assets/yalla_business/js/showcase2.js?v=20260920c"></script>
+	<script src="/assets/yalla_business/js/showcase2.js?v=20261005a"></script>
 	<script src="/assets/yalla_business/js/showcase_motion.js?v=20260913a"></script>
 </body>
 </html>

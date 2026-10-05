@@ -17,6 +17,11 @@
   ];
   var THEME_IDS = THEMES.map(function (t) { return t.id; });
 
+  // Arabic only when the page itself is Arabic; every other language keeps the English label.
+  function tr(en, ar) {
+    return document.documentElement.getAttribute("lang") === "ar" ? ar : en;
+  }
+
   function readCookie(name) {
     var m = document.cookie.match(new RegExp("(?:^|; )" + name + "=([^;]*)"));
     return m ? decodeURIComponent(m[1]) : "";
@@ -50,8 +55,8 @@
     });
     document.querySelectorAll(".sm-theme-trigger").forEach(function (trigger) {
       var meta = THEMES.find(function (t) { return t.id === code; });
-      trigger.title = (meta && meta.label) || "Accent color";
-      trigger.setAttribute("aria-label", "Accent color: " + ((meta && meta.label) || code));
+      trigger.title = (meta && meta.label) || tr("Accent color", "لون التمييز");
+      trigger.setAttribute("aria-label", tr("Accent color: ", "لون التمييز: ") + ((meta && meta.label) || code));
     });
   }
 
@@ -62,7 +67,9 @@
     if (document.body) document.body.setAttribute("data-sm-mode", mode);
     document.querySelectorAll("[data-sm-mode-toggle]").forEach(function (btn) {
       btn.setAttribute("aria-pressed", mode === "dark" ? "true" : "false");
-      btn.title = mode === "dark" ? "Switch to light mode" : "Switch to dark mode";
+      btn.title = mode === "dark"
+        ? tr("Switch to light mode", "التبديل إلى الوضع الفاتح")
+        : tr("Switch to dark mode", "التبديل إلى الوضع الداكن");
       btn.setAttribute("aria-label", btn.title);
     });
     if (persist) {
@@ -96,7 +103,7 @@
         btn.className = "sm-theme-btn";
         btn.setAttribute("data-sm-theme", theme.id);
         btn.title = theme.label;
-        btn.setAttribute("aria-label", theme.label + " theme");
+        btn.setAttribute("aria-label", tr(theme.label + " theme", "سمة " + theme.label));
         btn.setAttribute("role", "option");
         grid.appendChild(btn);
       });

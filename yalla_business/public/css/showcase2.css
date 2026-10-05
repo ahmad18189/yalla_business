@@ -5413,3 +5413,115 @@ html[data-sm-mode="dark"] .ybs-partners-row li {
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.32);
 }
 
+/* ==========================================================================
+   Professional polish layer (appended last on purpose — overrides above).
+   Covers AR (rtl) and EN (ltr) alike; use logical properties only.
+   ========================================================================== */
+
+/* 1. Hero text panel — rich brand-purple glass instead of a muddy grey veil.
+      A mid-alpha near-black over the cream artwork reads as taupe; a deeper,
+      purple-tinted panel with a hairline edge reads as intentional. */
+.sm-hero-scrim,
+html[dir="rtl"] .sm-hero-scrim {
+  background: linear-gradient(150deg, rgba(42, 24, 86, 0.88), rgba(22, 12, 48, 0.82));
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  -webkit-backdrop-filter: blur(10px) saturate(1.25);
+  backdrop-filter: blur(10px) saturate(1.25);
+  box-shadow:
+    0 24px 56px rgba(20, 10, 44, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+.sm-hero--full .sm-hero-actions .sm-btn-ghost {
+  background: rgba(42, 24, 86, 0.72) !important;
+  border-color: rgba(255, 255, 255, 0.34);
+}
+.sm-hero--full .sm-hero-actions .sm-btn-ghost:hover {
+  background: rgba(42, 24, 86, 0.9) !important;
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+/* 1b. Hero headline size. `.sm-hero h1` (up to 3.6rem) was winning over
+       `.sm-hero--full h1` (up to 2.55rem) by source order, so the headline ran
+       57px / 83px line-height inside a 32rem panel and pushed the CTAs below the
+       fold on a laptop. Restore the intended scale; Arabic gets taller leading. */
+@media (min-width: 801px) {
+  /* Same cascade problem on the hero box: `.sm-hero` padding beat
+     `.sm-hero--full`, and content-box sizing added ~144px on top of the
+     min-height (736 -> 880px). Size it to what is actually visible under the
+     sticky header so the headline and both buttons land above the fold. */
+  .sm-hero.sm-hero--full {
+    box-sizing: border-box;
+    min-height: 560px;
+    min-height: clamp(560px, calc(100vh - 128px), 780px);
+    min-height: clamp(560px, calc(100svh - 128px), 780px);
+    padding: 0 0 3.25rem;
+  }
+  .sm-hero.sm-hero--full h1 {
+    font-size: clamp(1.75rem, 3.1vw, 2.6rem);
+    line-height: 1.2;
+  }
+  html[dir="rtl"] .sm-hero.sm-hero--full h1 {
+    line-height: 1.38;
+  }
+}
+
+/* 1c. Balanced line breaks — no single-word last lines in AR or EN headings. */
+.sm-hero--full h1,
+.sm-section-head h2,
+.ybs-svc-body h3 {
+  text-wrap: balance;
+}
+
+/* 2. "What we offer" — four cards sit in one row instead of 3 + 1 orphan. */
+@media (min-width: 901px) {
+  section[aria-labelledby="ybs-values-heading"] .sm-pillars {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* 3. Ecosystem cards — a little more of the artwork is visible on desktop. */
+@media (min-width: 1101px) {
+  .ybs-eco-media { height: 128px; }
+}
+
+/* 4. Keyboard focus — one consistent, visible ring across links and buttons. */
+.sm-page a:focus-visible,
+.sm-page button:focus-visible,
+.sm-page select:focus-visible,
+.sm-page input:focus-visible,
+.sm-page textarea:focus-visible {
+  outline: 2px solid var(--sm-accent);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* 5. Readable minimum text size for small labels and chips. */
+.ybs-svc-chips li,
+.ybs-step-copy span,
+.sm-lang-btn,
+.sm-badge,
+#ybs-erp-plans .sm-price-card li,
+#ybs-erp-plans .sm-price-card .sm-badge {
+  font-size: max(0.75rem, 12px);
+}
+
+/* 6. Touch targets — at least 40px on phones and tablets. */
+@media (max-width: 900px) {
+  .sm-lang-btn,
+  .sm-mode-toggle,
+  .sm-theme-trigger {
+    min-height: 40px;
+    min-width: 40px;
+  }
+  .sm-link,
+  .sm-footer-cols a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+  }
+  .yep-term-toggle.sm-hero-actions .sm-btn {
+    height: auto;
+    min-height: 44px;
+  }
+}
+
