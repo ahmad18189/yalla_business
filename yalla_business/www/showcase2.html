@@ -27,7 +27,7 @@
 	<link rel="icon" href="/assets/yalla_business/images/showcase2-favicon.svg?v=20260920m" type="image/svg+xml" />
 	<link rel="icon" href="/assets/yalla_business/images/favicon.ico?v=20260920m" sizes="any" />
 	<link rel="apple-touch-icon" href="/assets/yalla_business/images/apple-touch-icon.png?v=20260920m" />
-	<link rel="stylesheet" href="/assets/yalla_business/css/showcase2.css?v=20261005g" />
+	<link rel="stylesheet" href="/assets/yalla_business/css/showcase2.css?v=20261005h" />
 </head>
 <body class="sm-page{% if sm_lang == 'ar' %} sm-rtl{% endif %}" data-sm-theme="teal" data-sm-mode="light">
 {% macro txt(ar, en) %}{{ ar if sm_lang == "ar" else en }}{% endmacro %}
@@ -765,6 +765,58 @@
 		</div>
 	</section>
 
+	<section class="sm-section" id="ybs-marketing" aria-labelledby="ybs-marketing-heading">
+		<div class="sm-wrap">
+			<div class="sm-section-head">
+				<p class="ybs-kicker">{{ txt("يلا ماركتنج", "Yalla Marketing") }}</p>
+				<h2 id="ybs-marketing-heading">{{ txt("ما نقدمه في التسويق والفعاليات", "What we provide in marketing and events") }}</h2>
+				<p>{{ txt("من تخطيط الحملة والفعالية إلى إدارة يوم الحدث، ثم إدخال الفرص في CRM وقياس الأداء — مسار واحد يصل إلى المبيعات.", "From planning the campaign and the event, to running the day itself, then sending opportunities into CRM and measuring performance — one path that reaches sales.") }}</p>
+			</div>
+			<div class="sm-pillars">
+				<article class="sm-pillar">
+					<div class="sm-pillar-media">
+						<img class="sm-pillar-img" src="/assets/yalla_business/images/illustrations/mkt-campaigns.webp" alt="" width="640" height="640" loading="lazy">
+					</div>
+					<div class="sm-pillar-body">
+						<h3>{{ txt("الحملات", "Campaigns") }}</h3>
+						<p>{{ txt("نصمّم الحملات ونشغّلها بقياس واضح، حتى تصل الرسالة للجمهور الصحيح وتعود بفرص يمكن متابعتها.", "We design and run campaigns with a clear measure of results, so the message reaches the right audience and comes back as opportunities you can follow.") }}</p>
+					</div>
+				</article>
+				<article class="sm-pillar">
+					<div class="sm-pillar-media">
+						<img class="sm-pillar-img" src="/assets/yalla_business/images/illustrations/mkt-event-plan.webp" alt="" width="640" height="640" loading="lazy">
+					</div>
+					<div class="sm-pillar-body">
+						<h3>{{ txt("تخطيط الفعاليات", "Event planning") }}</h3>
+						<p>{{ txt("نخطط الفعالية من الفكرة إلى الجدول: المكان، البرنامج، والضيوف — قبل يوم الحدث بوضوح.", "We plan the event from idea to schedule: venue, programme, and guests — so the day itself is clear in advance.") }}</p>
+					</div>
+				</article>
+				<article class="sm-pillar">
+					<div class="sm-pillar-media">
+						<img class="sm-pillar-img" src="/assets/yalla_business/images/illustrations/mkt-event-run.webp" alt="" width="640" height="640" loading="lazy">
+					</div>
+					<div class="sm-pillar-body">
+						<h3>{{ txt("إدارة الفعاليات", "Event management") }}</h3>
+						<p>{{ txt("ندير يوم الفعالية على الأرض: التسجيل، التشغيل، والتنسيق بين الفرق حتى تسير التجربة بسلاسة.", "We run the event on the day: registration, operations, and coordination between teams, so the experience stays smooth.") }}</p>
+					</div>
+				</article>
+				<article class="sm-pillar">
+					<div class="sm-pillar-media">
+						<img class="sm-pillar-img" src="/assets/yalla_business/images/illustrations/mkt-leads.webp" alt="" width="640" height="640" loading="lazy">
+					</div>
+					<div class="sm-pillar-body">
+						<h3>{{ txt("الفرص، CRM، والأداء", "Leads, CRM, and performance") }}</h3>
+						<p>{{ txt("تدخل فرص الحملة والفعالية إلى CRM، وتتابعها المبيعات، ونقيس الأداء حتى لا يبقى التسويق منفصلاً عن البيع.", "Campaign and event opportunities enter CRM, sales follows them, and we measure performance so marketing is not separate from selling.") }}</p>
+					</div>
+				</article>
+			</div>
+			<div class="ybs-mkt-actions">
+				<a class="sm-btn" href="#ybs-inquiry" data-service="marketing">{{ sm.cta_quote }}</a>
+				<a class="sm-btn sm-btn-outline" href="#ybs-services">{{ txt("كل الخدمات", "All services") }}</a>
+			</div>
+		</div>
+	</section>
+
 	<section class="sm-section" id="ybs-services" aria-labelledby="ybs-services-heading">
 		<div class="sm-wrap">
 			<div class="sm-section-head">
@@ -772,13 +824,13 @@
 				<p>{{ txt("أربع قدرات في منظومة واحدة: تسويق، تشغيل، توقيع، وكاتب — والاستشارات عند الحاجة.", "Four capabilities in one ecosystem: marketing, operations, signing, and Kateb — plus consulting when you need it.") }}</p>
 			</div>
 			<div class="ybs-svc-grid">
-				<article class="ybs-svc-card" id="ybs-marketing" aria-labelledby="ybs-marketing-heading">
+				<article class="ybs-svc-card" aria-labelledby="ybs-svc-marketing-heading">
 					<div class="ybs-svc-media">
 						<img src="/assets/yalla_business/images/illustrations/svc-marketing.webp" alt="" width="900" height="560" loading="lazy">
 					</div>
 					<div class="ybs-svc-body">
 						<p class="ybs-svc-kicker">{{ txt("يلا ماركتنج", "Yalla Marketing") }}</p>
-						<h3 id="ybs-marketing-heading">{{ txt("من الحملة والفعالية إلى الفرصة", "From campaign and event to opportunity") }}</h3>
+						<h3 id="ybs-svc-marketing-heading">{{ txt("من الحملة والفعالية إلى الفرصة", "From campaign and event to opportunity") }}</h3>
 						<p>{{ txt("حملات أوضح، وإدارة الفعاليات وتخطيطها، وفرص تدخل CRM، وقياس للأداء — حتى لا يبقى التسويق منفصلاً عن البيع.", "Clearer campaigns, event management and planning, opportunities that enter CRM, and performance you can measure.") }}</p>
 						<ul class="ybs-svc-chips">
 							<li>{{ txt("الحملات", "Campaigns") }}</li>
@@ -790,7 +842,7 @@
 						</ul>
 						<div class="ybs-svc-actions">
 							<a class="sm-btn" href="#ybs-inquiry" data-service="marketing">{{ sm.cta_quote }}</a>
-							<a class="sm-btn sm-btn-outline" href="#ybs-journey">{{ txt("مسار النمو", "Growth path") }}</a>
+							<a class="sm-btn sm-btn-outline" href="#ybs-marketing">{{ txt("ما نقدمه", "What we provide") }}</a>
 						</div>
 					</div>
 				</article>

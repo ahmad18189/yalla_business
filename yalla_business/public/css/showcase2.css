@@ -5578,3 +5578,36 @@ html[dir="rtl"] .sm-hero-scrim {
   }
 }
 
+/* Marketing offerings — four cards in one row on desktop. */
+#ybs-marketing {
+  scroll-margin-top: 5.5rem;
+}
+@media (min-width: 901px) {
+  #ybs-marketing .sm-pillars {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+#ybs-marketing .sm-section-head .ybs-kicker {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--ybs-purple, #5b3cc4);
+  margin: 0 0 0.45rem;
+}
+.ybs-mkt-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.5rem;
+}
+@media (max-width: 560px) {
+  .ybs-mkt-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .ybs-mkt-actions .sm-btn {
+    width: 100%;
+    min-height: 44px;
+    justify-content: center;
+  }
+}
+
