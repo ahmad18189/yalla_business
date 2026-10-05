@@ -11,7 +11,7 @@ no_cache = 1
 sitemap = 1
 
 CANONICAL = "https://yallabusiness.ai/social"
-OG_IMAGE = "https://yallabusiness.ai/assets/yalla_business/images/illustrations/hero-ecosystem.webp"
+OG_IMAGE = "https://yallabusiness.ai/assets/yalla_business/images/og-share.jpg"
 
 
 def get_context(context):
