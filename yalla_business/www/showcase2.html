@@ -27,7 +27,7 @@
 	<link rel="icon" href="/assets/yalla_business/images/showcase2-favicon.svg?v=20260920m" type="image/svg+xml" />
 	<link rel="icon" href="/assets/yalla_business/images/favicon.ico?v=20260920m" sizes="any" />
 	<link rel="apple-touch-icon" href="/assets/yalla_business/images/apple-touch-icon.png?v=20260920m" />
-	<link rel="stylesheet" href="/assets/yalla_business/css/showcase2.css?v=20261005h" />
+	<link rel="stylesheet" href="/assets/yalla_business/css/showcase2.css?v=20261009b" />
 </head>
 <body class="sm-page{% if sm_lang == 'ar' %} sm-rtl{% endif %}" data-sm-theme="teal" data-sm-mode="light">
 {% macro txt(ar, en) %}{{ ar if sm_lang == "ar" else en }}{% endmacro %}
@@ -83,89 +83,35 @@
 </header>
 
 <main>
-	<section class="sm-hero sm-hero--full" data-sm-hero-slider data-slide="0" aria-roledescription="carousel" aria-label="{{ txt('رسائل يلا بزنس', 'Yalla Business messages') }}">
-		<div class="sm-hero-bg" aria-hidden="true">
-			<div class="sm-hero-viewport">
-				<figure class="sm-hero-slide is-active">
-					<img class="sm-hero-img" src="/assets/yalla_business/images/illustrations/hero2-marketing.webp?v=20261005h" alt="" width="1920" height="1080" decoding="async" fetchpriority="high">
-				</figure>
-				<figure class="sm-hero-slide">
-					<img class="sm-hero-img" src="/assets/yalla_business/images/illustrations/hero2-ecosystem.webp?v=20261005h" alt="" width="1920" height="1080" decoding="async" loading="lazy">
-				</figure>
-				<figure class="sm-hero-slide">
-					<img class="sm-hero-img" src="/assets/yalla_business/images/illustrations/hero2-erp.webp?v=20261005h" alt="" width="1920" height="1080" decoding="async" loading="lazy">
-				</figure>
-				<figure class="sm-hero-slide">
-					<img class="sm-hero-img" src="/assets/yalla_business/images/illustrations/hero-yallasign.webp?v=20261005h" alt="" width="1920" height="1080" decoding="async" loading="lazy">
-				</figure>
-				<figure class="sm-hero-slide">
-					<img class="sm-hero-img" src="/assets/yalla_business/images/illustrations/hero2-kateb.webp?v=20261005h" alt="" width="1920" height="1080" decoding="async" loading="lazy">
-				</figure>
-				<figure class="sm-hero-slide">
-					<img class="sm-hero-img" src="/assets/yalla_business/images/illustrations/hero2-consulting.webp?v=20261005h" alt="" width="1920" height="1080" decoding="async" loading="lazy">
-				</figure>
-			</div>
-		</div>
-		<div class="sm-wrap sm-hero-grid">
+	<section class="sm-hero sm-hero--full sm-hero--nabd" aria-label="{{ txt('نبض — العقل الذكي ليلا بزنس', 'NABD — the intelligent core of Yalla Business') }}">
+		<div class="sm-wrap sm-hero-nabd-grid">
 			<div class="sm-hero-copy">
-				<div class="sm-hero-text">
-					<div class="sm-hero-scrim" aria-hidden="true"></div>
-					<div class="sm-hero-msgs" aria-live="polite">
-					<div class="sm-hero-msg is-active" data-hero-index="0" data-service="marketing" data-explore="#ybs-marketing">
-						<p class="sm-hero-kicker">{{ txt("يلا ماركتنج", "Yalla Marketing") }}</p>
-						<h1>{{ txt("من الحملة والفعالية إلى الفرصة.", "From campaign and event to opportunity.") }}<br>{{ txt("والتسويق يصل إلى المبيعات.", "Marketing that reaches sales.") }}</h1>
-						<p>{{ txt("حملات أوضح، وإدارة الفعاليات وتخطيطها، وفرص تدخل CRM، وقياس للأداء — حتى لا يبقى التسويق منفصلاً عن البيع.", "Clearer campaigns, event management and planning, opportunities that enter CRM, and performance you can measure — so marketing is not separate from sales.") }}</p>
-					</div>
-					<div class="sm-hero-msg" data-hero-index="1" data-service="both" data-explore="#ybs-ecosystem" hidden>
-						<p class="sm-hero-kicker">{{ txt("منظومة يلا بزنس", "The Yalla Business ecosystem") }}</p>
-						<h1>{{ txt("كل أعمالك في مكان واحد.", "All your work, in one place.") }}<br>{{ txt("أبسط، أذكى، وأقرب للنمو.", "Simpler, smarter, closer to growth.") }}</h1>
-						<p>{{ txt("تسويق، تشغيل، توقيع، واستشارات — مع كاتب للمساعدة عبر العقود والفواتير والعملاء.", "Marketing, operations, signing, and consulting — with Kateb assisting across contracts, invoices, and customers.") }}</p>
-					</div>
-					<div class="sm-hero-msg" data-hero-index="2" data-service="erp" data-explore="#ybs-yalla-erp" hidden>
-						<p class="sm-hero-kicker">{{ txt("يلا ERP بلس", "Yalla ERP Plus") }}</p>
-						<h1>{{ txt("المالية والمخزون والعملاء والموارد.", "Finance, stock, customers, and people.") }}<br>{{ txt("في نظام تشغيل واحد.", "In one operating system.") }}</h1>
-						<p>{{ txt("محاسبة، CRM، موارد بشرية، ومبيعات — بواجهة عربية ومواءمة للزكاة والفوترة الإلكترونية.", "Accounting, CRM, HR, and sales — Arabic-first, aligned with zakat and electronic invoicing.") }}</p>
-					</div>
-					<div class="sm-hero-msg" data-hero-index="3" data-service="sign" data-explore="#ybs-yallasign" hidden>
-						<p class="sm-hero-kicker">{{ txt("يلا ساين", "YallaSign") }}</p>
-						<h1>{{ txt("وقّع عقودك إلكترونياً.", "Sign contracts electronically.") }}<br>{{ txt("بسرعة وأمان.", "Secure and fast.") }}</h1>
-						<p>{{ txt("تتيح يلا ساين توقيع العقود وتوثيقها رقمياً، بدلاً من الانتظار على النسخ الورقية والتواقيع المتأخرة.", "YallaSign lets contracts be signed and verified digitally, instead of waiting on paper copies and delayed signatures.") }}</p>
-					</div>
-					<div class="sm-hero-msg" data-hero-index="4" data-service="ai" data-explore="#ybs-ai" hidden>
-						<p class="sm-hero-kicker">{{ txt("يلا AI / كاتب", "Yalla AI / Kateb") }}</p>
-						<h1>{{ txt("اسأل عن العقود والفواتير والعملاء.", "Ask about contracts, invoices, and customers.") }}<br>{{ txt("كاتب يساعد عبر المنظومة.", "Kateb assists across the ecosystem.") }}</h1>
-						<p>{{ txt("كاتب ليس إضافة داخل التوقيع فقط. يتصل بالتوقيع والتشغيل والمالية وإدارة العملاء.", "Kateb is not only a signing add-on. It connects to Sign, operations, finance, and CRM.") }}</p>
-					</div>
-					<div class="sm-hero-msg" data-hero-index="5" data-service="consulting" data-explore="#ybs-consulting" hidden>
-						<p class="sm-hero-kicker">{{ txt("الاستشارات", "Consulting") }}</p>
-						<h1>{{ txt("إعداد مرن وتحول رقمي.", "Flexible setup and digital transformation.") }}<br>{{ txt("بما يناسب حجم منشأتك.", "Sized for your company.") }}</h1>
-						<p>{{ txt("نرافقك في التجهيز ونقل البيانات ومسار التحول — بجهة اتصال واحدة.", "We stay with you through setup, data, and the transformation path — with one responsible team.") }}</p>
-					</div>
-				</div>
-				</div>
+				<p class="sm-hero-kicker">{{ txt("كل أعمالك. في مكان واحد.", "All Business. One Place.") }}</p>
+				<h1>{% if sm_lang == "ar" %}تعرّف على <em>نبض</em>.<br>نبض أعمالك كلها.{% else %}Meet <em>NABD</em>.<br>The pulse of your business.{% endif %}</h1>
+				<p class="sm-hero-lede">{{ txt("نبض هو العقل الذكي في يلا بزنس AI. يربط التسويق والتشغيل والمالية والتوقيع الإلكتروني وكاتب، لتتحرك كل فرصة وكل عملية بيع وكل عقد في منظومة واحدة مهيأة للمنشآت السعودية.", "NABD is the intelligent core of Yalla Business AI. It connects marketing, operations, finance, e-signing and Kateb, so every lead, sale and contract moves through one system built for Saudi businesses.") }}</p>
 				<div class="sm-hero-actions">
-					<a class="sm-btn" href="#ybs-inquiry" data-service="marketing">{{ sm.cta_quote }}</a>
-					<a class="sm-btn sm-btn-ghost" href="#ybs-marketing">{{ txt("استكشف", "Explore") }}</a>
+					<a class="sm-btn" href="#ybs-inquiry" data-service="both">{{ sm.cta_quote }}</a>
+					<a class="sm-btn sm-btn-ghost" href="#ybs-ecosystem">{{ txt("استكشف المنظومة", "Explore the ecosystem") }}</a>
 				</div>
+				<ul class="sm-hero-chips">
+					<li>{{ txt("الفوترة الإلكترونية — زاتكا", "ZATCA e-invoicing") }}</li>
+					<li>{{ txt("محاسبة متوافقة مع الزكاة", "Zakat-ready accounting") }}</li>
+					<li>{{ txt("عربي + إنجليزي", "Arabic + English") }}</li>
+				</ul>
 			</div>
-			<div class="sm-hero-pager">
-				<button type="button" class="sm-hero-arrow" data-hero-prev aria-label="{{ txt('الشريحة السابقة', 'Previous slide') }}">
-					<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M15.4 4.6 8 12l7.4 7.4 1.2-1.2L10.4 12l6.2-6.2z"/></svg>
-				</button>
-				<div class="sm-hero-dots" role="tablist" aria-label="{{ txt('رسائل العرض', 'Hero messages') }}">
-					<button type="button" class="sm-hero-dot is-active" role="tab" aria-current="true" aria-label="1" data-hero-to="0"></button>
-					<button type="button" class="sm-hero-dot" role="tab" aria-label="2" data-hero-to="1"></button>
-					<button type="button" class="sm-hero-dot" role="tab" aria-label="3" data-hero-to="2"></button>
-					<button type="button" class="sm-hero-dot" role="tab" aria-label="4" data-hero-to="3"></button>
-					<button type="button" class="sm-hero-dot" role="tab" aria-label="5" data-hero-to="4"></button>
-					<button type="button" class="sm-hero-dot" role="tab" aria-label="6" data-hero-to="5"></button>
+			<div class="sm-hero-stage" aria-hidden="true">
+				<div class="sm-hero-halo"></div>
+				<svg class="sm-hero-pulse" viewBox="0 0 1000 120" preserveAspectRatio="none">
+					<path d="M0 60 H330 L360 60 L378 28 L398 96 L420 8 L444 110 L466 44 L486 60 H560 L578 60 L594 40 L610 78 L626 60 H1000"></path>
+				</svg>
+				<div class="sm-hero-orbit"></div>
+				<div class="sm-hero-orbit sm-hero-orbit-2"></div>
+				<div class="sm-hero-nabd">
+					<img src="/assets/yalla_business/images/illustrations/nabd-hero.webp?v=20261009a" alt="" width="540" height="470" decoding="async" fetchpriority="high">
 				</div>
-				<button type="button" class="sm-hero-arrow" data-hero-next aria-label="{{ txt('الشريحة التالية', 'Next slide') }}">
-					<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M8.6 4.6 7.4 5.8 13.6 12l-6.2 6.2 1.2 1.2L16 12z"/></svg>
-				</button>
+				<p class="sm-hero-stage-tag"><span class="sm-hero-live"></span>{{ txt("نبض · متصل", "NABD · live") }}</p>
 			</div>
 		</div>
-		<span class="sm-hero-progress" aria-hidden="true"><i></i></span>
 	</section>
 
 	<section class="sm-proof" data-sm-proof-marquee>
