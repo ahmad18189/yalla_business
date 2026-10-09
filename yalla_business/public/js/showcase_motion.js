@@ -204,7 +204,7 @@
 		root.classList.remove("is-static", "is-compact");
 		root.dataset.scene = "hub";
 		const pinWrap = root.querySelector(".ybs-story__pin");
-		if (!pinWrap) return;
+		if (!pinWrap || !document.getElementById("ybsPanel")) return;
 		const orb = root.querySelector(".ybs-story__orb");
 		const panel = document.getElementById("ybsPanel");
 		const erp = document.getElementById("ybsErpScene");
@@ -562,6 +562,7 @@
 	}
 
 	function goto(scene) {
+		if (!document.getElementById("ybsPanel")) return;
 		if (window.matchMedia(COMPACT).matches || prefersReduced()) {
 			const map = {
 				erp: document.getElementById("ybsMobileErp") || document.getElementById("ybs-yalla-erp"),
@@ -793,7 +794,7 @@
 		root.classList.remove("is-static", "is-compact");
 		root.dataset.scene = "hub";
 		const pinWrap = root.querySelector(".ybs-story__pin");
-		if (!pinWrap) return;
+		if (!pinWrap || !document.getElementById("yepPanel")) return;
 		const orb = root.querySelector(".ybs-story__orb");
 		const panel = document.getElementById("yepPanel");
 		const erp = document.getElementById("yepErpScene");
@@ -1019,6 +1020,7 @@
 		}
 	}
 	function goto(scene) {
+		if (!document.getElementById("yepPanel")) return;
 		if (window.matchMedia(COMPACT).matches || prefersReduced()) {
 			const map = {
 				sell: document.getElementById("yepMobileSell"),

@@ -24,10 +24,11 @@
 	<link rel="icon" href="/assets/yalla_business/images/showcase2-favicon.svg?v=20260920m" type="image/svg+xml" />
 	<link rel="icon" href="/assets/yalla_business/images/favicon.ico?v=20260920m" sizes="any" />
 	<link rel="apple-touch-icon" href="/assets/yalla_business/images/apple-touch-icon.png?v=20260920m" />
-	<link rel="stylesheet" href="/assets/yalla_business/css/showcase2.css?v=20261009b" />
+	<link rel="stylesheet" href="/assets/yalla_business/css/showcase2.css?v=20261009p" />
 	<link rel="stylesheet" href="/assets/yalla_business/css/social.css?v=20260920m" />
 </head>
 <body class="sm-page sm-social{% if sm_lang == 'ar' %} sm-rtl{% endif %}" data-sm-theme="teal" data-sm-mode="light">
+<canvas class="sm-nabd-field" aria-hidden="true"></canvas>
 {% macro txt(ar, en) %}{{ ar if sm_lang == "ar" else en }}{% endmacro %}
 
 <div class="sm-topbar">
@@ -272,6 +273,6 @@
 
 	<script>window.YB_CSRF = "{{ csrf_token }}";</script>
 	<script src="/assets/yalla_business/js/inquiry-track.js?v=20260920c"></script>
-	<script src="/assets/yalla_business/js/showcase2.js?v=20261005b"></script>
+	<script src="/assets/yalla_business/js/showcase2.js?v=20261009i"></script>
 </body>
 </html>

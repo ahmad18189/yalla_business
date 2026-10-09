@@ -27,9 +27,10 @@
 	<link rel="icon" href="/assets/yalla_business/images/showcase2-favicon.svg?v=20260920m" type="image/svg+xml" />
 	<link rel="icon" href="/assets/yalla_business/images/favicon.ico?v=20260920m" sizes="any" />
 	<link rel="apple-touch-icon" href="/assets/yalla_business/images/apple-touch-icon.png?v=20260920m" />
-	<link rel="stylesheet" href="/assets/yalla_business/css/showcase2.css?v=20261009b" />
+	<link rel="stylesheet" href="/assets/yalla_business/css/showcase2.css?v=20261009y" />
 </head>
 <body class="sm-page{% if sm_lang == 'ar' %} sm-rtl{% endif %}" data-sm-theme="teal" data-sm-mode="light">
+<canvas class="sm-nabd-field" aria-hidden="true"></canvas>
 {% macro txt(ar, en) %}{{ ar if sm_lang == "ar" else en }}{% endmacro %}
 
 <div class="sm-topbar">
@@ -84,6 +85,7 @@
 
 <main>
 	<section class="sm-hero sm-hero--full sm-hero--nabd" aria-label="{{ txt('نبض — العقل الذكي ليلا بزنس', 'NABD — the intelligent core of Yalla Business') }}">
+		<canvas class="sm-hero-dust" aria-hidden="true"></canvas>
 		<div class="sm-wrap sm-hero-nabd-grid">
 			<div class="sm-hero-copy">
 				<p class="sm-hero-kicker">{{ txt("كل أعمالك. في مكان واحد.", "All Business. One Place.") }}</p>
@@ -107,7 +109,7 @@
 				<div class="sm-hero-orbit"></div>
 				<div class="sm-hero-orbit sm-hero-orbit-2"></div>
 				<div class="sm-hero-nabd">
-					<img src="/assets/yalla_business/images/illustrations/nabd-hero.webp?v=20261009c" alt="" width="540" height="470" decoding="async" fetchpriority="high">
+					<img src="/assets/yalla_business/images/illustrations/nabd-hero.webp?v=20261009x" alt="" width="1000" height="900" decoding="async" fetchpriority="high">
 				</div>
 				<p class="sm-hero-stage-tag"><span class="sm-hero-live"></span>{{ txt("نبض · متصل", "NABD · live") }}</p>
 			</div>
@@ -142,7 +144,7 @@
 			<div class="sm-pillars">
 				<article class="sm-pillar">
 					<div class="sm-pillar-media">
-						<img class="sm-pillar-img" src="/assets/yalla_business/images/illustrations/value-localized.webp?v=20261009c" alt="" width="900" height="560" loading="lazy">
+						<img class="sm-pillar-img" src="/assets/yalla_business/images/illustrations/value-localized.webp?v=20261009f" alt="" width="900" height="560" loading="lazy">
 					</div>
 					<div class="sm-pillar-body">
 						<h3>{{ txt("مهيأ للسوق السعودي", "Localized for Saudi Arabia") }}</h3>
@@ -151,7 +153,7 @@
 				</article>
 				<article class="sm-pillar">
 					<div class="sm-pillar-media">
-						<img class="sm-pillar-img" src="/assets/yalla_business/images/illustrations/value-setup.webp?v=20261009c" alt="" width="900" height="560" loading="lazy">
+						<img class="sm-pillar-img" src="/assets/yalla_business/images/illustrations/value-setup.webp?v=20261009f" alt="" width="900" height="560" loading="lazy">
 					</div>
 					<div class="sm-pillar-body">
 						<h3>{{ txt("نرافقك في الإطلاق خطوة بخطوة", "Guided setup and launch") }}</h3>
@@ -160,7 +162,7 @@
 				</article>
 				<article class="sm-pillar">
 					<div class="sm-pillar-media">
-						<img class="sm-pillar-img" src="/assets/yalla_business/images/illustrations/value-team.webp?v=20261009c" alt="" width="900" height="560" loading="lazy">
+						<img class="sm-pillar-img" src="/assets/yalla_business/images/illustrations/value-team.webp?v=20261009f" alt="" width="900" height="560" loading="lazy">
 					</div>
 					<div class="sm-pillar-body">
 						<h3>{{ txt("جهة اتصال واحدة مسؤولة", "One responsible team") }}</h3>
@@ -169,7 +171,7 @@
 				</article>
 				<article class="sm-pillar">
 					<div class="sm-pillar-media">
-						<img class="sm-pillar-img" src="/assets/yalla_business/images/illustrations/value-grow.webp?v=20261009c" alt="" width="900" height="560" loading="lazy">
+						<img class="sm-pillar-img" src="/assets/yalla_business/images/illustrations/value-grow.webp?v=20261009f" alt="" width="900" height="560" loading="lazy">
 					</div>
 					<div class="sm-pillar-body">
 						<h3>{{ txt("قابل للتوسع مع نموك", "Ready to grow") }}</h3>
@@ -193,7 +195,7 @@
 						<li>
 							<a class="ybs-eco-card" href="#ybs-marketing">
 								<span class="ybs-eco-media">
-									<img src="/assets/yalla_business/images/illustrations/eco-marketing.webp?v=20261009c" alt="" width="900" height="560" loading="lazy" decoding="async">
+									<img src="/assets/yalla_business/images/illustrations/eco-marketing.webp?v=20261009f" alt="" width="900" height="560" loading="lazy" decoding="async">
 									<span class="ybs-eco-icon" aria-hidden="true">
 										<svg viewBox="0 0 32 32" width="22" height="22" fill="none"><path d="M6 20V12l14-6v20L6 20z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M20 12c3 1 6 4 6 8s-3 7-6 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
 									</span>
@@ -207,7 +209,7 @@
 						<li>
 							<a class="ybs-eco-card" href="#ybs-yallasign">
 								<span class="ybs-eco-media">
-									<img src="/assets/yalla_business/images/illustrations/eco-sign.webp?v=20261009c" alt="" width="900" height="560" loading="lazy" decoding="async">
+									<img src="/assets/yalla_business/images/illustrations/eco-sign.webp?v=20261009f" alt="" width="900" height="560" loading="lazy" decoding="async">
 									<span class="ybs-eco-icon" aria-hidden="true">
 										<svg viewBox="0 0 32 32" width="22" height="22" fill="none"><path d="M8 7h11l5 5v13H8V7z" stroke="currentColor" stroke-width="2"/><path d="M19 7v5h5M11 18c3 4 6 6 10 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
 									</span>
@@ -221,7 +223,7 @@
 						<li>
 							<a class="ybs-eco-card" href="#ybs-consulting">
 								<span class="ybs-eco-media">
-									<img src="/assets/yalla_business/images/illustrations/eco-consulting.webp?v=20261009c" alt="" width="900" height="560" loading="lazy" decoding="async">
+									<img src="/assets/yalla_business/images/illustrations/eco-consulting.webp?v=20261009f" alt="" width="900" height="560" loading="lazy" decoding="async">
 									<span class="ybs-eco-icon" aria-hidden="true">
 										<svg viewBox="0 0 32 32" width="22" height="22" fill="none"><path d="M8 24V10h16v14" stroke="currentColor" stroke-width="2"/><path d="M12 24v-6h8v6M10 14h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
 									</span>
@@ -235,7 +237,7 @@
 						<li>
 							<a class="ybs-eco-card" href="#ybs-ai">
 								<span class="ybs-eco-media">
-									<img src="/assets/yalla_business/images/illustrations/eco-kateb.webp?v=20261009c" alt="" width="900" height="560" loading="lazy" decoding="async">
+									<img src="/assets/yalla_business/images/illustrations/eco-kateb.webp?v=20261009f" alt="" width="900" height="560" loading="lazy" decoding="async">
 									<span class="ybs-eco-icon" aria-hidden="true">
 										<svg viewBox="0 0 32 32" width="22" height="22" fill="none"><rect x="7" y="9" width="18" height="14" rx="4" stroke="currentColor" stroke-width="2"/><circle cx="13" cy="16" r="1.6" fill="currentColor"/><circle cx="19" cy="16" r="1.6" fill="currentColor"/><path d="M16 5v4M11 27h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
 									</span>
@@ -254,7 +256,7 @@
 						<li>
 							<a class="ybs-eco-card" href="#ybs-yalla-erp">
 								<span class="ybs-eco-media">
-									<img src="/assets/yalla_business/images/illustrations/eco-erp.webp?v=20261009c" alt="" width="900" height="560" loading="lazy" decoding="async">
+									<img src="/assets/yalla_business/images/illustrations/eco-erp.webp?v=20261009f" alt="" width="900" height="560" loading="lazy" decoding="async">
 									<span class="ybs-eco-icon" aria-hidden="true">
 										<svg viewBox="0 0 32 32" width="22" height="22" fill="none"><rect x="4" y="7" width="24" height="18" rx="4" stroke="currentColor" stroke-width="2"/><path d="M9 13h14M9 18h9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
 									</span>
@@ -268,7 +270,7 @@
 						<li>
 							<a class="ybs-eco-card" href="#ybs-yalla-erp">
 								<span class="ybs-eco-media">
-									<img src="/assets/yalla_business/images/illustrations/eco-finance.webp?v=20261009c" alt="" width="900" height="560" loading="lazy" decoding="async">
+									<img src="/assets/yalla_business/images/illustrations/eco-finance.webp?v=20261009f" alt="" width="900" height="560" loading="lazy" decoding="async">
 									<span class="ybs-eco-icon" aria-hidden="true">
 										<svg viewBox="0 0 32 32" width="22" height="22" fill="none"><circle cx="16" cy="16" r="10" stroke="currentColor" stroke-width="2"/><path d="M16 10v12M12 13h6.5a2.5 2.5 0 0 1 0 5H13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
 									</span>
@@ -282,7 +284,7 @@
 						<li>
 							<a class="ybs-eco-card" href="#ybs-yalla-erp">
 								<span class="ybs-eco-media">
-									<img src="/assets/yalla_business/images/illustrations/eco-crm.webp?v=20261009c" alt="" width="900" height="560" loading="lazy" decoding="async">
+									<img src="/assets/yalla_business/images/illustrations/eco-crm.webp?v=20261009f" alt="" width="900" height="560" loading="lazy" decoding="async">
 									<span class="ybs-eco-icon" aria-hidden="true">
 										<svg viewBox="0 0 32 32" width="22" height="22" fill="none"><circle cx="11" cy="13" r="4" stroke="currentColor" stroke-width="2"/><circle cx="21" cy="13" r="4" stroke="currentColor" stroke-width="2"/><path d="M5 24c1.2-4 4.2-6 6-6s4.8 2 6 6M15 24c1.2-4 4.2-6 6-6s4.8 2 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
 									</span>
@@ -296,7 +298,7 @@
 						<li>
 							<a class="ybs-eco-card" href="#ybs-yalla-erp">
 								<span class="ybs-eco-media">
-									<img src="/assets/yalla_business/images/illustrations/eco-hr.webp?v=20261009c" alt="" width="900" height="560" loading="lazy" decoding="async">
+									<img src="/assets/yalla_business/images/illustrations/eco-hr.webp?v=20261009f" alt="" width="900" height="560" loading="lazy" decoding="async">
 									<span class="ybs-eco-icon" aria-hidden="true">
 										<svg viewBox="0 0 32 32" width="22" height="22" fill="none"><circle cx="16" cy="12" r="5" stroke="currentColor" stroke-width="2"/><path d="M7 26c1.6-6 5.5-8 9-8s7.4 2 9 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
 									</span>
@@ -391,96 +393,22 @@
 	<section id="ybs-story" class="ybs-story" aria-labelledby="ybs-story-heading">
 		<div class="ybs-story__pin">
 			<div class="ybs-story__canvas" aria-hidden="true">
-				<div class="ybs-story__mark">
-					<img class="ybs-story__orb" src="/assets/yalla_business/images/logo-mark.png" width="480" height="480" alt="" />
-					<div class="ybs-shards">
-						<span class="ybs-shard"><img src="/assets/yalla_business/images/logo-mark.png" width="480" height="480" alt="" /></span>
-						<span class="ybs-shard"><img src="/assets/yalla_business/images/logo-mark.png" width="480" height="480" alt="" /></span>
-						<span class="ybs-shard"><img src="/assets/yalla_business/images/logo-mark.png" width="480" height="480" alt="" /></span>
-						<span class="ybs-shard"><img src="/assets/yalla_business/images/logo-mark.png" width="480" height="480" alt="" /></span>
-						<span class="ybs-shard"><img src="/assets/yalla_business/images/logo-mark.png" width="480" height="480" alt="" /></span>
-						<span class="ybs-shard"><img src="/assets/yalla_business/images/logo-mark.png" width="480" height="480" alt="" /></span>
+				<div class="nabd-console" data-nabd-console="eco">
+					<div class="nabd-console__bar">
+						<span class="nabd-console__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+						<span>nabd · live activity</span>
+						<span class="nabd-console__state"><i class="sm-hero-live"></i><b data-nabd-state>LISTEN</b></span>
 					</div>
-				</div>
-				<div class="ybs-objects">
-					<span class="ybs-obj" data-target="ybs-erp-accounting"><svg viewBox="0 0 48 48" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="10" width="36" height="28" rx="6" fill="#4B2C82"/><path d="M16 18h16M16 24h10M16 30h14" stroke="#FDF8F5" stroke-width="2.2" stroke-linecap="round"/><circle cx="34" cy="30" r="4" fill="#EDE6F5"/></svg></span>
-					<span class="ybs-obj" data-target="ybs-erp-invoices"><svg viewBox="0 0 48 48" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 8h16l8 8v24H14V8z" fill="#FDF8F5" stroke="#4B2C82" stroke-width="2"/><path d="M30 8v8h8" fill="none" stroke="#4B2C82" stroke-width="2"/><path d="M18 24h12M18 30h8" stroke="#4B2C82" stroke-width="2" stroke-linecap="round"/></svg></span>
-					<span class="ybs-obj" data-target="ybs-erp-inventory"><svg viewBox="0 0 48 48" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 16l16-8 16 8v16l-16 8-16-8V16z" fill="#EDE6F5" stroke="#4B2C82" stroke-width="2"/><path d="M8 16l16 8 16-8M24 24v16" stroke="#4B2C82" stroke-width="2"/></svg></span>
-					<span class="ybs-obj" data-target="ybs-erp-hr"><svg viewBox="0 0 48 48" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="16" r="7" fill="#EDE6F5" stroke="#4B2C82" stroke-width="2"/><path d="M10 38c2-8 8-12 14-12s12 4 14 12" fill="#FDF8F5" stroke="#4B2C82" stroke-width="2"/></svg></span>
-					<span class="ybs-obj" data-target="ybs-erp-analytics"><svg viewBox="0 0 48 48" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="32" height="32" rx="6" fill="#4B2C82"/><path d="M14 30l6-8 6 4 8-12" fill="none" stroke="#FDF8F5" stroke-width="2.2" stroke-linecap="round"/></svg></span>
-				</div>
-				<div class="ybs-stage">
-					<div class="ybs-stage__panel" id="ybsPanel">
-						<span class="ybs-erp__label">Yalla ERP Plus</span>
-						<div class="ybs-erp" id="ybsErpScene">
-							<div class="ybs-mod ybs-mod--wide" id="ybs-erp-accounting">
-								<small>{{ txt("المحاسبة", "Accounting") }}</small>
-								<strong data-illustrative="1">—</strong>
-								<svg class="ybs-chart" viewBox="0 0 160 48" aria-hidden="true"><path class="ybs-erp-line" d="M4 36 L28 28 L52 32 L76 18 L100 22 L124 10 L156 14"/></svg>
-								<div class="ybs-bars"><i></i><i></i><i></i><i></i></div>
-							</div>
-							<div class="ybs-mod" id="ybs-erp-invoices">
-								<small>{{ txt("الفواتير", "Invoices") }}</small>
-								<strong data-illustrative="1">—</strong>
-							</div>
-							<div class="ybs-mod" id="ybs-erp-inventory">
-								<small>{{ txt("المخزون", "Inventory") }}</small>
-								<strong data-illustrative="1">—</strong>
-							</div>
-							<div class="ybs-mod" id="ybs-erp-hr">
-								<small>{{ txt("الموارد البشرية", "HR") }}</small>
-								<strong>{{ txt("سجل", "Record") }}</strong>
-							</div>
-							<div class="ybs-mod" id="ybs-erp-analytics">
-								<small>{{ txt("التقارير", "Reporting") }}</small>
-								<strong data-illustrative="1">—</strong>
-							</div>
-							<div class="ybs-mod ybs-mod--ok" id="ybs-erp-verify">
-								<small>{{ txt("فاتورة إلكترونية", "E-invoice") }}</small>
-								<strong>{{ txt("موثّقة", "Verified") }}</strong>
-							</div>
-						</div>
-						<div class="ybs-doc" id="ybsSignScene">
-							<div class="ybs-paper">
-								<span class="ybs-paper__sheet ybs-paper__sheet--back"></span>
-								<span class="ybs-paper__sheet ybs-paper__sheet--mid"></span>
-								<div class="ybs-paper__front">
-									<div class="ybs-doc__head">
-										<p class="ybs-doc__title">{{ txt("عقد خدمات", "Service agreement") }}</p>
-										<span class="ybs-doc__label">YallaSign</span>
-									</div>
-									<p class="ybs-doc__assist">{{ txt("كاتب يلخّص العقد ويرصد المخاطر", "Kateb summarizes the contract and flags risks") }}</p>
-									<span class="ybs-doc__rule"></span>
-									<span class="ybs-doc__rule"></span>
-									<span class="ybs-doc__rule ybs-doc__rule--short"></span>
-									<p class="ybs-passage" data-pass="1">{{ txt("بنود الخدمة والنطاق التشغيلي.", "Service scope and operating terms.") }}</p>
-									<p class="ybs-passage" data-pass="2">{{ txt("التزامات الطرفين ومواعيد التسليم.", "Parties’ obligations and delivery dates.") }}</p>
-									<p class="ybs-passage" data-pass="3">{{ txt("بند للمراجعة قبل الاعتماد.", "A clause for review before approval.") }}</p>
-									<div class="ybs-kateb">
-										<span class="ybs-chip">{{ txt("ملخص", "Summary") }}</span>
-										<span class="ybs-chip">{{ txt("استخراج", "Extract") }}</span>
-										<span class="ybs-chip ybs-chip--flag">{{ txt("مراجعة", "Review") }}</span>
-										<span class="ybs-chip ybs-chip--task">{{ txt("مهمة", "Task") }}</span>
-									</div>
-									<div class="ybs-sign-block">
-										<div class="ybs-sign-meta">
-											<span>{{ txt("الموقع", "Signer") }}</span>
-											<span>{{ txt("التاريخ", "Date") }}</span>
-										</div>
-										<div class="ybs-pad" id="ybsSignPad">
-											<svg class="ybs-sign-path" viewBox="0 0 180 52" preserveAspectRatio="xMidYMid meet">
-												<path id="ybsSignature" d="M10 30 C16 16, 24 10, 34 22 C42 32, 46 42, 58 28 C68 14, 78 12, 90 26 C100 38, 110 40, 124 24 C134 14, 144 16, 158 26 C164 32, 168 28, 174 18 M20 44 C68 50, 118 48, 168 40" />
-											</svg>
-											<span class="ybs-pen" aria-hidden="true">
-												<svg viewBox="0 0 24 24" width="18" height="18"><path fill="#4B2C82" d="M3 21l3.6-1.2 12-12-2.4-2.4-12 12L3 21zm16.4-15.2l2.4 2.4 1.4-1.4c.5-.5.5-1.3 0-1.8l-1-1c-.5-.5-1.3-.5-1.8 0l-1 1z"/></svg>
-											</span>
-										</div>
-										<p class="ybs-ok"><span class="ybs-ok__mark" aria-hidden="true"></span><span>{{ txt("تم التوقيع", "Signed successfully") }}</span></p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					<ul class="nabd-feed">
+						<li data-step="0"><time>10:41:58</time><span data-msg="{{ txt('اتصال · تسويق، تشغيل، توقيع، كاتب', 'link · marketing, operations, sign, Kateb') }}"></span></li>
+						<li data-step="1"><time>10:41:59</time><span data-msg="{{ txt('عقد SA-220 · 14 بنداً · قراءة', 'contract SA-220 · 14 clauses · read') }}"></span></li>
+						<li data-step="2"><time>10:42:00</time><span data-msg="{{ txt('توجيه إلى يلا ساين · تم إشعار الموقّع', 'routed to YallaSign · signer notified') }}"></span></li>
+						<li data-step="3"><time>10:42:01</time><span data-msg="{{ txt('كاتب · خطر في البند 7 · يحتاج مراجعة', 'Kateb · risk on clause 7 · needs review') }}"></span></li>
+						<li data-step="4"><time>10:42:02</time><span data-msg="{{ txt('ملخص + استخراج + مهمة أُنشئت', 'summary + extract + task created') }}"></span></li>
+						<li data-step="5"><time>10:42:03</time><span data-msg="{{ txt('تم التوقيع · السجل محفوظ', 'signed · record stored') }}"></span></li>
+					</ul>
+					<p class="nabd-console__foot">{{ txt('مثال توضيحي، ليست أرقاماً حقيقية.', 'Illustrative example, not real figures.') }}</p>
+					<div class="nabd-scan" aria-hidden="true"></div>
 				</div>
 			</div>
 			<div class="ybs-story__copy">
@@ -498,6 +426,10 @@
 					<div class="ybs-caption" data-scene="erp">
 						<p class="ybs-caption__title">{{ txt("تصبح الأرقام والمستندات أوضح لاتخاذ القرار.", "Numbers and documents become decisions.") }}</p>
 						<p>{{ txt("المحاسبة والمخزون والموارد البشرية والمبيعات في نظام واحد مترابط.", "Accounting, inventory, HR and sales in one connected system.") }}</p>
+					</div>
+					<div class="ybs-caption" data-scene="kateb">
+						<p class="ybs-caption__title">{{ txt("كاتب يقرأ العقد ويرصد الخطر قبل التوقيع.", "Kateb reads the contract and flags risk before you sign.") }}</p>
+						<p>{{ txt("ملخص، استخراج، ومهمة مراجعة على البند الذي يحتاج قرارك.", "A summary, an extract, and a review task on the clause that needs you.") }}</p>
 					</div>
 					<div class="ybs-caption" data-scene="sign">
 						<p class="ybs-caption__title">{{ txt("وقّع واعتمد وفق الأنظمة. ويساعدك كاتب على فهم العقد.", "Sign and approve under Saudi rules. Kateb helps you understand the contract.") }}</p>
@@ -563,86 +495,24 @@
 	<section id="yep-ops" class="ybs-story ybs-story--plus" aria-labelledby="yep-ops-heading">
 		<div class="ybs-story__pin">
 			<div class="ybs-story__canvas" aria-hidden="true">
-				<div class="ybs-story__mark">
-					<img class="ybs-story__orb" src="/assets/yalla_business/images/logo-mark.png" width="480" height="480" alt="" />
-					<div class="ybs-shards">
-						<span class="ybs-shard"><img src="/assets/yalla_business/images/logo-mark.png" width="480" height="480" alt="" /></span>
-						<span class="ybs-shard"><img src="/assets/yalla_business/images/logo-mark.png" width="480" height="480" alt="" /></span>
-						<span class="ybs-shard"><img src="/assets/yalla_business/images/logo-mark.png" width="480" height="480" alt="" /></span>
-						<span class="ybs-shard"><img src="/assets/yalla_business/images/logo-mark.png" width="480" height="480" alt="" /></span>
-						<span class="ybs-shard"><img src="/assets/yalla_business/images/logo-mark.png" width="480" height="480" alt="" /></span>
-						<span class="ybs-shard"><img src="/assets/yalla_business/images/logo-mark.png" width="480" height="480" alt="" /></span>
+				<div class="nabd-console" data-nabd-console="ops">
+					<div class="nabd-console__bar">
+						<span class="nabd-console__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+						<span>nabd · live activity</span>
+						<span class="nabd-console__state"><i class="sm-hero-live"></i><b data-nabd-state>IDLE</b></span>
 					</div>
-				</div>
-				<div class="ybs-objects">
-					<span class="ybs-obj" data-target="yep-erp-sales"><svg viewBox="0 0 48 48" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 8h16l8 8v24H14V8z" fill="#FDF8F5" stroke="#4B2C82" stroke-width="2"/><path d="M30 8v8h8" stroke="#4B2C82" stroke-width="2"/><path d="M18 24h12M18 30h8" stroke="#4B2C82" stroke-width="2" stroke-linecap="round"/></svg></span>
-					<span class="ybs-obj" data-target="yep-erp-stock"><svg viewBox="0 0 48 48" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 16l16-8 16 8v16l-16 8-16-8V16z" fill="#EDE6F5" stroke="#4B2C82" stroke-width="2"/><path d="M8 16l16 8 16-8M24 24v16" stroke="#4B2C82" stroke-width="2"/></svg></span>
-					<span class="ybs-obj" data-target="yep-erp-cash"><svg viewBox="0 0 48 48" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="14" width="32" height="22" rx="4" fill="#4B2C82"/><circle cx="24" cy="25" r="6" fill="#FDF8F5"/><path d="M24 22v6M21.5 25h5" stroke="#4B2C82" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-					<span class="ybs-obj" data-target="yep-erp-people"><svg viewBox="0 0 48 48" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="16" r="7" fill="#EDE6F5" stroke="#4B2C82" stroke-width="2"/><path d="M10 38c2-8 8-12 14-12s12 4 14 12" fill="#FDF8F5" stroke="#4B2C82" stroke-width="2"/></svg></span>
-					<span class="ybs-obj" data-target="yep-erp-insight"><svg viewBox="0 0 48 48" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="32" height="32" rx="6" fill="#4B2C82"/><path d="M14 30l6-8 6 4 8-12" fill="none" stroke="#FDF8F5" stroke-width="2.2" stroke-linecap="round"/></svg></span>
-					<span class="ybs-obj" data-target="yep-erp-zatca"><svg viewBox="0 0 48 48" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="24" r="14" fill="#EDE6F5" stroke="#4B2C82" stroke-width="2"/><path d="M16 24l5 5 11-12" stroke="#1f7a4d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-				</div>
-				<div class="ybs-stage">
-					<div class="ybs-stage__panel" id="yepPanel">
-						<span class="ybs-erp__label">Yalla ERP Plus</span>
-						<div class="ybs-erp" id="yepErpScene">
-							<div class="ybs-mod ybs-mod--wide" id="yep-erp-sales">
-								<small>{{ txt("المبيعات", "Sales") }}</small>
-								<strong>{{ txt("فاتورة ضريبية", "VAT invoice") }}</strong>
-								<svg class="ybs-chart" viewBox="0 0 160 48" aria-hidden="true"><path class="yep-erp-line" d="M4 36 L28 28 L52 32 L76 18 L100 22 L124 10 L156 14"/></svg>
-								<div class="ybs-bars"><i></i><i></i><i></i><i></i></div>
-							</div>
-							<div class="ybs-mod" id="yep-erp-stock">
-								<small>{{ txt("المخزون", "Inventory") }}</small>
-								<strong>{{ txt("ينقص فوراً", "Drops now") }}</strong>
-							</div>
-							<div class="ybs-mod" id="yep-erp-cash">
-								<small>{{ txt("الصندوق", "Cash") }}</small>
-								<strong>{{ txt("يتحدّث مع البيع", "Moves with the sale") }}</strong>
-							</div>
-							<div class="ybs-mod" id="yep-erp-people">
-								<small>{{ txt("الموارد البشرية", "HR") }}</small>
-								<strong>{{ txt("رواتب وحضور", "Payroll & attendance") }}</strong>
-							</div>
-							<div class="ybs-mod" id="yep-erp-insight">
-								<small>{{ txt("التقارير", "Reports") }}</small>
-								<strong>{{ txt("قرار أوضح", "Clearer decisions") }}</strong>
-							</div>
-							<div class="ybs-mod ybs-mod--ok" id="yep-erp-zatca">
-								<small>{{ txt("الفوترة الإلكترونية", "E-invoicing") }}</small>
-								<strong>{{ txt("مواءمة زاتكا", "ZATCA-ready") }}</strong>
-							</div>
-						</div>
-						<div class="yep-day" id="yepDayScene">
-							<p class="yep-day__kicker">{{ txt("حركة يوم تشغيلي", "A working day in motion") }}</p>
-							<div class="yep-ticket">
-								<div class="yep-ticket__row">
-									<span>{{ txt("صنف", "Item") }}</span>
-									<strong>{{ txt("عطر عود · 75 مل", "Oud perfume · 75 ml") }}</strong>
-								</div>
-								<div class="yep-ticket__row">
-									<span>{{ txt("الكمية", "Qty") }}</span>
-									<strong>2 × 250</strong>
-								</div>
-								<div class="yep-ticket__row">
-									<span>{{ txt("الضريبة 15٪", "VAT 15%") }}</span>
-									<strong>75.00</strong>
-								</div>
-								<div class="yep-ticket__row yep-ticket__row--total">
-									<span>{{ txt("الإجمالي", "Total") }}</span>
-									<strong>575.00 {{ txt("ر.س", "SAR") }}</strong>
-								</div>
-							</div>
-							<ol class="yep-steps">
-								<li>{{ txt("فاتورة", "Invoice") }}</li>
-								<li>{{ txt("مخزون", "Stock") }}</li>
-								<li>{{ txt("صندوق", "Cash") }}</li>
-								<li>{{ txt("دفاتر", "Books") }}</li>
-								<li>{{ txt("تقرير", "Report") }}</li>
-							</ol>
-							<p class="yep-day__ok"><span class="ybs-ok__mark" aria-hidden="true"></span><span>{{ txt("العملية اكتملت — الأرقام محدّثة", "Process complete — the numbers are current") }}</span></p>
-						</div>
-					</div>
+					<ul class="nabd-feed">
+						<li data-step="0"><time>10:42:01</time><span data-msg="{{ txt('عملية بيع · عطر عود 75 مل · 2 × 250.00', 'Sale · Oud perfume 75 ml · 2 × 250.00') }}"></span></li>
+						<li data-step="1"><time>10:42:01</time><span data-msg="{{ txt('فاتورة INV-1042 صدرت · مربوطة بالعميل', 'Invoice INV-1042 issued · customer linked') }}"></span></li>
+						<li data-step="2"><time>10:42:02</time><span data-msg="{{ txt('ضريبة 15٪ ← 75.00 ر.س', 'VAT 15% → 75.00 SAR') }}"></span></li>
+						<li data-step="3"><time>10:42:02</time><span data-msg="{{ txt('الإجمالي ← 575.00 ر.س · رمز الفاتورة مرفق', 'Total → 575.00 SAR · e-invoice QR attached') }}"></span></li>
+						<li data-step="4"><time>10:42:02</time><span data-msg="{{ txt('المخزون ← −2 وحدة · المستودع محدّث', 'Inventory → −2 units · warehouse synced') }}"></span></li>
+						<li data-step="5"><time>10:42:03</time><span data-msg="{{ txt('الصندوق ← +575.00 ر.س', 'Cash drawer → +575.00 SAR') }}"></span></li>
+						<li data-step="6"><time>10:42:03</time><span data-msg="{{ txt('الدفاتر ← تم ترحيل القيد', 'Ledger → journal entry posted') }}"></span></li>
+						<li data-step="7"><time>10:42:04</time><span data-msg="{{ txt('اكتملت العملية · تقرير اليوم محدّث', 'Complete · daily report refreshed') }}"></span></li>
+					</ul>
+					<p class="nabd-console__foot">{{ txt('مثال توضيحي، ليست أرقاماً حقيقية.', 'Illustrative example, not real figures.') }}</p>
+					<div class="nabd-scan" aria-hidden="true"></div>
 				</div>
 			</div>
 			<div class="ybs-story__copy">
@@ -721,7 +591,7 @@
 			<div class="sm-pillars">
 				<article class="sm-pillar">
 					<div class="sm-pillar-media">
-						<img class="sm-pillar-img" src="/assets/yalla_business/images/illustrations/mkt-campaigns.webp?v=20261009c" alt="" width="640" height="640" loading="lazy">
+						<img class="sm-pillar-img" src="/assets/yalla_business/images/illustrations/mkt-campaigns.webp?v=20261009f" alt="" width="640" height="640" loading="lazy">
 					</div>
 					<div class="sm-pillar-body">
 						<h3>{{ txt("الحملات", "Campaigns") }}</h3>
@@ -730,7 +600,7 @@
 				</article>
 				<article class="sm-pillar">
 					<div class="sm-pillar-media">
-						<img class="sm-pillar-img" src="/assets/yalla_business/images/illustrations/mkt-event-plan.webp?v=20261009c" alt="" width="640" height="640" loading="lazy">
+						<img class="sm-pillar-img" src="/assets/yalla_business/images/illustrations/mkt-event-plan.webp?v=20261009f" alt="" width="640" height="640" loading="lazy">
 					</div>
 					<div class="sm-pillar-body">
 						<h3>{{ txt("تخطيط الفعاليات", "Event planning") }}</h3>
@@ -739,7 +609,7 @@
 				</article>
 				<article class="sm-pillar">
 					<div class="sm-pillar-media">
-						<img class="sm-pillar-img" src="/assets/yalla_business/images/illustrations/mkt-event-run.webp?v=20261009c" alt="" width="640" height="640" loading="lazy">
+						<img class="sm-pillar-img" src="/assets/yalla_business/images/illustrations/mkt-event-run.webp?v=20261009f" alt="" width="640" height="640" loading="lazy">
 					</div>
 					<div class="sm-pillar-body">
 						<h3>{{ txt("إدارة الفعاليات", "Event management") }}</h3>
@@ -748,7 +618,7 @@
 				</article>
 				<article class="sm-pillar">
 					<div class="sm-pillar-media">
-						<img class="sm-pillar-img" src="/assets/yalla_business/images/illustrations/mkt-leads.webp?v=20261009c" alt="" width="640" height="640" loading="lazy">
+						<img class="sm-pillar-img" src="/assets/yalla_business/images/illustrations/mkt-leads.webp?v=20261009f" alt="" width="640" height="640" loading="lazy">
 					</div>
 					<div class="sm-pillar-body">
 						<h3>{{ txt("الفرص، CRM، والأداء", "Leads, CRM, and performance") }}</h3>
@@ -772,7 +642,7 @@
 			<div class="ybs-svc-grid">
 				<article class="ybs-svc-card" aria-labelledby="ybs-svc-marketing-heading">
 					<div class="ybs-svc-media">
-						<img src="/assets/yalla_business/images/illustrations/svc-marketing.webp?v=20261009c" alt="" width="900" height="560" loading="lazy">
+						<img src="/assets/yalla_business/images/illustrations/svc-marketing.webp?v=20261009f" alt="" width="900" height="560" loading="lazy">
 					</div>
 					<div class="ybs-svc-body">
 						<p class="ybs-svc-kicker">{{ txt("يلا ماركتنج", "Yalla Marketing") }}</p>
@@ -794,7 +664,7 @@
 				</article>
 				<article class="ybs-svc-card" id="ybs-yalla-erp">
 					<div class="ybs-svc-media">
-						<img src="/assets/yalla_business/images/illustrations/card-erp.webp?v=20261009c" alt="" width="900" height="560" loading="lazy">
+						<img src="/assets/yalla_business/images/illustrations/card-erp.webp?v=20261009f" alt="" width="900" height="560" loading="lazy">
 					</div>
 					<div class="ybs-svc-body">
 						<p class="ybs-svc-kicker">{{ txt("يلا ERP بلس", "Yalla ERP Plus") }}</p>
@@ -815,7 +685,7 @@
 				</article>
 				<article class="ybs-svc-card" id="ybs-yallasign">
 					<div class="ybs-svc-media">
-						<img src="/assets/yalla_business/images/illustrations/card-sign.webp?v=20261009c" alt="" width="900" height="560" loading="lazy">
+						<img src="/assets/yalla_business/images/illustrations/card-sign.webp?v=20261009f" alt="" width="900" height="560" loading="lazy">
 					</div>
 					<div class="ybs-svc-body">
 						<p class="ybs-svc-kicker">{{ txt("يلا ساين", "YallaSign") }}</p>
@@ -836,7 +706,7 @@
 				</article>
 				<article class="ybs-svc-card" id="ybs-ai" aria-labelledby="ybs-ai-heading">
 					<div class="ybs-svc-media">
-						<img src="/assets/yalla_business/images/illustrations/svc-kateb.webp?v=20261009c" alt="" width="900" height="560" loading="lazy">
+						<img src="/assets/yalla_business/images/illustrations/svc-kateb.webp?v=20261009f" alt="" width="900" height="560" loading="lazy">
 					</div>
 					<div class="ybs-svc-body">
 						<p class="ybs-svc-kicker">{{ txt("يلا AI", "Yalla AI") }}</p>
@@ -941,7 +811,7 @@
 			<div class="sm-pillars">
 				<article class="sm-pillar">
 					<div class="sm-pillar-media">
-						<img class="sm-pillar-img" src="/assets/yalla_business/images/illustrations/why-saudi.webp?v=20261009c" alt="" width="900" height="560" loading="lazy">
+						<img class="sm-pillar-img" src="/assets/yalla_business/images/illustrations/why-saudi.webp?v=20261009f" alt="" width="900" height="560" loading="lazy">
 					</div>
 					<div class="sm-pillar-body">
 						<h3>{{ txt("نفهم متطلبات السوق السعودي", "A clear view of the Saudi market") }}</h3>
@@ -950,7 +820,7 @@
 				</article>
 				<article class="sm-pillar">
 					<div class="sm-pillar-media">
-						<img class="sm-pillar-img" src="/assets/yalla_business/images/illustrations/why-implement.webp?v=20261009c" alt="" width="900" height="560" loading="lazy">
+						<img class="sm-pillar-img" src="/assets/yalla_business/images/illustrations/why-implement.webp?v=20261009f" alt="" width="900" height="560" loading="lazy">
 					</div>
 					<div class="sm-pillar-body">
 						<h3>{{ txt("نجهّز النظام بالشراكة معكم", "Specialist implementation and setup") }}</h3>
@@ -959,7 +829,7 @@
 				</article>
 				<article class="sm-pillar">
 					<div class="sm-pillar-media">
-						<img class="sm-pillar-img" src="/assets/yalla_business/images/illustrations/why-arabic2.webp?v=20261009c" alt="" width="900" height="560" loading="lazy">
+						<img class="sm-pillar-img" src="/assets/yalla_business/images/illustrations/why-arabic2.webp?v=20261009t" alt="" width="900" height="560" loading="lazy">
 					</div>
 					<div class="sm-pillar-body">
 						<h3>{{ txt("تجربة عربية واضحة لفريقك", "Arabic-first experience") }}</h3>
@@ -968,7 +838,7 @@
 				</article>
 				<article class="sm-pillar">
 					<div class="sm-pillar-media">
-						<img class="sm-pillar-img" src="/assets/yalla_business/images/illustrations/why-grow.webp?v=20261009c" alt="" width="900" height="560" loading="lazy">
+						<img class="sm-pillar-img" src="/assets/yalla_business/images/illustrations/why-grow.webp?v=20261009f" alt="" width="900" height="560" loading="lazy">
 					</div>
 					<div class="sm-pillar-body">
 						<h3>{{ txt("حلول تنمو مع منشأتك", "Solutions that grow with your company") }}</h3>
@@ -1094,7 +964,7 @@
 		<div class="sm-wrap">
 			<div class="sm-banner">
 				<div class="sm-banner-mosaic" aria-hidden="true">
-					<img class="sm-banner-tile sm-banner-tile-single" src="/assets/yalla_business/images/illustrations/final-cta2.webp?v=20261009c" alt="" width="800" height="520" loading="lazy">
+					<img class="sm-banner-tile sm-banner-tile-single" src="/assets/yalla_business/images/illustrations/final-cta2.webp?v=20261009f" alt="" width="800" height="520" loading="lazy">
 				</div>
 				<div class="sm-banner-copy">
 					<h2>{{ txt("هل أنتم جاهزون لجمع أعمال منشأتكم في مكان واحد؟", "Ready to bring your business into one place?") }}</h2>
@@ -1173,7 +1043,7 @@
 	<script src="/assets/yalla_business/js/inquiry-track.js?v=20260920c"></script>
 	<script src="/assets/yalla_business/vendor/gsap/gsap.min.js"></script>
 	<script src="/assets/yalla_business/vendor/gsap/ScrollTrigger.min.js"></script>
-	<script src="/assets/yalla_business/js/showcase2.js?v=20261005b"></script>
-	<script src="/assets/yalla_business/js/showcase_motion.js?v=20260913a"></script>
+	<script src="/assets/yalla_business/js/showcase2.js?v=20261009n"></script>
+	<script src="/assets/yalla_business/js/showcase_motion.js?v=20261009l"></script>
 </body>
 </html>
