@@ -25,7 +25,7 @@ DESK_HOME = "/desk"
 CRM_HOME = "/crm"
 STAFF_HOME = "desk"
 
-CRM_ROLES = ("Sales User", "Sales Manager")
+CRM_ROLES = ("Sales User", "Sales Manager", "CRM User")
 DESK_ROLES = ("System Manager", "Administrator")
 GENERIC_LOGIN_PATHS = {"", "/app", "/desk", "/apps"}
 
