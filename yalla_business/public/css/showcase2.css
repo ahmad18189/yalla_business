@@ -6451,13 +6451,6 @@ body.sm-page .sm-hero.sm-hero--nabd h1 em {
   font-weight: 700;
   color: #141b2b;
 }
-.sm-hero-telemetry__state {
-  padding: 0.1rem 0.45rem;
-  border-radius: 999px;
-  background: rgba(0, 169, 165, 0.14);
-  color: #006a67;
-  font-weight: 700;
-}
 .sm-hero-telemetry__row strong {
   color: #3e0069;
   font-size: 0.84rem;
@@ -6849,5 +6842,31 @@ body.sm-page #ybs-ecosystem {
 }
 html[data-sm-mode="dark"] body.sm-page #ybs-ecosystem {
   background: rgba(22, 16, 34, 0.38);
+}
+.sm-section-head:has(.ybs-logo-anchor) {
+  max-width: 46rem;
+}
+.ybs-logo-anchor {
+  width: min(26rem, 78vw);
+  aspect-ratio: 1.52 / 1;
+  margin: 1.35rem auto 0.2rem;
+  pointer-events: none;
+}
+body.sm-page:not(.sm-social) .sm-footer {
+  background: color-mix(in srgb, var(--sm-surface) 52%, transparent);
+}
+body.sm-page #ybs-journey {
+  background: rgba(241, 243, 255, 0.5);
+}
+html[data-sm-mode="dark"] body.sm-page #ybs-journey {
+  background: rgba(22, 16, 34, 0.5);
+}
+body.sm-page #ybs-inquiry,
+body.sm-page #ybs-partners {
+  background: color-mix(in srgb, var(--sm-bg) 58%, transparent);
+}
+html[data-sm-mode="dark"] body.sm-page #ybs-inquiry,
+html[data-sm-mode="dark"] body.sm-page #ybs-partners {
+  background: color-mix(in srgb, var(--sm-bg) 62%, transparent);
 }
 
