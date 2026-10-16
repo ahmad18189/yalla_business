@@ -291,13 +291,13 @@ body.sm-social #ybs-process .sm-section-head h2 {
 }
 
 body.sm-social #ybs-process .yep-process-num {
-  background: var(--sm-accent);
-  color: #fff;
-  box-shadow: 0 0 0 6px var(--yb-page);
+  background: #e1e8fd;
+  color: #3e0069;
+  box-shadow: none;
 }
 
 body.sm-social #ybs-process .yep-process-step p {
-  color: var(--yb-ink);
+  color: var(--yb-muted);
 }
 
 body.sm-social .sm-footer {

@@ -24,8 +24,8 @@
 	<link rel="icon" href="/assets/yalla_business/images/showcase2-favicon.svg?v=20260920m" type="image/svg+xml" />
 	<link rel="icon" href="/assets/yalla_business/images/favicon.ico?v=20260920m" sizes="any" />
 	<link rel="apple-touch-icon" href="/assets/yalla_business/images/apple-touch-icon.png?v=20260920m" />
-	<link rel="stylesheet" href="/assets/yalla_business/css/showcase2.css?v=20261009p" />
-	<link rel="stylesheet" href="/assets/yalla_business/css/social.css?v=20260920m" />
+	<link rel="stylesheet" href="/assets/yalla_business/css/showcase2.css?v=20261016i" />
+	<link rel="stylesheet" href="/assets/yalla_business/css/social.css?v=20261016e" />
 </head>
 <body class="sm-page sm-social{% if sm_lang == 'ar' %} sm-rtl{% endif %}" data-sm-theme="teal" data-sm-mode="light">
 <canvas class="sm-nabd-field" aria-hidden="true"></canvas>
@@ -188,7 +188,7 @@
 						</div>
 						<div class="sm-field sm-field-span2">
 							<label for="ybs_message">{{ txt("الرسالة", "Message") }}</label>
-							<textarea id="ybs_message" name="message" rows="3" maxlength="2000" placeholder="{{ txt('مثال: نحتاج محاسبة ومخزون لفريق من 10 أشخاص', 'Example: we need accounting and inventory for a team of 10') }}"></textarea>
+							<textarea id="ybs_message" name="message" rows="3" maxlength="2000" placeholder="{{ txt('صف احتياج منشأتكم', 'Describe what your company needs') }}"></textarea>
 						</div>
 					</div>
 					<label class="ybs2-check" for="ybs_privacy">
@@ -215,23 +215,27 @@
 		</div>
 	</section>
 
-	<section class="sm-section sm-section-alt yep-process" id="ybs-process">
+	<section class="sm-section yep-process" id="ybs-process">
 		<div class="sm-wrap">
 			<div class="sm-section-head">
 				<h2>{{ txt("ثلاث خطوات للانطلاق", "Three steps to begin") }}</h2>
+				<p>{{ txt("مسار سريع وسلس لنقل أعمالكم إلى المنظومة الموحدة", "A short path into one system for the whole company.") }}</p>
 			</div>
 			<ol class="yep-process-track">
 				<li class="yep-process-step">
-					<span class="yep-process-num">1</span>
-					<p>{{ txt("أخبرونا باحتياج منشأتك", "Tell us what your company needs") }}</p>
+					<span class="yep-process-num" lang="en">1</span>
+					<h3>{{ txt("أخبرونا باحتياج منشأتكم", "Tell us what your company needs") }}</h3>
+					<p>{{ txt("عبر النموذج أدناه أو بالتواصل مع مستشارينا.", "Use the form below, or speak with our team.") }}</p>
 				</li>
 				<li class="yep-process-step">
-					<span class="yep-process-num">2</span>
-					<p>{{ txt("نقترح الحل الأنسب", "Receive a suitable recommendation") }}</p>
+					<span class="yep-process-num" lang="en">2</span>
+					<h3>{{ txt("نقترح الحل الأنسب", "We recommend the right fit") }}</h3>
+					<p>{{ txt("دراسة دقيقة وعرض سعر ملائم لحجم أعمالكم وفريقكم.", "A clear recommendation and a quote sized to your team.") }}</p>
 				</li>
 				<li class="yep-process-step">
-					<span class="yep-process-num">3</span>
-					<p>{{ txt("نبدأ التجهيز معكم", "Begin setup and implementation") }}</p>
+					<span class="yep-process-num" lang="en">3</span>
+					<h3>{{ txt("نبدأ التجهيز معكم", "We start the setup with you") }}</h3>
+					<p>{{ txt("تهيئة الحساب، تدريب الكوادر، والربط الحكومي المعتمد.", "Account setup, team training, and the government connections you need.") }}</p>
 				</li>
 			</ol>
 		</div>
@@ -273,6 +277,6 @@
 
 	<script>window.YB_CSRF = "{{ csrf_token }}";</script>
 	<script src="/assets/yalla_business/js/inquiry-track.js?v=20260920c"></script>
-	<script src="/assets/yalla_business/js/showcase2.js?v=20261009i"></script>
+	<script src="/assets/yalla_business/js/showcase2.js?v=20261016i"></script>
 </body>
 </html>

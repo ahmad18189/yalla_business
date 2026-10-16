@@ -405,7 +405,6 @@
       initReveal();
       initHeroSlider();
       initProofMarquee();
-      initHeroDots();
       initField();
     });
   } else {
@@ -414,92 +413,10 @@
     initReveal();
     initHeroSlider();
     initProofMarquee();
-    initHeroDots();
     initField();
   }
 
-  /* Hero dust, same as the NABD reference: dots drift and link in front of the cream. */
-  function initHeroDots() {
-    var cv = document.querySelector("canvas.sm-hero-dust");
-    if (!cv || !cv.getContext) return;
-    var cx = cv.getContext("2d");
-    if (!cx) return;
-    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var dpr = Math.min(2, window.devicePixelRatio || 1);
-    var pts = [], W = 0, H = 0, running = true;
-
-    function size() {
-      var r = cv.getBoundingClientRect();
-      W = r.width;
-      H = r.height;
-      if (!W || !H) return;
-      cv.width = Math.floor(W * dpr);
-      cv.height = Math.floor(H * dpr);
-      cx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      pts = [];
-      var n = Math.round(Math.min(70, (W * H) / 16000));
-      var i;
-      for (i = 0; i < n; i++) {
-        pts.push({
-          x: Math.random() * W,
-          y: Math.random() * H,
-          vx: (Math.random() - 0.5) * 0.25,
-          vy: (Math.random() - 0.5) * 0.25,
-          r: Math.random() * 2.4 + 0.8,
-          a: Math.random() * 0.5 + 0.25
-        });
-      }
-    }
-    function draw() {
-      if (!running) return;
-      cx.clearRect(0, 0, W, H);
-      var i, j, p, q, dx, dy, d;
-      for (i = 0; i < pts.length; i++) {
-        p = pts[i];
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < 0 || p.x > W) p.vx *= -1;
-        if (p.y < 0 || p.y > H) p.vy *= -1;
-        for (j = i + 1; j < pts.length; j++) {
-          q = pts[j];
-          dx = p.x - q.x;
-          dy = p.y - q.y;
-          d = dx * dx + dy * dy;
-          if (d < 12000) {
-            cx.strokeStyle = "rgba(108,84,140," + (0.14 * (1 - d / 12000)) + ")";
-            cx.lineWidth = 1;
-            cx.beginPath();
-            cx.moveTo(p.x, p.y);
-            cx.lineTo(q.x, q.y);
-            cx.stroke();
-          }
-        }
-        cx.fillStyle = "rgba(122,58,200," + p.a + ")";
-        cx.beginPath();
-        cx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        cx.fill();
-      }
-      if (!reduce) requestAnimationFrame(draw);
-    }
-    size();
-    if (!W) {
-      window.addEventListener("load", function () { size(); draw(); }, { once: true });
-      return;
-    }
-    draw();
-    if (reduce) return;
-    window.addEventListener("resize", function () {
-      clearTimeout(cv._rs);
-      cv._rs = setTimeout(size, 120);
-    });
-    document.addEventListener("visibilitychange", function () {
-      running = document.visibilityState !== "hidden";
-      if (running) requestAnimationFrame(draw);
-    });
-  }
-
-  /* Site-wide NABD field: particles + polygons that gather into structure on scroll.
-     Motion: scatter → orbit ring → pulse wave → hex lattice (inspired by octodd.com). */
+  /* Stitch particle field: hero orbit, YB mark, side glide, then a neural web. */
   function initField() {
     var canvas = document.querySelector("canvas.sm-nabd-field");
     if (!canvas || !canvas.getContext) return;
@@ -507,197 +424,241 @@
     if (!ctx) return;
     var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var dpr = Math.min(2, window.devicePixelRatio || 1);
-    var W = 0, H = 0, pts = [], forms = null, t = 0, mx = 0.5, my = 0.4, raf = 0, running = true;
+    var width = 0;
+    var height = 0;
+    var particles = [];
+    var logoTargets = [];
+    var raf = 0;
+    var running = true;
+    var time = 0;
+    var count = 165;
+    var colors = [
+      { r: 147, g: 51, b: 234 },
+      { r: 192, g: 132, b: 252 },
+      { r: 0, g: 210, b: 200 },
+      { r: 168, g: 85, b: 247 },
+      { r: 45, g: 212, b: 191 }
+    ];
+    var logoNorm = [
+      { x: -0.80, y: -0.75 }, { x: -0.68, y: -0.55 }, { x: -0.56, y: -0.35 }, { x: -0.44, y: -0.15 },
+      { x: -0.32, y: 0.05 }, { x: -0.20, y: 0.25 }, { x: -0.08, y: 0.45 }, { x: 0.04, y: 0.65 },
+      { x: -0.85, y: -0.65 }, { x: -0.75, y: -0.40 }, { x: -0.92, y: -0.85 }, { x: -0.78, y: -0.92 },
+      { x: -0.62, y: -0.75 }, { x: -0.48, y: -0.55 },
+      { x: -0.36, y: -0.18 }, { x: -0.46, y: -0.02 }, { x: -0.56, y: 0.15 }, { x: -0.66, y: 0.32 },
+      { x: -0.76, y: 0.50 }, { x: -0.86, y: 0.68 }, { x: -0.96, y: 0.85 },
+      { x: -0.15, y: -0.75 }, { x: 0.05, y: -0.75 }, { x: 0.25, y: -0.75 }, { x: 0.45, y: -0.75 },
+      { x: 0.60, y: -0.65 }, { x: 0.70, y: -0.50 }, { x: 0.72, y: -0.35 }, { x: 0.65, y: -0.20 },
+      { x: 0.50, y: -0.10 }, { x: 0.30, y: -0.08 }, { x: 0.10, y: -0.08 }, { x: -0.05, y: -0.08 },
+      { x: 0.15, y: -0.08 }, { x: 0.35, y: -0.08 }, { x: 0.55, y: -0.05 }, { x: 0.70, y: 0.08 },
+      { x: 0.78, y: 0.25 }, { x: 0.76, y: 0.45 }, { x: 0.68, y: 0.62 }, { x: 0.52, y: 0.72 },
+      { x: 0.32, y: 0.75 }, { x: 0.12, y: 0.75 }, { x: -0.08, y: 0.75 }, { x: -0.25, y: 0.75 },
+      { x: 0.05, y: -0.55 }, { x: 0.25, y: -0.55 }, { x: 0.45, y: -0.50 }, { x: 0.50, y: -0.35 },
+      { x: 0.35, y: -0.25 }, { x: 0.18, y: -0.25 }, { x: 0.10, y: 0.12 }, { x: 0.30, y: 0.15 },
+      { x: 0.50, y: 0.22 }, { x: 0.58, y: 0.38 }, { x: 0.48, y: 0.55 }, { x: 0.28, y: 0.58 }
+    ];
+    var weights = { hero: 1, logo: 0, drift: 0, neural: 0 };
+    var target = { hero: 1, logo: 0, drift: 0, neural: 0 };
+    var mouse = { x: -1000, y: -1000, active: false };
 
-    function ease(u) {
-      u = Math.max(0, Math.min(1, u));
-      return 1 - Math.pow(1 - u, 3);
-    }
-    function lerp(a, b, u) {
-      return a + (b - a) * u;
-    }
-    function mix(a, b, u) {
-      return { x: lerp(a.x, b.x, u), y: lerp(a.y, b.y, u) };
-    }
-    function samplePath(path, n) {
-      var out = [], i, k, f, a, b;
-      for (i = 0; i < n; i++) {
-        f = (i / n) * (path.length - 1);
-        k = Math.floor(f);
-        a = path[k];
-        b = path[Math.min(k + 1, path.length - 1)];
-        out.push({ x: lerp(a.x, b.x, f - k), y: lerp(a.y, b.y, f - k) });
-      }
-      return out;
-    }
-    function pulsePath() {
-      var pad = Math.min(W, H) * 0.08;
-      var x0 = pad, x1 = W - pad, y = H * 0.5, amp = Math.min(110, H * 0.16);
-      var keys = [0, 0.33, 0.36, 0.378, 0.398, 0.42, 0.444, 0.466, 0.486, 0.56, 0.578, 0.594, 0.61, 0.626, 1];
-      var ys = [0, 0, 0, -amp * 0.55, amp * 0.62, -amp, amp * 0.85, -amp * 0.28, 0, 0, 0, -amp * 0.32, amp * 0.28, 0, 0];
-      return keys.map(function (k, i) { return { x: lerp(x0, x1, k), y: y + ys[i] }; });
-    }
-    function hexLattice(n) {
-      var out = [], spacing = Math.max(56, Math.min(W, H) / 9);
-      var cols = Math.ceil(W / spacing) + 2;
-      var rows = Math.ceil(H / (spacing * 0.86)) + 2;
-      var r, c, i = 0;
-      for (r = 0; r < rows && i < n; r++) {
-        for (c = 0; c < cols && i < n; c++, i++) {
-          out.push({
-            x: (c + (r % 2 ? 0.5 : 0)) * spacing + spacing * 0.2,
-            y: r * spacing * 0.86 + spacing * 0.3
-          });
-        }
-      }
-      while (out.length < n) out.push({ x: W * Math.random(), y: H * Math.random() });
-      return out;
-    }
-    function ringForm(n) {
-      var out = [], i, a, rr;
-      var cx = W * 0.5, cy = H * 0.46, R = Math.min(W, H) * 0.32;
-      for (i = 0; i < n; i++) {
-        a = (i / n) * Math.PI * 2 - Math.PI / 2;
-        rr = R * (0.62 + (i % 7) * 0.055);
-        out.push({ x: cx + Math.cos(a) * rr, y: cy + Math.sin(a) * rr * 0.72 });
-      }
-      return out;
-    }
-    function buildForms(n) {
-      var scatter = [], i;
-      for (i = 0; i < n; i++) scatter.push({ x: Math.random() * W, y: Math.random() * H });
-      return {
-        scatter: scatter,
-        ring: ringForm(n),
-        pulse: samplePath(pulsePath(), n),
-        lattice: hexLattice(n)
-      };
-    }
-    function structureAt(i, p) {
-      if (p < 0.2) return mix(forms.scatter[i], forms.ring[i], ease(p / 0.2));
-      if (p < 0.52) return mix(forms.ring[i], forms.pulse[i], ease((p - 0.2) / 0.32));
-      return mix(forms.pulse[i], forms.lattice[i], ease((p - 0.52) / 0.48));
-    }
-    function scrollP() {
-      var max = Math.max(1, document.documentElement.scrollHeight - innerHeight);
-      return Math.max(0, Math.min(1, window.scrollY / max));
-    }
-    function resize() {
-      W = innerWidth;
-      H = innerHeight;
-      canvas.width = Math.floor(W * dpr);
-      canvas.height = Math.floor(H * dpr);
-      canvas.style.width = W + "px";
-      canvas.style.height = H + "px";
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      var mobile = W < 760;
-      var n = Math.round(Math.min(mobile ? 38 : 72, (W * H) / 18000));
-      n = Math.max(24, n);
-      var i, kind;
-      pts = [];
-      for (i = 0; i < n; i++) {
-        kind = i % 5 === 0 ? 6 : i % 4 === 0 ? 3 : i % 3 === 0 ? 4 : 0;
-        pts.push({
-          x: Math.random() * W,
-          y: Math.random() * H,
-          r: kind ? 5.5 + Math.random() * 7 : 1.5 + Math.random() * 1.8,
-          a: 0.38 + Math.random() * 0.4,
-          phase: Math.random() * Math.PI * 2,
-          spin: (Math.random() - 0.5) * 0.012,
-          rot: Math.random() * Math.PI * 2,
-          sides: kind
+    function logoTargetsForSize() {
+      var scale = Math.min(width, height) * 0.30;
+      var next = [];
+      var i, ref;
+      for (i = 0; i < count; i++) {
+        ref = logoNorm[i % logoNorm.length];
+        next.push({
+          x: (ref.x + Math.sin(i * 99) * 0.03) * scale,
+          y: (ref.y + Math.cos(i * 77) * 0.03) * scale
         });
       }
-      forms = buildForms(n);
+      logoTargets = next;
     }
-    function drawPoly(x, y, r, sides, rot) {
-      var i, ang;
-      ctx.beginPath();
-      for (i = 0; i < sides; i++) {
-        ang = rot + (i * Math.PI * 2) / sides - Math.PI / 2;
-        if (i) ctx.lineTo(x + Math.cos(ang) * r, y + Math.sin(ang) * r);
-        else ctx.moveTo(x + Math.cos(ang) * r, y + Math.sin(ang) * r);
+    function resize() {
+      width = document.documentElement.clientWidth;
+      height = document.documentElement.clientHeight;
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      canvas.style.width = "100%";
+      canvas.style.height = "100%";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      logoTargetsForSize();
+    }
+    function makeParticles() {
+      var i, col;
+      particles = [];
+      for (i = 0; i < count; i++) {
+        col = colors[i % colors.length];
+        particles.push({
+          x: Math.random() * (width || 1),
+          y: Math.random() * (height || 1),
+          vx: (Math.random() - 0.5) * 1.1,
+          vy: (Math.random() - 0.5) * 1.1,
+          baseRadius: 2.5 + Math.random() * 2,
+          color: col,
+          angle: Math.random() * Math.PI * 2,
+          orbitRadius: 80 + Math.random() * 150,
+          orbitSpeed: 0.01 + Math.random() * 0.018,
+          pulseOffset: Math.random() * Math.PI * 2,
+          phase: Math.random() * Math.PI * 2
+        });
       }
-      ctx.closePath();
     }
-    function frame(now) {
+    function scrollWeights() {
+      var maxScroll = Math.max(1, document.documentElement.scrollHeight - height);
+      var scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+      var ratio = Math.min(Math.max(scrollY / maxScroll, 0), 1);
+      var t;
+      if (ratio < 0.20) {
+        target.hero = 1 - (ratio / 0.20);
+        target.logo = ratio / 0.20;
+        target.drift = 0;
+        target.neural = 0;
+      } else if (ratio < 0.50) {
+        t = (ratio - 0.20) / 0.30;
+        target.hero = 0;
+        target.logo = 1 - t * 0.4;
+        target.drift = t * 0.4;
+        target.neural = 0;
+      } else if (ratio < 0.78) {
+        t = (ratio - 0.50) / 0.28;
+        target.hero = 0;
+        target.logo = Math.max(0, 0.6 - t * 0.6);
+        target.drift = Math.sin(t * Math.PI) * 0.8;
+        target.neural = t;
+      } else {
+        target.hero = 0;
+        target.logo = 0;
+        target.drift = 0;
+        target.neural = 1;
+      }
+    }
+    function frame() {
       if (!running) return;
-      t = now || 0;
-      var p = scrollP();
-      var gather = ease(Math.min(1, p / 0.18));
-      var dark = document.documentElement.getAttribute("data-sm-mode") === "dark";
-      var ink = dark ? "176,124,255" : "122,58,200";
-      var line = dark ? "212,179,255" : "108,84,140";
-      var i, j, pt, tgt, dx, dy, d, dist, link, drift, px, py, u;
-      ctx.clearRect(0, 0, W, H);
-      for (i = 0; i < pts.length; i++) {
-        pt = pts[i];
-        tgt = structureAt(i, p);
-        u = 0.045 + gather * 0.08;
-        pt.x += (tgt.x - pt.x) * u;
-        pt.y += (tgt.y - pt.y) * u;
-        drift = 7 * (1 - gather * 0.72);
-        px = pt.x + Math.sin(t * 0.00055 + pt.phase) * drift;
-        py = pt.y + Math.cos(t * 0.00042 + pt.phase * 1.3) * drift * 0.7;
-        px += (mx - 0.5) * 18 * (1 - gather);
-        py += (my - 0.4) * 12 * (1 - gather);
-        pt._px = px;
-        pt._py = py;
-        pt.rot += pt.spin;
+      var i, j, p, p2, dx, dy, dist, force, pulse, radius, alpha, lineAlpha;
+      var heroEl, rect, heroAnchor, driftX, driftY, tilt, lt, cx, cy, cosT, sinT, rx, ry, logoX, logoY, factor;
+      time += 0.02;
+      ctx.clearRect(0, 0, width, height);
+      if (!reduce) scrollWeights();
+      weights.hero += (target.hero - weights.hero) * 0.055;
+      weights.logo += (target.logo - weights.logo) * 0.055;
+      weights.drift += (target.drift - weights.drift) * 0.055;
+      weights.neural += (target.neural - weights.neural) * 0.055;
+
+      heroAnchor = { x: width * 0.28, y: height * 0.35 };
+      heroEl = document.querySelector(".sm-hero-nabd");
+      if (heroEl) {
+        rect = heroEl.getBoundingClientRect();
+        if (rect.width > 0) {
+          heroAnchor = { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
+        }
       }
-      link = 70 + gather * 70;
-      ctx.lineWidth = 1;
-      for (i = 0; i < pts.length; i++) {
-        for (j = i + 1; j < pts.length; j++) {
-          dx = pts[i]._px - pts[j]._px;
-          dy = pts[i]._py - pts[j]._py;
-          d = dx * dx + dy * dy;
-          dist = link * link;
-          if (d < dist) {
-            ctx.strokeStyle = "rgba(" + line + "," + (0.12 + 0.22 * gather) * (1 - d / dist) + ")";
+      driftX = Math.sin(time * 0.8) * (width * 0.25);
+      driftY = Math.cos(time * 0.95) * 50;
+      tilt = Math.sin(time * 0.6) * 0.25;
+
+      for (i = 0; i < particles.length; i++) {
+        p = particles[i];
+        if (!reduce) {
+          p.angle += p.orbitSpeed;
+          p.phase += 0.025;
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0) p.x = width;
+          if (p.x > width) p.x = 0;
+          if (p.y < 0) p.y = height;
+          if (p.y > height) p.y = 0;
+        }
+        var reach = p.orbitRadius;
+        if (rect && rect.width > 80) {
+          reach = rect.width * (0.42 + ((p.orbitRadius - 80) / 150) * 0.16);
+        }
+        var wobble = Math.sin(time * 2.2 + p.pulseOffset) * 16;
+        var heroX = heroAnchor.x + Math.cos(p.angle) * (reach + wobble);
+        var heroY = heroAnchor.y + Math.sin(p.angle) * (reach * 0.72 + wobble);
+        lt = logoTargets[i % logoTargets.length];
+        cx = width * 0.5 + (weights.drift * driftX);
+        cy = height * 0.48 + (weights.drift * driftY);
+        cosT = Math.cos(tilt * (weights.drift + 0.1));
+        sinT = Math.sin(tilt * (weights.drift + 0.1));
+        rx = lt.x * cosT - lt.y * sinT;
+        ry = lt.x * sinT + lt.y * cosT;
+        logoX = cx + rx;
+        logoY = cy + ry;
+        if (!reduce && weights.hero > 0.001) {
+          p.x += (heroX - p.x) * (0.055 * weights.hero);
+          p.y += (heroY - p.y) * (0.055 * weights.hero);
+        }
+        if (!reduce && (weights.logo > 0.001 || weights.drift > 0.001)) {
+          factor = Math.max(weights.logo, weights.drift);
+          p.x += (logoX - p.x) * (0.06 * factor);
+          p.y += (logoY - p.y) * (0.06 * factor);
+        }
+        if (!reduce && mouse.active) {
+          dx = p.x - mouse.x;
+          dy = p.y - mouse.y;
+          dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 160 && dist > 0) {
+            force = (1 - dist / 160) * 22;
+            p.x += (dx / dist) * force;
+            p.y += (dy / dist) * force;
+          }
+        }
+        pulse = 0.9 + Math.sin(time * 3.5 + p.pulseOffset) * 0.28;
+        radius = p.baseRadius * pulse;
+        alpha = 0.75 + Math.sin(p.phase) * 0.25;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(" + p.color.r + "," + p.color.g + "," + p.color.b + "," + alpha + ")";
+        ctx.shadowBlur = width > 768 ? 14 : 0;
+        ctx.shadowColor = "rgba(" + p.color.r + "," + p.color.g + "," + p.color.b + ",0.85)";
+        ctx.fill();
+      }
+      ctx.shadowBlur = 0;
+      ctx.lineWidth = 0.85;
+      for (i = 0; i < particles.length; i += 2) {
+        for (j = i + 1; j < particles.length; j += 3) {
+          p = particles[i];
+          p2 = particles[j];
+          dx = p.x - p2.x;
+          dy = p.y - p2.y;
+          dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 80) {
+            lineAlpha = (1 - dist / 80) * 0.35;
+            ctx.strokeStyle = "rgba(" + p.color.r + "," + p.color.g + "," + p.color.b + "," + lineAlpha + ")";
             ctx.beginPath();
-            ctx.moveTo(pts[i]._px, pts[i]._py);
-            ctx.lineTo(pts[j]._px, pts[j]._py);
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
             ctx.stroke();
           }
         }
       }
-      for (i = 0; i < pts.length; i++) {
-        pt = pts[i];
-        if (pt.sides) {
-          ctx.strokeStyle = "rgba(" + ink + "," + Math.min(0.85, pt.a + 0.15) + ")";
-          ctx.fillStyle = "rgba(" + ink + "," + (pt.a * 0.22) + ")";
-          drawPoly(pt._px, pt._py, pt.r, pt.sides, pt.rot);
-          ctx.fill();
-          ctx.stroke();
-        } else {
-          ctx.fillStyle = "rgba(" + ink + "," + pt.a + ")";
-          ctx.beginPath();
-          ctx.arc(pt._px, pt._py, pt.r, 0, Math.PI * 2);
-          ctx.fill();
-        }
-      }
-      if (!reduce) raf = requestAnimationFrame(frame);
+      if (!reduce && running) raf = requestAnimationFrame(frame);
     }
 
     resize();
+    if (!width) return;
+    makeParticles();
     if (reduce) {
-      scrollP();
-      frame(0);
+      frame();
       return;
     }
+    window.addEventListener("mousemove", function (e) {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+      mouse.active = true;
+    });
+    window.addEventListener("mouseleave", function () {
+      mouse.active = false;
+      mouse.x = -1000;
+      mouse.y = -1000;
+    });
     window.addEventListener("resize", function () {
       clearTimeout(canvas._rs);
       canvas._rs = setTimeout(resize, 120);
     });
-    window.addEventListener("pointermove", function (e) {
-      if (!window.matchMedia("(pointer:fine)").matches) return;
-      mx = e.clientX / Math.max(1, W);
-      my = e.clientY / Math.max(1, H);
-    }, { passive: true });
     document.addEventListener("visibilitychange", function () {
       running = document.visibilityState !== "hidden";
-      if (running && !reduce) raf = requestAnimationFrame(frame);
+      if (running) raf = requestAnimationFrame(frame);
     });
     raf = requestAnimationFrame(frame);
   }
