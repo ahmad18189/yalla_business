@@ -6829,6 +6829,9 @@ section:has(#ybs-values-heading) .sm-pillar-img,
 }
 
 /* Let the fixed particle field show through the page bands. Cards stay solid. */
+body.sm-page section[aria-labelledby="ybs-values-heading"] {
+  background: transparent;
+}
 body.sm-page .sm-proof,
 body.sm-page .sm-section-alt,
 body.sm-page #ybs-process,
